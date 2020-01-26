@@ -1,0 +1,21 @@
+.borderboxed {
+    border: 1px solid #ccc;
+}
+  
+.link {
+    cursor: pointer;
+    color: #1e70bf; //#lookatthis. Change this with theming in semantic
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.border-box {
+    border: 1px solid #ccc;
+    padding: 24px;
+    border-radius: .28571429rem;
+}
+  
+.no-margin {
+    margin: 0 !important;
+}

@@ -1,0 +1,19 @@
+.cell {
+    flex: 1;
+}
+.inline {
+    display: inline;
+}
+.flexible {
+    display: flex;
+}
+.flexible-center-equidistant-cells {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.flexible-center-space-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
