@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -14,7 +14,7 @@ import PrivateRoute from './index';
 
 export default function Routes() {
   return (
-    <Router>
+    <Router basename='/advertise-overlays'>
         <Switch>
           <Route exact path="/">
             <Redirect to="/dashboard" />
