@@ -52,7 +52,7 @@ export default class Login extends React.Component {
             <>
                 <CenterContainerCard cols={5}>
                     <Box className='border-box'>
-                        <Form>
+                        <Form onSubmit={this.handleLoginClick}>
                             <FormField isLine>
                                 Welcome back!
                             </FormField>
@@ -82,7 +82,7 @@ export default class Login extends React.Component {
                                 </FormField>
                             </FormField>
                             <FormField className='flexible' isLine>
-                                <Button className='cell no-margin' primary onClick={this.handleLoginClick}>
+                                <Button type='submit' className='cell no-margin' primary>
                                     Login
                                 </Button> 
                             </FormField>

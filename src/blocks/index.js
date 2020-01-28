@@ -7,3 +7,6 @@ export { Header } from './header';
 export { InputBlock as Input } from './input';
 export { Paper } from './paper';
 export { View } from './view';
+export { 
+    SidebarCombined as Sidebar, SidebarBlock, SidebarPushable, SidebarPusher 
+} from './sidebar';

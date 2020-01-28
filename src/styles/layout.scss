@@ -9,6 +9,7 @@
 }
 .flexible-center-equidistant-cells {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: space-between;
 }
@@ -16,4 +17,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+.bottom-sidebar-menu-item {
+    bottom: 0;
+    position: absolute !important;
+    width: 100%;
 }

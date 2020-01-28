@@ -6,7 +6,10 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Login, Signup, ForgotPassword, Verification, RedirectTo, Dashboard, ResetPassword } from 'modules';
+import { 
+  Login, Signup, ForgotPassword, Verification, RedirectTo, Dashboard, ResetPassword ,
+  Links
+} from 'modules';
 import PrivateRoute from './index';
 
 export default function Routes() {
@@ -33,6 +36,9 @@ export default function Routes() {
           </Route>
           <PrivateRoute exact path='/dashboard'>
               <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute exact path='/links'>
+              <Links />
           </PrivateRoute>
         </Switch>
         <RedirectTo />

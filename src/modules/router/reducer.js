@@ -3,6 +3,7 @@ import * as actionypes from './actiontypes';
 
 const initialState = {
     isAuthenticated: false,
+    token: ''
 };
 
 export default function auth(state = initialState, action) {
@@ -10,6 +11,7 @@ export default function auth(state = initialState, action) {
         case actionypes.ON_AUTHENTICATION_SUCCESS:
             return {
                 isAuthenticated: true,
+                token: 'xyz',
             };
         default:
             return state;
