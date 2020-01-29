@@ -21,6 +21,16 @@ const menuItems = [
   },
   {
     bottom: true,
+    label: "Profile",
+    icon: "user outline"
+  },
+  {
+    bottom: true,
+    label: "Signout",
+    icon: "power off"
+  },
+  {
+    bottom: true,
     label: "Collapse",
     icon: "compress"
   }
@@ -61,14 +71,10 @@ export default class SidebarComponent extends React.Component {
     this.forceUpdate();
   };
 
-  handleOnHover = e => alert("hovered");
-
   render() {
     const { collapsed } = this.state;
     return (
-      <Sidebar logo={logo} menuItems={this.menuItems} collapsed={collapsed}>
-        <h1>Hello world</h1>
-      </Sidebar>
+      <Sidebar logo={logo} menuItems={this.menuItems} collapsed={collapsed} />
     );
   }
 }
