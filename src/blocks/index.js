@@ -8,5 +8,8 @@ export { InputBlock as Input } from './input';
 export { Paper } from './paper';
 export { View } from './view';
 export { 
-    SidebarCombined as Sidebar, SidebarBlock, SidebarPushable, SidebarPusher 
+    SidebarBlock, SidebarPushable, SidebarPusher 
+} from './sidebar/sidebar';
+export { 
+    default as Sidebar 
 } from './sidebar';

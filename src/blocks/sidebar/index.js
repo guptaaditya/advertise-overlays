@@ -1,80 +1,84 @@
-import React from 'react';
-import _ from 'lodash';
-import { Sidebar, Segment, Menu, Icon, Image } from 'semantic-ui-react';
+import React from "react";
+import _ from "lodash";
+import { Container, Icon, Image, Menu } from "semantic-ui-react";
 
-import ComponentWrapper from 'utils/helper';
-
-const defaults = {
-    as: Menu,
-    vertical: true,
-    animation: 'overlay',
-    inverted: true,
-    visible: true,
-    width: 'thin',
-};
-
-function MenuItem(props) {
-    const { item, className = '' } = props;
-    const isImage = item.as === 'Image';
-    const clickHandler = item.onClick || _.noop;
-    if (isImage) {
-        return (
-            <Menu.Item className={className} onClick={clickHandler}>
-                <Image centered src={item.src} size='tiny' />
-            </Menu.Item>
-        );
-    }
+function Logo(props) {
+  const {
+    logo: { src, text = "", className = "", onClick = _.noop } = {}
+  } = props;
+  if (src) {
     return (
-        <Menu.Item className={className} active={item.active} onClick={clickHandler}>
-            {item.icon && <Icon name={item.icon} />}
-            {item.label}
-        </Menu.Item>
+      <Image
+        alt={text}
+        size="mini"
+        src={src}
+        className={className}
+        onClick={onClick}
+      />
     );
-}
-
-
-export const SidebarBlock = ComponentWrapper(Sidebar, defaults);
-export const SidebarPushable = ComponentWrapper(Sidebar.Pushable, { as: Segment });
-export const SidebarPusher = ComponentWrapper(Sidebar.Pusher);
-export class SidebarCombined extends React.Component {
-    render() {
-        const { visible: v, animation: a } = defaults;
-        const { 
-            items, children, applicationContent, visible=v, animation=a,
-            onMenuClick, expanded
-        } = this.props;
-        const content = children || applicationContent;
-        const sidebarProps = {
-            visible,
-            animation,
-            onClick: onMenuClick
-        };
-        if (!expanded) {
-            return <CollapsedSidebarMenu {...sidebarProps} />
-        }
-        return (
-            <SidebarPushable>
-                <SidebarBlock {...sidebarProps}>
-                    {_.map(items, item => <MenuItem item={item} />)}
-                </SidebarBlock>
-                {content && (
-                    <SidebarPusher dimmed={visible}>
-                        <Segment basic>
-                            {content}
-                        </Segment>
-                    </SidebarPusher>
-                )}
-            </SidebarPushable>
-        );
-    }
-}
-
-function CollapsedSidebarMenu(props) {
+  } else if (text) {
     return (
-        <SidebarPushable>
-            <SidebarBlock { ...{...props, width: 'very thin' } }>
-                <MenuItem className='bottom-sidebar-menu-item' item={{ icon: 'arrow alternate circle right' }} />)}
-            </SidebarBlock>
-        </SidebarPushable>
-    )
+      <div className={className} onClick={onClick}>
+        {text}
+      </div>
+    );
+  }
+  return null;
+}
+
+function MenuItems(props) {
+  const { menuItems = [] } = props;
+  return (
+    <>
+      {_.map(
+        menuItems,
+        ({ as = "a", icon = "", label = "", onClick = _.noop }, index) => {
+          if (icon || label) {
+            return (
+              <Menu.Item as={as} key={index} onClick={onClick}>
+                {icon && <Icon name={icon} />}
+                <span>{label}</span>
+              </Menu.Item>
+            );
+          }
+          return null;
+        }
+      )}
+    </>
+  );
+}
+
+export default function Sidebar(props) {
+  const { logo, menuItems = [], onHover = _.noop, collapsed } = props;
+  const topMenuItems = _.reject(menuItems, "bottom");
+  const bottomMenuItems = _.filter(menuItems, "bottom");
+  if (topMenuItems && topMenuItems.length) {
+    return (
+      <Menu
+        icon="labeled"
+        fixed="left"
+        inverted
+        vertical
+        id="leftNavigationBar"
+        onHover={onHover}
+        className={collapsed && "collapsed"}
+      >
+        <Container className="top">
+          {logo && (
+            <Menu.Item as="a" className="logo">
+              <Logo logo={logo} />
+            </Menu.Item>
+          )}
+          <MenuItems menuItems={topMenuItems} />
+        </Container>
+
+        {bottomMenuItems && (
+          <Container>
+            <MenuItems menuItems={bottomMenuItems} />
+          </Container>
+        )}
+      </Menu>
+    );
+  }
+  return null;
 }

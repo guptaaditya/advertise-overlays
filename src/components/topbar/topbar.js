@@ -1,7 +1,7 @@
 import React from 'react';
-import { Sidebar } from 'blocks';
+import { Topbar } from 'blocks';
 
-export default class SidebarComponent extends React.Component {
+export default class Topbar extends React.Component {
     state = {
         expanded: true,
     }

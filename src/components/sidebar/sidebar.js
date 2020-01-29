@@ -1,41 +1,74 @@
-import React from 'react';
-import { Sidebar } from 'blocks';
+import React from "react";
+import _ from "lodash";
 
-const navigationItems= [
-    {
-        as: 'Image',
-        src: 'https://aapastech.com/img/aapastech.png', 
-    }, {
-        label: 'Dashboard',
-        icon: 'dashboard',
-    }, {
-        label: 'Overlays',
-        icon: 'adversal',
-    }, {
-        label: 'Links',
-        icon: 'linkify',
-    }, {
-        label: 'Reports',
-        icon: 'signal',
-    },
+import { Sidebar } from "blocks";
+
+import "styles/sidebar.scss";
+
+const logo = { src: "https://react.semantic-ui.com/logo.png" };
+const menuItems = [
+  {
+    label: "Dashboard",
+    icon: "dashboard"
+  },
+  {
+    label: "Links",
+    icon: "linkify"
+  },
+  {
+    label: "Overlays",
+    icon: "affiliatetheme"
+  },
+  {
+    bottom: true,
+    label: "Collapse",
+    icon: "compress"
+  }
 ];
 
+const expand = {
+  label: "Expand",
+  icon: "expand"
+};
+
+const collapse = {
+  label: "Collapse",
+  icon: "compress"
+};
+
 export default class SidebarComponent extends React.Component {
-    state = {
-        expanded: true,
-    }
+  state = {
+    collapsed: false
+  };
 
-    handleContractMenu = e => this.setState({ expanded: false });
+  constructor(props) {
+    super(props);
+    this.menuItems = menuItems;
+    this.menuItems[menuItems.length - 1].onClick = this.handleContractMenu;
+  }
 
-    handleExpandMenu = e => this.setState({ expanded: true });
+  handleContractMenu = e => {
+    this.setState({ collapsed: true });
+    _.assign(this.menuItems[menuItems.length - 1], expand);
+    this.menuItems[menuItems.length - 1].onClick = this.handleExpandMenu;
+    this.forceUpdate();
+  };
 
-    render() {
-        const { expanded } = this.state;
-        return (
-            <Sidebar animation='push' items={navigationItems} expanded={expanded} 
-                onMenuClick={this.handleExpandMenu}>
-                <h1>Hello world</h1>
-            </Sidebar>
-        );
-    }
+  handleExpandMenu = e => {
+    this.setState({ collapsed: false });
+    _.assign(this.menuItems[menuItems.length - 1], collapse);
+    this.menuItems[menuItems.length - 1].onClick = this.handleContractMenu;
+    this.forceUpdate();
+  };
+
+  handleOnHover = e => alert("hovered");
+
+  render() {
+    const { collapsed } = this.state;
+    return (
+      <Sidebar logo={logo} menuItems={this.menuItems} collapsed={collapsed}>
+        <h1>Hello world</h1>
+      </Sidebar>
+    );
+  }
 }
