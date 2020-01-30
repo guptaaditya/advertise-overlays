@@ -1,8 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-
 import { Route } from "react-router-dom";
+
+import MainBody from 'modules/mainbody';
 
 export class PrivateRoute extends React.Component {
     state = {
@@ -26,7 +27,9 @@ export class PrivateRoute extends React.Component {
       if (!isAuthenticated) return null;
       return (
           <Route {...rest}>
-            {children}
+            <MainBody>
+              {children}
+            </MainBody>
           </Route>
       );
     }

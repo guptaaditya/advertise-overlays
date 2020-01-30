@@ -10,6 +10,7 @@ import {
   Login, Signup, ForgotPassword, Verification, RedirectTo, Dashboard, ResetPassword ,
   Links
 } from 'modules';
+import Sidebar from 'components/sidebar';
 import PrivateRoute from './index';
 
 export default function Routes() {
@@ -38,6 +39,15 @@ export default function Routes() {
               <Dashboard />
           </PrivateRoute>
           <PrivateRoute exact path='/links'>
+              <Links />
+          </PrivateRoute>
+          <PrivateRoute exact path='/overlays'>
+              <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute exact path='/user-profile'>
+              <Links />
+          </PrivateRoute>
+          <PrivateRoute exact path='/logout'>
               <Links />
           </PrivateRoute>
         </Switch>

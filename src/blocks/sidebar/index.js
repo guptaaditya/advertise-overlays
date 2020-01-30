@@ -27,15 +27,16 @@ function Logo(props) {
 }
 
 function MenuItems(props) {
-  const { menuItems = [] } = props;
+  const { menuItems = [], onClick: onItemClickToParents } = props;
   return (
     <>
       {_.map(
         menuItems,
-        ({ as = "a", icon = "", label = "", onClick = _.noop }, index) => {
+        (item, index) => {
+          const { as = "a", icon = "", label = "", onClick = _.noop } = item;
           if (icon || label) {
             return (
-              <Menu.Item as={as} key={index} onClick={onClick}>
+              <Menu.Item as={as} key={index} onClick={e => {onClick(); onItemClickToParents(item)}} >
                 {icon && <Icon name={icon} />}
                 <span>{label}</span>
               </Menu.Item>
@@ -48,37 +49,79 @@ function MenuItems(props) {
   );
 }
 
-export default function Sidebar(props) {
-  const { logo, menuItems = [], onHover = _.noop, collapsed } = props;
-  const topMenuItems = _.reject(menuItems, "bottom");
-  const bottomMenuItems = _.filter(menuItems, "bottom");
-  if (topMenuItems && topMenuItems.length) {
-    return (
-      <Menu
-        icon="labeled"
-        fixed="left"
-        inverted
-        vertical
-        id="leftNavigationBar"
-        onHover={onHover}
-        className={collapsed && "collapsed"}
-      >
-        <Container className="top">
-          {logo && (
-            <Menu.Item as="a" className="logo">
-              <Logo logo={logo} />
-            </Menu.Item>
-          )}
-          <MenuItems menuItems={topMenuItems} />
-        </Container>
+export default class Sidebar extends React.Component {
+  state = {
+    collapsed: false
+  };
 
-        {bottomMenuItems && (
-          <Container>
-            <MenuItems menuItems={bottomMenuItems} />
-          </Container>
-        )}
-      </Menu>
-    );
+  handleContractMenu = e => {
+    this.setState({ collapsed: true });
+  };
+
+  handleExpandMenu = e => {
+    this.setState({ collapsed: false });
+  };
+
+  handleOnMouseover = () => {
+    clearTimeout(this.outTimer);
+    this.handleExpandMenu();
+  };
+
+  handleOnMouseout = () => {
+    this.outTimer = setTimeout(this.handleContractMenu, 3000);
+  };
+
+  getLastMenuItem = () => {
+    const { collapsed } = this.state;
+    const expand = {
+      label: "Expand",
+      icon: "expand",
+      onClick: this.handleExpandMenu,
+    };
+    const collapse = {
+      label: "Collapse",
+      icon: "compress",
+      onClick: this.handleContractMenu,
+    };
+    return collapsed ? expand : collapse;
   }
-  return null;
+
+  render() {
+    const { collapsed } = this.state;
+    const { logo, menuItems = [], onItemClick = _.noop } = this.props;
+    const topMenuItems = _.reject(menuItems, "bottom");
+    let bottomMenuItems = _.filter(menuItems, "bottom") || [];
+    bottomMenuItems = [...bottomMenuItems, this.getLastMenuItem()];
+
+    if (topMenuItems && topMenuItems.length) {
+      return (
+        <Menu
+          icon="labeled"
+          fixed="left"
+          inverted
+          vertical
+          id="leftNavigationBar"
+          onMouseOver={this.handleOnMouseover}
+          onMouseOut={this.handleOnMouseout}
+          className={collapsed ? "collapsed" : ""}
+        >
+          <Container className="top">
+            {logo && (
+              <Menu.Item as="a" className="logo">
+                <Logo logo={logo} />
+              </Menu.Item>
+            )}
+            <MenuItems menuItems={topMenuItems} onClick={onItemClick} />
+          </Container>
+
+          {bottomMenuItems && (
+            <Container>
+              <MenuItems menuItems={bottomMenuItems} onClick={onItemClick} />
+            </Container>
+          )}
+        </Menu>
+      );
+    }
+    return null;
+  }
 }
