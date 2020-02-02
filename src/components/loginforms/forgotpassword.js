@@ -65,5 +65,4 @@ export default class ForgotPassword extends React.Component {
 }
 ForgotPassword.defaultProps = {
     onForgotPassword: _.noop,
-    onRedirect: _.noop,
 };

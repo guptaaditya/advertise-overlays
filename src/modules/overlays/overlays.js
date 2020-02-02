@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { OverlaysList } from 'components/overlayslist';
+import { redirectTo } from 'modules';
 
 export default class Overlays extends React.Component {
     cols = [{ 
@@ -16,6 +18,10 @@ export default class Overlays extends React.Component {
         align: 'right', label: 'Delete', icon: 'delete', valueField: 'id', color: 'red'
     }];
 
+    handleOnAddOverlays = () => {
+        redirectTo(this.props.newOverlayPath)
+    };
+
     componentDidMount() {
         this.props.onFetchOverlays();
     }
@@ -24,8 +30,11 @@ export default class Overlays extends React.Component {
         const { data } = this.props;
         return (
             <>
-               <OverlaysList cols={this.cols} data={data} /> 
+               <OverlaysList cols={this.cols} data={data} onAddOverlay={this.handleOnAddOverlays} /> 
             </>
         );
     }
+}
+Overlays.propTypes = {
+    newOverlayPath: PropTypes.string.isRequired,
 }

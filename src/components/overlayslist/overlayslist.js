@@ -6,6 +6,10 @@ import { Table, View, Button, Icon } from 'blocks';
 import 'styles/overlays.scss';
 
 class OverlaysList extends React.Component {
+    handleOnAddOverlays = e => {
+        this.props.onAddOverlay();
+    }
+
     getFooterActions() {
         return (
             <Button
@@ -14,11 +18,13 @@ class OverlaysList extends React.Component {
                 labelPosition='left'
                 primary
                 size='small'
+                onClick={this.handleOnAddOverlays}
             >
                 <Icon name='affiliatetheme' /> Add Overlay
             </Button>
         )
     }
+
     render () {
         const { cols, data } = this.props;
         return (
@@ -36,6 +42,7 @@ export default OverlaysList;
 OverlaysList.propTypes = {
     cols: PropTypes.array,
     data: PropTypes.array,
+    onAddOverlay: PropTypes.func.isRequired,
 };
 
 OverlaysList.defaultProps = {

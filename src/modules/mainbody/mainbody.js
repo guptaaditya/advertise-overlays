@@ -4,14 +4,14 @@ import { withRouter } from 'react-router-dom';
 
 import Sidebar from 'components/sidebar';
 import { AppBody } from 'blocks';
+import { redirectTo } from 'modules';
 
 const logo = { src: "https://react.semantic-ui.com/logo.png" };
 
 export class MainApp extends React.Component {
     handleMenuClick = item => {
         if (item.route) {
-            const { onRedirect } =  this.props;
-            onRedirect(item.route);
+            redirectTo(item.route);
         }
     }
 
@@ -29,7 +29,7 @@ export class MainApp extends React.Component {
               bottom: true, label: "Signout", icon: "power off", route: "/logout",
         }];
 
-        const loadedRouteComponent = _.find(menuItems, { route: match.path });
+        const loadedRouteComponent = _.find(menuItems, ({ route }) => _.startsWith(match.path, route));
         if (loadedRouteComponent) {
           loadedRouteComponent.active = true;
         }

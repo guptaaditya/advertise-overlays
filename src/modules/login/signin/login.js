@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { redirectTo } from 'modules';
 
 import { LoginForm } from 'components/loginforms';
 
@@ -17,9 +18,9 @@ class Login extends React.Component {
         onLogin(userInput, redirectUrlFromSearch || redirectTo);
     }
 
-    handleSignup = () => this.props.onRedirect(this.props.signupPath)
+    handleSignup = () => redirectTo(this.props.signupPath)
 
-    handleForgotPassword = () => this.props.onRedirect(this.props.forgotpasswordPath)
+    handleForgotPassword = () => redirectTo(this.props.forgotpasswordPath)
 
 
     render () {
@@ -43,5 +44,4 @@ Login.propTypes = {
 };
 Login.defaultProps = {
     onLogin: _.noop,
-    onRedirect: _.noop,
 };

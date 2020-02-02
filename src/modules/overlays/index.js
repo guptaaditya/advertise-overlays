@@ -7,6 +7,6 @@ export default connect(
         data: state.overlays.data,
     }),
     (dispatch) => ({
-        onFetchOverlays: e => dispatch(actions.onFetchOverlays()),
+      onFetchOverlays: e => dispatch(actions.onFetchOverlays()),
     })
 )(Overlays);

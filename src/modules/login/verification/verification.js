@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { redirectTo } from 'modules';
 
 import { VerificationCodeForm } from 'components/loginforms';
 
@@ -21,7 +22,7 @@ class VerificationCode extends React.Component {
         onResendVerificationCode(emailAddress);
     }
 
-    handleSignin = () => this.props.onRedirect(this.props.signinPath)
+    handleSignin = () => redirectTo(this.props.signinPath)
 
     render () {
         return (
@@ -45,5 +46,4 @@ VerificationCode.propTypes = {
 };
 VerificationCode.defaultProps = {
     onForgotPassword: _.noop,
-    onRedirect: _.noop,
 };

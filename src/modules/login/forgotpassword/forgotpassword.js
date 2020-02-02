@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { redirectTo } from 'modules';
 
 import { ForgotPasswordForm } from 'components/loginforms';
 
@@ -11,7 +12,7 @@ class ForgotPassword extends React.Component {
         onForgotPassword(userInput, redirectTo);
     }
 
-    handleSignin = () => this.props.onRedirect(this.props.signinPath)
+    handleSignin = () => redirectTo(this.props.signinPath)
 
     render () {
         return (
@@ -31,5 +32,4 @@ ForgotPassword.propTypes = {
 };
 ForgotPassword.defaultProps = {
     onForgotPassword: _.noop,
-    onRedirect: _.noop,
 };

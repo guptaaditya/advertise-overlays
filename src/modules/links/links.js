@@ -9,10 +9,9 @@ export default class Links extends React.Component {
         this.cols = [{ 
             align: 'left', 
             label: 'Short URL', 
-            valueField: 'id', 
             labelField: 'shortUrl',
-            singleLine: true,
-            width: 5,
+            width: 3,
+            valueField: 'id', 
             icons: [
                 {
                     icon: 'copy', 
@@ -26,9 +25,9 @@ export default class Links extends React.Component {
                         target: '_blank',
                     },
                 }
-            ], 
+            ],
         }, { 
-            align: 'left', label: 'Overlay used', valueField: 'id', labelField: 'overlayName', width: 4 
+            align: 'left', label: 'Overlay used', valueField: 'id', labelField: 'overlayName', width: 5,
         }, { 
             align: 'left', label: 'Created On', valueField: 'id', labelField: 'createdOn'
         }, { 

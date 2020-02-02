@@ -5,13 +5,20 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { createHashHistory } from 'history';
 
 import { 
-  Login, Signup, ForgotPassword, Verification, RedirectTo, Dashboard, ResetPassword ,
-  OverlaysList, LinksList
+  Login, Signup, ForgotPassword, Verification, Dashboard, ResetPassword ,
+  OverlaysList, LinksList, CreateOverlay
 } from 'modules';
-import Sidebar from 'components/sidebar';
+
 import PrivateRoute from './index';
+
+const history = createHashHistory();
+
+export function redirectTo(url) {
+  return history.push(url);
+}
 
 export default function Routes() {
   return (
@@ -42,7 +49,10 @@ export default function Routes() {
               <LinksList />
           </PrivateRoute>
           <PrivateRoute exact path='/overlays'>
-              <OverlaysList />
+              <OverlaysList newOverlayPath='/overlays/new' />
+          </PrivateRoute>
+          <PrivateRoute exact path='/overlays/new'>
+              <CreateOverlay />
           </PrivateRoute>
           <PrivateRoute exact path='/user-profile'>
               <LinksList />
@@ -51,7 +61,6 @@ export default function Routes() {
               <LinksList />
           </PrivateRoute>
         </Switch>
-        <RedirectTo />
     </Router>
   );
 }

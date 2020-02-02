@@ -1,7 +1,6 @@
 import createTaleMiddleware from 'redux-tale/es/';
 
 import loginSagas from 'modules/login/saga';
-import redirectSagas from 'modules/redirect/saga';
 import overlaysSagas from 'modules/overlays/saga';
 import linksSagas from 'modules/links/saga';
 
@@ -9,7 +8,6 @@ let sagaMiddleware;
 
 const sagas = [
     ...loginSagas,
-    ...redirectSagas,
     ...overlaysSagas,
     ...linksSagas,
 ];

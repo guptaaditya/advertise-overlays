@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { redirectTo } from 'modules';
 
 import { SignupForm } from 'components/loginforms';
 
@@ -11,7 +12,7 @@ class Signup extends React.Component {
         onSignup(userInput, redirectTo);
     }
 
-    handleSignin = () => this.props.onRedirect(this.props.signinPath)
+    handleSignin = () => redirectTo(this.props.signinPath)
 
     render () {
         return (
@@ -31,5 +32,4 @@ Signup.propTypes = {
 };
 Signup.defaultProps = {
     onSignup: _.noop,
-    onRedirect: _.noop,
 };

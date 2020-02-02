@@ -22,7 +22,7 @@ class TableCell extends React.Component {
         } else {
             body = (
                 <>
-                    {label}
+                    <div className='text'>{label}</div>
                     &nbsp; 
                     {icon && <Icon className='pointer' name={icon} color={color} />}
                     {_.map(icons, ({ icon, color, onClick = _.noop, link }, key) => {

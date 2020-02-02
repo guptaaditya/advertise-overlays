@@ -1,5 +1,5 @@
 import { takeLatest, put } from 'redux-tale/es/effects';
-import * as redirectActions from 'modules/redirect/actions';
+import * as redirectActions from 'modules';
 import * as authActions from 'modules/router/actions';
 import * as actionTypes from './actiontypes';
 import * as actions from './actions';

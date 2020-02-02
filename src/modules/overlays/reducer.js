@@ -3,6 +3,27 @@ import * as actiontypes from './actiontypes';
 
 const initialState = {
     data: [],
+    createOverlay: {
+        overlayType: {
+            completed: false,
+            selected: null,
+        },
+        overlayCategory: {
+            completed: false,
+            selected: null,
+            disabled: true,
+        },
+        overlayTemplate: {
+            completed: false,
+            selected: null,
+            disabled: true,
+        },
+        overlayName: {
+            completed: false,
+            selected: null,
+            disabled: true,
+        }
+    }
 };
 
 export default function overlay(state = initialState, action) {

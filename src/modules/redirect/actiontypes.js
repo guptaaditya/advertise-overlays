@@ -1,2 +1,0 @@
-export const REDIRECT_TO = 'REDIRECT_TO';
-export const REDIRECT_TO_URL = 'REDIRECT_TO_URL'
