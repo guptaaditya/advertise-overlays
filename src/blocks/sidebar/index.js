@@ -33,10 +33,10 @@ function MenuItems(props) {
       {_.map(
         menuItems,
         (item, index) => {
-          const { as = "a", icon = "", label = "", onClick = _.noop } = item;
+          const { as = "a", icon = "", label = "", onClick = _.noop, active = false } = item;
           if (icon || label) {
             return (
-              <Menu.Item as={as} key={index} onClick={e => {onClick(); onItemClickToParents(item)}} >
+              <Menu.Item as={as} key={index} active={active} onClick={e => {onClick(); onItemClickToParents(item)}} >
                 {icon && <Icon name={icon} />}
                 <span>{label}</span>
               </Menu.Item>
@@ -56,19 +56,23 @@ export default class Sidebar extends React.Component {
 
   handleContractMenu = e => {
     this.setState({ collapsed: true });
+    e && e.preventDefault();
+    e && e.stopPropagation();
   };
 
   handleExpandMenu = e => {
     this.setState({ collapsed: false });
+    e && e.preventDefault();
+    e && e.stopPropagation();
   };
 
-  handleOnMouseover = () => {
-    clearTimeout(this.outTimer);
-    this.handleExpandMenu();
+  handleOnMouseover = e => {
+    if (this.outTimer) clearTimeout(this.outTimer);
+    this.handleExpandMenu(e);
   };
 
-  handleOnMouseout = () => {
-    this.outTimer = setTimeout(this.handleContractMenu, 3000);
+  handleOnMouseout = e => {
+    this.outTimer = setTimeout(this.handleContractMenu, 3000, e);
   };
 
   getLastMenuItem = () => {

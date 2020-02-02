@@ -8,7 +8,7 @@ import {
 
 import { 
   Login, Signup, ForgotPassword, Verification, RedirectTo, Dashboard, ResetPassword ,
-  Links
+  OverlaysList, LinksList
 } from 'modules';
 import Sidebar from 'components/sidebar';
 import PrivateRoute from './index';
@@ -18,7 +18,7 @@ export default function Routes() {
     <Router basename='/advertise-overlays'>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/dashboard" />
+            <Redirect to="/overlays" />
           </Route>
           <Route exact path="/login">
             <Login redirectTo='/dashboard' signupPath='/signup' forgotpasswordPath='/forgot-password' />
@@ -39,16 +39,16 @@ export default function Routes() {
               <Dashboard />
           </PrivateRoute>
           <PrivateRoute exact path='/links'>
-              <Links />
+              <LinksList />
           </PrivateRoute>
           <PrivateRoute exact path='/overlays'>
-              <Dashboard />
+              <OverlaysList />
           </PrivateRoute>
           <PrivateRoute exact path='/user-profile'>
-              <Links />
+              <LinksList />
           </PrivateRoute>
           <PrivateRoute exact path='/logout'>
-              <Links />
+              <LinksList />
           </PrivateRoute>
         </Switch>
         <RedirectTo />

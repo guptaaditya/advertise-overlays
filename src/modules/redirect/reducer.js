@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as actionypes from './actiontypes';
+import * as actiontypes from './actiontypes';
 
 const initialState = {
     currentURL: '',
@@ -8,7 +8,7 @@ const initialState = {
 
 export default function redirectTo(state = initialState, action) {
     switch(action.type) {
-        case actionypes.REDIRECT_TO:
+        case actiontypes.REDIRECT_TO:
             return {
                 prevURL: state.currentURL,
                 currentURL: action.url

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as actionypes from './actiontypes';
+import * as actiontypes from './actiontypes';
 
 const initialState = {
     isAuthenticated: false,
@@ -8,7 +8,7 @@ const initialState = {
 
 export default function auth(state = initialState, action) {
     switch(action.type) {
-        case actionypes.ON_AUTHENTICATION_SUCCESS:
+        case actiontypes.ON_AUTHENTICATION_SUCCESS:
             return {
                 isAuthenticated: true,
                 token: 'xyz',

@@ -4,6 +4,9 @@
 @import './formatting.scss';
 @import './overrides.scss';
 
+body {
+    background-image: url('../img/db-bg.jpg');
+}
 #root {
     height: 100%;
     overflow: hidden;
@@ -13,5 +16,9 @@
         height: 100%;
         display: flex;
         flex: 1 0 auto;
+    }
+
+    .app-body {
+        padding: 16px;
     }
 }

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as actionypes from './actiontypes';
+import * as actiontypes from './actiontypes';
 
 const initialState = {
     resetPasswordForUserEmail: '',
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function userManagement(state = initialState, action) {
     switch(action.type) {
-        case actionypes.ON_FORGOT_PASSWORD_SUCCESS:
+        case actiontypes.ON_FORGOT_PASSWORD_SUCCESS:
             return {
                 resetPasswordForUserEmail: action.useremail,
             };
