@@ -47,8 +47,12 @@ export class MainApp extends React.Component {
             <>
                 <Sidebar logo={logo} menuItems={menuItems} onItemClick={this.handleMenuClick} />
                 <AppBody>
-                  <Header as='h2'>{routeLabel.label}</Header>
-                  <Divider />
+                  {routeLabel && (
+                    <>
+                      <Header as='h2'>{routeLabel.label}</Header>
+                      <Divider />
+                    </>
+                  )}
                   {this.props.children}
                 </AppBody>
             </>
