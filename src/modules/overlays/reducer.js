@@ -27,9 +27,7 @@ const initialState = {
 export default function overlay(state = initialState, action) {
     switch(action.type) {
         case actiontypes.ON_FETCH_OVERLAYS_SUCCESS:
-            return {
-                data: action.data,
-            };
+            return _.defaults({}, { data: action.data }, state);
         default:
             return state;
     };
