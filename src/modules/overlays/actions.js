@@ -12,3 +12,7 @@ export function onFetchOverlaysSuccess(data) {
         data,
     }
 }
+
+export function selectedPropertyValue(property, value) {
+    
+}

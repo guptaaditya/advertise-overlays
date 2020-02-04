@@ -4,8 +4,9 @@ import * as actions from '../actions';
 
 export default connect(
     state => ({
-        stepsStatus: state.createOverlay,
+        stepsStatus: state.overlays.createOverlay,
     }),
     (dispatch) => ({
+        onSelection: (property, value) => dispatch(actions.selectedPropertyValue(property, value)) 
     })
 )(CreateOverlay);

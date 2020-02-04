@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 
 import Sidebar from 'components/sidebar';
-import { AppBody } from 'blocks';
+import { AppBody, Divider, Header } from 'blocks';
 import { redirectTo } from 'modules';
 
 const logo = { src: "https://react.semantic-ui.com/logo.png" };
@@ -29,16 +29,27 @@ export class MainApp extends React.Component {
               bottom: true, label: "Signout", icon: "power off", route: "/logout",
         }];
 
+        const routeLabels = [
+          { label: "Dashboard", route: "/dashboard" },
+          { label: "Links", route: "/links" },
+          { label: "Overlays", route: "/overlays" },
+          { label: "New Overlay", route: "/overlays/new" },
+          { label: "Profile", route: "/user-profile" },
+        ];
+
         const loadedRouteComponent = _.find(menuItems, ({ route }) => _.startsWith(match.path, route));
         if (loadedRouteComponent) {
           loadedRouteComponent.active = true;
         }
-          
+
+        const routeLabel = _.find(routeLabels, { route: match.path });
         return (
             <>
                 <Sidebar logo={logo} menuItems={menuItems} onItemClick={this.handleMenuClick} />
                 <AppBody>
-                    {this.props.children}
+                  <Header as='h2'>{routeLabel.label}</Header>
+                  <Divider />
+                  {this.props.children}
                 </AppBody>
             </>
         );
