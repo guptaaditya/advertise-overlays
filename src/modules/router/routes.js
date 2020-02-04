@@ -22,7 +22,7 @@ export function redirectTo(url) {
 
 export default function Routes() {
   return (
-    <Router basename='/advertise-overlays'>
+    <Router>
         <Switch>
           <Route exact path="/">
             <Redirect to="/overlays" />
