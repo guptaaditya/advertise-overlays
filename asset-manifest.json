@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/advertise-overlays/static/css/main.c0c592b1.chunk.css",
-    "main.js": "/advertise-overlays/static/js/main.eb84150b.chunk.js",
-    "main.js.map": "/advertise-overlays/static/js/main.eb84150b.chunk.js.map",
+    "main.css": "/advertise-overlays/static/css/main.0f62abcf.chunk.css",
+    "main.js": "/advertise-overlays/static/js/main.c61895e8.chunk.js",
+    "main.js.map": "/advertise-overlays/static/js/main.c61895e8.chunk.js.map",
     "runtime-main.js": "/advertise-overlays/static/js/runtime-main.c39972c4.js",
     "runtime-main.js.map": "/advertise-overlays/static/js/runtime-main.c39972c4.js.map",
     "static/css/2.65620810.chunk.css": "/advertise-overlays/static/css/2.65620810.chunk.css",
-    "static/js/2.456b27f6.chunk.js": "/advertise-overlays/static/js/2.456b27f6.chunk.js",
-    "static/js/2.456b27f6.chunk.js.map": "/advertise-overlays/static/js/2.456b27f6.chunk.js.map",
+    "static/js/2.0e5be4e6.chunk.js": "/advertise-overlays/static/js/2.0e5be4e6.chunk.js",
+    "static/js/2.0e5be4e6.chunk.js.map": "/advertise-overlays/static/js/2.0e5be4e6.chunk.js.map",
     "index.html": "/advertise-overlays/index.html",
-    "precache-manifest.282078bca6c7eff7304d565786f1378c.js": "/advertise-overlays/precache-manifest.282078bca6c7eff7304d565786f1378c.js",
+    "precache-manifest.86313f4d038f9aed8e294be26a5d24c2.js": "/advertise-overlays/precache-manifest.86313f4d038f9aed8e294be26a5d24c2.js",
     "service-worker.js": "/advertise-overlays/service-worker.js",
     "static/css/2.65620810.chunk.css.map": "/advertise-overlays/static/css/2.65620810.chunk.css.map",
-    "static/css/main.c0c592b1.chunk.css.map": "/advertise-overlays/static/css/main.c0c592b1.chunk.css.map",
-    "static/js/2.456b27f6.chunk.js.LICENSE": "/advertise-overlays/static/js/2.456b27f6.chunk.js.LICENSE",
+    "static/css/main.0f62abcf.chunk.css.map": "/advertise-overlays/static/css/main.0f62abcf.chunk.css.map",
+    "static/js/2.0e5be4e6.chunk.js.LICENSE": "/advertise-overlays/static/js/2.0e5be4e6.chunk.js.LICENSE",
     "static/media/index.scss": "/advertise-overlays/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.c39972c4.js",
     "static/css/2.65620810.chunk.css",
-    "static/js/2.456b27f6.chunk.js",
-    "static/css/main.c0c592b1.chunk.css",
-    "static/js/main.eb84150b.chunk.js"
+    "static/js/2.0e5be4e6.chunk.js",
+    "static/css/main.0f62abcf.chunk.css",
+    "static/js/main.c61895e8.chunk.js"
   ]
 }
