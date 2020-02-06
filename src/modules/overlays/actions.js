@@ -16,3 +16,22 @@ export function onFetchOverlaysSuccess(data) {
 export function selectedPropertyValue(property, value) {
     
 }
+
+export function selectOverlayType(overlayType) {
+    return {
+        type: actionTypes.TYPE_SELECTED,
+        overlayType,
+    }
+}
+
+export function selectOverlayCategory() {
+    
+}
+
+export function selectOverlayTemplate() {
+    
+}
+
+export function selectOverlayName() {
+    
+}

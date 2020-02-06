@@ -10,7 +10,7 @@ export default class FluidContainer extends React.Component {
         if (colWidth) colProps.width = colWidth;
         return (
             <Grid stackable>
-                {_.map(children, (child, index) => (<Grid.Column {...colProps}>{child}</Grid.Column>))}
+                {_.map(children, (child, index) => (<Grid.Column key={index} {...colProps}>{child}</Grid.Column>))}
             </Grid>
         );
     }

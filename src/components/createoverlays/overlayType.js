@@ -51,7 +51,7 @@ const overlayTypeMap = {
   
 export default class OverlayType extends React.Component {
     render() {
-        const { type = 'bar' } = this.props;
+        const { type = 'bar', onSelect = _.noop } = this.props;
         const ComponentMapped = overlayTypeMap[type];
 
         return (
@@ -60,6 +60,10 @@ export default class OverlayType extends React.Component {
                 {_.startCase(type)}
                 </Label>
                 <ComponentMapped />
+                <Label className='pointer' onClick={e => onSelect(type)} as='button' 
+                  attached='bottom' color='orange'>
+                  Select
+                </Label>
             </SitePlaceholder>
         );
     }
