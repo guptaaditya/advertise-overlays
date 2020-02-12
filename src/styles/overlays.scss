@@ -17,9 +17,36 @@
         flex: 1;
     }
 
+    &-root {
+        font-size: 0.35rem !important;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-iconbox {
+        background-color: #6435c9;
+        padding: 2px 8px;
+    }
+
     &-card {
         width: 300px;
         flex: 1;
+
+        >div {
+            min-width: 300px;
+        }
+    }
+
+    &-popup {
+        width: 60%;
+
+        >.overlay-logo  {
+            background-color: #6435c9;
+        }
+    }
+
+    &-notification {
+        width: 60%;
     }
 
     &-name {
