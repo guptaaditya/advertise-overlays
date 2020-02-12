@@ -3,6 +3,8 @@ import _ from 'lodash';
 import LinksList from 'components/links';
 import { Icon } from 'semantic-ui-react';
 
+const dummyLink = {url: 'http://utv.com/gytgt56f6ks'};
+
 export default class Links extends React.Component {
     constructor() {
         super();
@@ -51,8 +53,18 @@ export default class Links extends React.Component {
                 }
             ]
         }];
+        this.state = {
+            createdLink: false
+        }
     }
     
+    handleCreate = () => {
+        this.setState({ createdLink: true });
+    };
+
+    handleDetailsSeen = () => {
+        this.setState({ createdLink: false });
+    }
 
     componentDidMount() {
         this.props.onFetchLinks();
@@ -72,9 +84,14 @@ export default class Links extends React.Component {
 
     render() {
         const { data } = this.props;
+        const { createdLink } = this.state;
         return (
             <>
-               <LinksList cols={this.cols} data={data} /> 
+                <LinksList 
+                    createdLink={createdLink ? dummyLink: null } 
+                    onCreate={this.handleCreate} cols={this.cols} data={data} 
+                    onDetailsSeen={this.handleDetailsSeen}
+                /> 
             </>
         );
     }
