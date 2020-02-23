@@ -1,19 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { 
-  Label, View, Icon, Modal, Image
-} from 'blocks';
-import OverlayBar from './type/bar';
-import OverlayNotification from './type/notification';
-import OverlayPopup from './type/popup';
-import OverlayFullPage from './type/fullpage';
-
-export const overlayTypeMap = {
-    bar: OverlayBar,
-    notification: OverlayNotification,
-    fullpage: OverlayFullPage,
-    popup: OverlayPopup,
-}
+import { Label, View, Icon, Modal, Image } from 'blocks';
 
 export default class OverlayType extends React.Component {
     state = {
