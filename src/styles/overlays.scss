@@ -10,12 +10,12 @@
 }
 
 .overlay {
-    &-img {
+    &-container {
         display: flex;
         flex: 1;
         flex-direction: column;
     }
-    
+
     &-list {
         overflow-y: auto;
         max-width: calc(100vw - 10%);

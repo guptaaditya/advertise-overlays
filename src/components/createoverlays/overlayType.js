@@ -29,8 +29,20 @@ export default class OverlayType extends React.Component {
       const { isModalOpen } = this.state;
       const TypeComponent = props => (
           <>
-            <View className='overlay-img'>
-              <Image src={img} />
+            <View className='overlay-container'>
+              <View className='relative'>
+                <Image src={img} />
+                {!isModalOpen && (
+                  <>
+                    <Label ribbon attached='top right' color='red' className='overlay-name'>
+                      {_.startCase(caption)}
+                    </Label>
+                    <View className='overlay-expandedview pointer' onClick={this.handleOnExpand}>
+                      <Icon name='magnify' size='huge' />
+                    </View>
+                  </>
+                )}
+              </View>
               {!isModalOpen && (
                 <Label className='pointer' onClick={e => onSelect(type)} as='button' 
                     color='orange'>
@@ -39,16 +51,6 @@ export default class OverlayType extends React.Component {
               )}
             </View>
             {props.children}
-            {!isModalOpen && (
-              <>
-                <Label ribbon attached='top right' color='red' className='overlay-name'>
-                  {_.startCase(caption)}
-                </Label>
-                <View className='overlay-expandedview pointer' onClick={this.handleOnExpand}>
-                  <Icon name='magnify' size='huge' />
-                </View>
-              </>
-            )}
           </>
         );
         const ZoomedView = () => (
