@@ -2,24 +2,32 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Step, View, FluidContainer } from 'blocks';
+import BarOverlayType from './type/bar';
+// import OverlayType from './type';
 import OverlayType from './overlayType';
 import OverlayCategory from './overlayCategory';
 import OverlayTemplate from './overlayTemplate';
 import OverlayName from './overlayName';
+import BarImg from 'img/overlay/type/bar.png';
+import NotificationImg from 'img/overlay/type/notification.png';
+import PopupImg from 'img/overlay/type/popup.png';
+import FullScreenImg from 'img/overlay/type/fullpage.png';
 
 function ShowOverlayType(props) {
     const { onSelectType } = props;
     return (
         <>
             <FluidContainer className='overlay-card' colWidth={5}>
-                <OverlayType type='bar' onSelect={onSelectType} />
-                <OverlayType type='notification' onSelect={onSelectType} />
-                <OverlayType type='popup' onSelect={onSelectType} />
-                <OverlayType type='full page' onSelect={onSelectType} />
+                <OverlayType type='bar' caption='Bar' img={BarImg} onSelect={onSelectType} />
+                <OverlayType type='notification'caption='Notification' img={NotificationImg} onSelect={onSelectType} />
+                <OverlayType type='popup'caption='Popup' img={PopupImg} onSelect={onSelectType} />
+                <OverlayType type='fullpage'caption='Full Screen' img={FullScreenImg} onSelect={onSelectType} />
             </FluidContainer>
         </>
     )
 }
+
+
 
 function ShowOverlayCategory(props) {
     const { onSelectcategory } = props;

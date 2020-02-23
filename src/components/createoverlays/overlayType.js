@@ -1,114 +1,64 @@
 import React from 'react';
 import _ from 'lodash';
-import { SitePlaceholder, Segment, Label, View, Button, Icon, Input, Image, Header } from 'blocks';
+import { 
+  Label, View, Icon, Modal, Image
+} from 'blocks';
+import OverlayBar from './type/bar';
+import OverlayNotification from './type/notification';
+import OverlayPopup from './type/popup';
+import OverlayFullPage from './type/fullpage';
 
-const text = `I'm here to tell you something, and you will probably read me first.`;
-const YourLogo = () => (
-  <>
-    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' width={14} className='inline' circular />
-    <View className="inline">Your logo</View>
-  </>
-);
-const EmailBox = () => <Input placeholder='Enter your email' />;
-const IconPanel = () => (
-  <View className='overlay-iconbox'>
-    <Icon name='facebook f' />
-    <Icon name='twitter' />
-  </View>
-);
-
-const OverlayBar = props => {
-  return (
-    <Segment className='overlay-root overlay-bar' inverted color="blue">
-      <View className='inline overlay-logo'>
-        <YourLogo />
-      </View>
-      <View className='inline overlay-messsage'>
-        Your bar message here
-      </View>
-      <View className='inline overlay-email'>
-        <EmailBox />
-      </View>
-      <View className='inline overlay-subscribe'>
-        <Button className='smallest' color='violet'>
-          Yes I am in!
-        </Button>
-      </View>
-      <View className='inline overlay-iconsPanel'>
-        <IconPanel />
-      </View>
-    </Segment>
-  );
-};
-
-const OverlayNotification = props => {
-    return (
-      <Segment className='overlay-root overlay-notification' inverted color="blue">
-        <View className='inline overlay-logo'>
-          <YourLogo />
-        </View>
-        <View className='inline overlay-email'>
-          <EmailBox />
-        </View>
-        <View className='inline overlay-subscribe'>
-          <Button className='smallest' color='violet'>
-            Yes I am in!
-          </Button>
-        </View>
-      </Segment>
-    );
-};
-
-const OverlayPopup = props => {
-    return (
-      <Segment className='overlay-root overlay-popup' inverted color="blue">
-        <Header icon className='inline'>
-          <Icon fitted size='mini' name='secret' /> Join our community
-        </Header>
-        <View className='inline overlay-email'>
-          <EmailBox />
-        </View>
-        <View className='inline overlay-subscribe'>
-          <Button className='smallest' color='violet'>
-            Yes I am in!
-          </Button>
-        </View>
-      </Segment>
-    );
-};
-
-const OverlayFullPage = props => {
-    return (
-      <Segment className='overlay-root overlay-fullpage' inverted color="blue">
-        <YourLogo />
-        {text}
-      </Segment>
-    );
-};
-
-const overlayTypeMap = {
+export const overlayTypeMap = {
     bar: OverlayBar,
     notification: OverlayNotification,
-    ['full page']: OverlayFullPage,
+    fullpage: OverlayFullPage,
     popup: OverlayPopup,
 }
-  
-export default class OverlayType extends React.Component {
-    render() {
-        const { type = 'bar', onSelect = _.noop } = this.props;
-        const ComponentMapped = overlayTypeMap[type];
 
-        return (
-            <SitePlaceholder>
+export default class OverlayType extends React.Component {
+    state = {
+      isModalOpen: false
+    };
+
+    handleOnExpand = () => this.setState({ isModalOpen: true });
+    
+    handleClose = () => this.setState({ isModalOpen: false });
+
+    render() {
+      const { onSelect, type, caption, img } = this.props;
+      const { isModalOpen } = this.state;
+      const TypeComponent = props => (
+          <>
+            <Image src={img} />
+            {props.children}
+            {!isModalOpen && (
+              <>
                 <Label ribbon attached='top right' color='red' className='overlay-name'>
-                {_.startCase(type)}
+                  {_.startCase(caption)}
                 </Label>
-                <ComponentMapped />
+                <View className='overlay-expandedview pointer' onClick={this.handleOnExpand}>
+                  <Icon name='magnify' size='huge' />
+                </View>
                 <Label className='pointer' onClick={e => onSelect(type)} as='button' 
                   attached='bottom' color='orange'>
                   Select
                 </Label>
-            </SitePlaceholder>
+              </>
+            )}
+          </>
         );
+        const ZoomedView = () => (
+          <View className='overlay-zoomview'><TypeComponent /></View>
+        )
+        return (
+          <TypeComponent>
+            <Modal 
+              open={isModalOpen}
+              content={ZoomedView} 
+              modalSize='tiny' 
+              onClose={this.handleClose}
+            />
+          </TypeComponent>
+        )
     }
 }

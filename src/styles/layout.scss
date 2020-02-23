@@ -32,3 +32,11 @@
 .five {
     min-width: 25%;
 }
+
+.no-bottom-padding {
+    padding-bottom: 0 !important;
+}
+
+.scaled-down {
+    transform: scale(0.25);
+}

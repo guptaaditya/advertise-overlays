@@ -9,7 +9,7 @@ import { createHashHistory } from 'history';
 
 import { 
   Login, Signup, ForgotPassword, Verification, Dashboard, ResetPassword ,
-  OverlaysList, LinksList, CreateOverlay
+  OverlaysList, LinksList, CreateOverlay, OverlayType
 } from 'modules';
 
 import PrivateRoute from './index';
@@ -60,6 +60,9 @@ export default function Routes() {
           <PrivateRoute exact path='/logout'>
               <LinksList />
           </PrivateRoute>
+          <Route exact path="/overlay-page/:type/:category">
+            <OverlayType />
+          </Route>
         </Switch>
     </Router>
   );

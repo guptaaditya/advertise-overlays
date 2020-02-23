@@ -1,7 +1,7 @@
 import { 
     Icon as SemanticIcon, Divider as SemanticDivider, Header as SemanticHeader ,
     Placeholder as SematicPlaceHolder, Segment as SemanticSegment, Label as SemanticLabel,
-    Image as SemanticImage, Dropdown as SemanticDropdown
+    Image as SemanticImage, Dropdown as SemanticDropdown, Grid as SemanticGrid
 } from 'semantic-ui-react';
 import ComponentWrapper from 'utils/helper';
 
@@ -9,13 +9,14 @@ export const Image = ComponentWrapper(SemanticImage);
 export const Label = ComponentWrapper(SemanticLabel);
 export const Icon = ComponentWrapper(SemanticIcon);
 export const Divider = ComponentWrapper(SemanticDivider);
-export const Header = ComponentWrapper(SemanticHeader);
+export const Header = SemanticHeader;
 export const Segment = ComponentWrapper(SemanticSegment);
 export const Placeholder = ComponentWrapper(SematicPlaceHolder);
 export const PlaceholderHeader = ComponentWrapper(SematicPlaceHolder.Header);
 export const PlaceholderLine = ComponentWrapper(SematicPlaceHolder.Line);
 export const PlaceholderLinePara = ComponentWrapper(SematicPlaceHolder.Paragraph);
 export const Dropdown = ComponentWrapper(SemanticDropdown);
+export const Grid = ComponentWrapper(SemanticGrid);
 
 export { Box } from './box';
 export { default as FluidContainer } from './fluidcontainer';
@@ -35,3 +36,4 @@ export { default as Table } from './table';
 export { default as Step } from './steps';
 export { default as SitePlaceholder } from './siteplaceholder';
 export { default as Modal } from './modal';
+export { default as ImageHolderGround } from './imageholdingground';

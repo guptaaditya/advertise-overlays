@@ -48,7 +48,7 @@ function CreatedLinkForm(props) {
                 <Form>
                     <FormField isLine>
                         <label>Short URL</label>
-                        <Input disabled id='shortURL' type="text" value={url} />
+                        <Input readOnly id='shortURL' type="text" value={url} />
                     </FormField>
                 </Form>
             );

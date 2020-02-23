@@ -19,44 +19,95 @@
     }
 
     &-root {
-        font-size: 0.35rem !important;
         display: flex;
         justify-content: space-between;
     }
 
-    &-iconbox {
-        background-color: #6435c9;
-        padding: 2px 8px;
-    }
-
     &-card {
-        width: 300px;
         flex: 1;
 
         > div {
-            min-width: 380px;
+            width: 350px;
+            max-width: 350px;
+            padding: 0 !important;
+            margin: 1rem !important;
+            max-height: 15rem;
+
+            > div {
+                > div.placeholder {
+                    margin: 1rem 1rem 0 1rem;
+                }
+            } 
+        }
+    }
+
+    &-fullpage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: absolute !important;
+        top: 0;
+        height: 100%;
+        margin: 0 !important;
+        opacity: 0.8;
+    }
+
+    &-expandedview {
+        @extend .overlay-fullpage;
+        >.icon {
+            visibility: hidden;
+        }
+        &:hover {
+            background-color: grey;
+            >.icon {
+                visibility: visible;
+            }
         }
     }
 
     &-popup {
-        width: 60%;
-
+        width: 25rem;
+        position: absolute !important;
+        bottom: 2rem;
+        right: 1rem;
+        height: 15rem;
+        > div {
+            width: 100%;
+        }
         >.overlay-logo  {
             background-color: #6435c9;
         }
     }
 
+    &-fullscreen {
+        @extend .overlay-fullpage;
+    }
+
     &-notification {
         width: 60%;
+        position: absolute !important;
+        bottom: 1rem;
+        align-items: center;
+        padding: 0.5rem 1rem !important;
     }
 
     &-name {
-        top: 50px !important;
+        top: 1rem !important;
     }
 
     &-bar {
-
+        width: 100%;
+        position: absolute !important;
+        bottom: 1rem;
+        align-items: center;
+        padding: 0.5rem 1rem !important;
     }
 
-    
+    &-zoomview {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+    }
+
 }

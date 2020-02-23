@@ -10,14 +10,19 @@ export default class ModalComponent extends React.Component {
       header,
       isBasic = false,
       content: Content,
-      actions
+      actions,
+      onClose,
+      className
     } = this.props;
 
-    const modalProps = { size: modalSize, open };
+    const modalProps = { size: modalSize, open, className };
     if (isBasic) modalProps.basic = true;
+    if (onClose) modalProps.onClose = onClose;
+    
     if (trigger) {
         const { label, ...buttonProps } = trigger;
-        modalProps.trigger = <Button {...buttonProps}>{label}</Button>;
+        if (label) modalProps.trigger = <Button {...buttonProps}>{label}</Button>;
+        else modalProps.trigger = <Button {...buttonProps} />;
     }
 
     return (
