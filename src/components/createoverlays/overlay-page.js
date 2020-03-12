@@ -16,13 +16,13 @@ const overlayTypeMap = {
 
 export default class OverlayPage extends React.Component {
     render() {
-        const { type, category } = this.props;
+        const { type, category, template } = this.props;
         const ComponentMapped = overlayTypeMap[type];
 
         return(
             <View>
                 <WebPage size='xlarge' />
-                <ComponentMapped category={category} />
+                <ComponentMapped category={category} template={template} />
             </View>
         );
     }

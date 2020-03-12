@@ -1,3 +1,7 @@
+.enlarged {
+    font-size: large !important;
+}
+
 .overlays, .new-overlay {
     flex: 1;
     display: flex;
@@ -16,8 +20,8 @@
         flex-direction: column;
 
         img {
-            width: 355px;
-            height: 160px;
+            width: 100%;
+            margin: auto;
         }
     }
 
@@ -40,6 +44,25 @@
         > div {
             width: 350px;
             max-width: 350px;
+            padding: 0 !important;
+            margin: 1rem !important;
+            max-height: 15rem;
+
+            > div {
+                > div.placeholder {
+                    margin: 1rem 1rem 0 1rem;
+                }
+            } 
+        }
+    }
+
+    &-row {
+        flex: 1;
+        flex-direction: column;
+
+        > div {
+            width: 750px;
+            max-width: 750px;
             padding: 0 !important;
             margin: 1rem !important;
             max-height: 15rem;
@@ -119,6 +142,43 @@
         display: flex;
         flex: 1;
         justify-content: center;
+
+        .relative {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &-message {
+        justify-content: center;
+        text-align: center;
+
+        &--enlarged {
+            @extend .enlarged
+        }
+    }
+
+    &-email {
+        &--enlarged {
+            @extend .enlarged
+        }
+    }
+
+    &-logo {
+        &--enlarged {
+            h4 {
+                @extend .enlarged
+            }
+        }
+    }
+
+    &-subscribe {
+        &--enlarged {
+            button {
+                @extend .enlarged
+            }
+        }
     }
 
 }

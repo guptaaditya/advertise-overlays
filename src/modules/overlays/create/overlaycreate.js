@@ -44,17 +44,37 @@ export default class CreateOverlay extends React.Component {
         });
     }
 
-    handleSelectType = (type) => {
-        const { onSelectType } = this.props;
-        onSelectType(type);
+    getActiveStep() {
+        const activeStep = _.find(this.getSteps(), 'active');
+        return activeStep.key;
+    }
+
+    handleSelect = (type) => {
+        const activeStep = this.getActiveStep();
+        switch(activeStep) {
+            case 'overlayType':
+                this.props.onSelectType(type);
+            break;
+            case 'overlayCategory':
+                this.props.onSelectCategory(type);
+            break;
+            case 'overlayTemplate':
+                this.props.onSelectTemplate(type);
+            break;
+            case 'overlayName':
+                this.props.onSelectName(type);
+            break;
+        }
     }
 
     render() {
+        const { selected } = this.props;
         return (
             <div className='new-overlay'>
                 <CreateOverlays 
                     steps={this.getSteps()} 
-                    onSelectType={this.handleSelectType}
+                    onSelect={this.handleSelect}
+                    selected={selected}
                 />
             </div>
         );

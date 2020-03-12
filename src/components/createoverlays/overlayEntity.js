@@ -21,16 +21,18 @@ export default class OverlayType extends React.Component {
                 <Image src={img} />
                 {!isModalOpen && (
                   <>
-                    <Label ribbon attached='top right' color='red' className='overlay-name'>
-                      {_.startCase(caption)}
-                    </Label>
+                    {caption && (
+                      <Label ribbon attached='top right' color='red' className='overlay-name'>
+                        {_.startCase(caption)}
+                      </Label>
+                    )}
                     <View className='overlay-expandedview pointer' onClick={this.handleOnExpand}>
                       <Icon name='magnify' size='huge' />
                     </View>
                   </>
                 )}
               </View>
-              {!isModalOpen && (
+              {!isModalOpen && onSelect && (
                 <Label className='pointer' onClick={e => onSelect(type)} as='button' 
                     color='orange'>
                     Select
@@ -54,4 +56,8 @@ export default class OverlayType extends React.Component {
           </TypeComponent>
         )
     }
+}
+
+OverlayType.defaultProps = {
+  onSelect: null,
 }

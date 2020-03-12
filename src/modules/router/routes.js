@@ -60,7 +60,7 @@ export default function Routes() {
           <PrivateRoute exact path='/logout'>
               <LinksList />
           </PrivateRoute>
-          <Route exact path="/overlay-page/:type/:category">
+          <Route exact path="/overlay-page/:type/:category/:template">
             <OverlayType />
           </Route>
         </Switch>

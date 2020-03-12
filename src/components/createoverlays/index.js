@@ -1,80 +1,29 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Step, View, FluidContainer } from 'blocks';
-import OverlayEntity from './overlayEntity';
-import OverlayCategory from './overlayCategory';
-import BarImg from 'img/overlay/type/bar.png';
-import NotificationImg from 'img/overlay/type/notification.png';
-import PopupImg from 'img/overlay/type/popup.png';
-import FullScreenImg from 'img/overlay/type/fullpage.png';
+import { Step, View } from 'blocks';
 
-function ShowOverlayType(props) {
-    const { onSelectType } = props;
-    return (
-        <>
-            <FluidContainer className='overlay-card' colWidth={5}>
-                <OverlayEntity type='bar' caption='Bar' img={BarImg} onSelect={onSelectType} />
-                <OverlayEntity type='notification'caption='Notification' img={NotificationImg} onSelect={onSelectType} />
-                <OverlayEntity type='popup'caption='Popup' img={PopupImg} onSelect={onSelectType} />
-                <OverlayEntity type='fullpage'caption='Full Screen' img={FullScreenImg} onSelect={onSelectType} />
-            </FluidContainer>
-        </>
-    )
-}
+import { ShowOverlayType, ShowOverlayCategory, ShowOverlayTemplate } from './classified-overlays';
 
-
-
-function ShowOverlayCategory(props) {
-    const { onSelectcategory } = props;
-    return (
-        <>
-            <FluidContainer colWidth={5}>
-                <OverlayCategory type='call to action' onSelect={onSelectcategory} />
-                <OverlayCategory type='opt in' onSelect={onSelectcategory} />
-                <OverlayCategory type='timer' onSelect={onSelectcategory} />
-                <OverlayCategory type='content suggestion' onSelect={onSelectcategory} />
-                <OverlayCategory type='custom' onSelect={onSelectcategory} />
-            </FluidContainer>
-        </>
-    )
-}
-
-function ShowOverlayTemplate(props) {
-    
-}
-
-function ShowOverlayName(props) {
-    
-}
 const keyComponents = {
-    'overlayType': ShowOverlayType,
-    'overlayCategory': ShowOverlayCategory, //Work here on defining their components
-    'overlayTemplate': ShowOverlayTemplate,
-    'overlayName': ShowOverlayName,
+    overlayType: ShowOverlayType,
+    overlayCategory: ShowOverlayCategory,
+    overlayTemplate: ShowOverlayTemplate,
 }
+
 export default class CreateOverlays extends React.Component {
     render() {
-        const { 
-            onSelectType, 
-            onSelectCategory,
-            onSelectTemplate,
-            onSelectName,  
-            steps
-        } = this.props;
-        const activeStep = _.find(steps, { completed: false, disabled: false });
+        const { steps, onSelect, selected } = this.props;
+        const activeStep = _.find(steps, 'active');
         const ShowComponent = keyComponents[activeStep.key];
-        const onSelectProps = {
-            onSelectType, 
-            onSelectCategory,
-            onSelectTemplate,
-            onSelectName,
-        };
         return (
             <>
                 <Step steps={steps} />
                 <View className='overlay-list'>
-                    <ShowComponent {...onSelectProps} />
+                    <ShowComponent 
+                        onSelect={onSelect} 
+                        selected={selected}
+                    />
                 </View>
             </>
         );

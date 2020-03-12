@@ -52,10 +52,10 @@ const CallToAction = props => {
 };
 
 const overlayTypeMap = {
-    ['call to action']: CallToAction,
-    ['opt in']: OptIn,
+    ['calltoaction']: CallToAction,
+    ['optin']: OptIn,
     ['timer']: Timer,
-    ['content suggestion']: ContentSuggestion,
+    ['contentsuggestion']: ContentSuggestion,
     ['custom']: Custom,
 }
   

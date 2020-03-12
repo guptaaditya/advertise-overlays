@@ -24,14 +24,23 @@ export function selectOverlayType(overlayType) {
     }
 }
 
-export function selectOverlayCategory() {
-    
+export function selectOverlayCategory(overlayCategory) {
+    return {
+        type: actionTypes.CATEGORY_SELECTED,
+        overlayCategory,
+    }
 }
 
-export function selectOverlayTemplate() {
-    
+export function selectOverlayTemplate(overlayTemplate) {
+    return {
+        type: actionTypes.TEMPLATE_SELECTED,
+        overlayTemplate,
+    }
 }
 
-export function selectOverlayName() {
-    
+export function selectOverlayName(overlayName) {
+    return {
+        type: actionTypes.NAME_SELECTED,
+        overlayName,
+    }
 }
