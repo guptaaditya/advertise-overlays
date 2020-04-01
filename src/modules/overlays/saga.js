@@ -53,7 +53,7 @@ function* onSavedOverlay({ overlay }) {
 }
 
 function* onCustomizeOverlay() {
-    redirectTo('/overlay/customize');
+    redirectTo('/overlays/customize');
 }
 
 const onFetchOverlaysSaga = takeLatest(actionTypes.FETCH_OVERLAYS, onFetchOverlays);
