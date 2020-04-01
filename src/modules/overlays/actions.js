@@ -44,3 +44,35 @@ export function selectOverlayName(overlayName) {
         overlayName,
     }
 }
+
+export function backToType() {
+    return {
+        type: actionTypes.BACK_TO_TYPE,
+    }
+}
+
+export function backToTemplate() {
+    return {
+        type: actionTypes.BACK_TO_TEMPLATE,
+    }
+}
+
+export function backToCategory() {
+    return {
+        type: actionTypes.BACK_TO_CATEGORY,
+    }
+}
+
+export function loadCustomizeOverlay(overlay) {
+    return {
+        type: actionTypes.LOAD_CUSTOMIZE_OVERLAY,
+        overlay
+    }
+}
+
+export function onSaveCustomizedOverlay(overlay) {
+    return {
+        type: actionTypes.SAVE_CUSTOMIZE_OVERLAY_SUCCESS,
+        overlay
+    }
+}

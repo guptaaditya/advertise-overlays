@@ -9,5 +9,5 @@ const entities = [
 ]
 
 export default function ShowOverlayBarTimerTemplates(props) {
-    return <ShowOverlay display='vertical' entities={entities} />
+    return <ShowOverlay className='templates-bar' display='vertical' entities={entities} />
 }

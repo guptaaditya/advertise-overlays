@@ -9,5 +9,5 @@ const entities = [
 ]
 
 export default function ShowOverlayNotificationTemplates(props) {
-    return <ShowOverlay display='vertical' entities={entities} />
+    return <ShowOverlay className='templates-notification' display='vertical' entities={entities} />
 }

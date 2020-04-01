@@ -1,29 +1,27 @@
-import { 
-    Icon as SemanticIcon, Divider as SemanticDivider, Header as SemanticHeader ,
-    Placeholder as SematicPlaceHolder, Segment as SemanticSegment, Label as SemanticLabel,
-    Image as SemanticImage, Dropdown as SemanticDropdown, Grid as SemanticGrid
-} from 'semantic-ui-react';
+import * as Semantic from 'semantic-ui-react';
 import ComponentWrapper from 'utils/helper';
 
-export const Image = ComponentWrapper(SemanticImage);
-export const Label = ComponentWrapper(SemanticLabel);
-export const Icon = ComponentWrapper(SemanticIcon);
-export const Divider = ComponentWrapper(SemanticDivider);
-export const Header = SemanticHeader;
-export const Segment = ComponentWrapper(SemanticSegment);
-export const Placeholder = ComponentWrapper(SematicPlaceHolder);
-export const PlaceholderHeader = ComponentWrapper(SematicPlaceHolder.Header);
-export const PlaceholderLine = ComponentWrapper(SematicPlaceHolder.Line);
-export const PlaceholderLinePara = ComponentWrapper(SematicPlaceHolder.Paragraph);
-export const Dropdown = ComponentWrapper(SemanticDropdown);
-export const Grid = ComponentWrapper(SemanticGrid);
+export const Image = ComponentWrapper(Semantic.Image);
+export const Label = ComponentWrapper(Semantic.Label);
+export const Icon = ComponentWrapper(Semantic.Icon);
+export const Divider = ComponentWrapper(Semantic.Divider);
+export const Header = Semantic.Header;
+export const Segment = ComponentWrapper(Semantic.Segment);
+export const Placeholder = ComponentWrapper(Semantic.Placeholder);
+export const PlaceholderHeader = ComponentWrapper(Semantic.Placeholder.Header);
+export const PlaceholderLine = ComponentWrapper(Semantic.Placeholder.Line);
+export const PlaceholderLinePara = ComponentWrapper(Semantic.Placeholder.Paragraph);
+export const Dropdown = ComponentWrapper(Semantic.Dropdown);
+export const Grid = ComponentWrapper(Semantic.Grid);
+export const Radio = ComponentWrapper(Semantic.Radio);
+export const FormField = ComponentWrapper(Semantic.Form.Field);
+export const FormInput = ComponentWrapper(Semantic.Form.Input);
 
 export { Box } from './box';
 export { default as FluidContainer } from './fluidcontainer';
 export { ButtonBlock as Button, ButtonGroup, ButtonOr } from './button';
 export { CenterContainer } from './centercontainer';
 export { FormBlock as Form, FormGroup } from './form';
-export { FormFieldWrapper as FormField, FormInput } from './formField';
 export { InputBlock as Input } from './input';
 export { Paper } from './paper';
 export { View } from './view';
@@ -37,3 +35,4 @@ export { default as Step } from './steps';
 export { default as SitePlaceholder } from './siteplaceholder';
 export { default as Modal } from './modal';
 export { default as ImageHolderGround } from './imageholdingground';
+export { default as ColorPicker } from './colorpicker';

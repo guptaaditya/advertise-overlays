@@ -53,10 +53,10 @@ export default class Login extends React.Component {
                 <CenterContainerCard cols={5}>
                     <Box className='border-box'>
                         <Form onSubmit={this.handleLoginClick}>
-                            <FormField isLine>
+                            <FormField inline>
                                 Welcome back!
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='username'
                                     type="text" 
@@ -64,7 +64,7 @@ export default class Login extends React.Component {
                                     iconType='user' 
                                 />
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='password'
                                     type="password" 
@@ -72,21 +72,21 @@ export default class Login extends React.Component {
                                     iconType='lock' 
                                 />
                             </FormField>
-                            <FormField isLine className='text flexible-center-equidistant-cells'>
+                            <FormField inline className='text flexible-center-equidistant-cells'>
                                 <Button toggle active={isRememberActive} 
                                     onClick={this.handleRememberClick}>
                                     Remember me
                                 </Button> 
-                                <FormField isLine onClick={onForgotPasswordClick}>
+                                <FormField inline onClick={onForgotPasswordClick}>
                                     <View className='inline link'>Forgot password?</View>
                                 </FormField>
                             </FormField>
-                            <FormField className='flexible' isLine>
+                            <FormField className='flexible' inline>
                                 <Button type='submit' className='cell no-margin' primary>
                                     Login
                                 </Button> 
                             </FormField>
-                            <FormField isLine onClick={onSignupClick}>
+                            <FormField inline onClick={onSignupClick}>
                                 Or <View className='inline link'>register now!</View>
                             </FormField>
                         </Form>

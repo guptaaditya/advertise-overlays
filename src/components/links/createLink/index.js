@@ -26,11 +26,11 @@ class CreateLinkForm extends React.Component {
     render() {
         return (
             <Form>
-                <FormField isLine>
+                <FormField inline>
                     <label>Long URL</label>
                     <Input id='longURL' type="text" />
                 </FormField>
-                <FormField isLine>
+                <FormField inline>
                     <label>Select overlay</label>
                     <Dropdown placeholder='' fluid selection options={friendOptions} />
                 </FormField>
@@ -46,7 +46,7 @@ function CreatedLinkForm(props) {
         render() {
             return (
                 <Form>
-                    <FormField isLine>
+                    <FormField inline>
                         <label>Short URL</label>
                         <Input readOnly id='shortURL' type="text" value={url} />
                     </FormField>

@@ -11,6 +11,5 @@ const entities = [
 ]
 
 export default function ShowOverlayBarOptinTemplates(props) {
-    const { onSelect } = props;
-    return <ShowOverlay display='vertical' onSelect={onSelect} entities={entities} />
+    return <ShowOverlay className='templates-popup' entities={entities} />
 }

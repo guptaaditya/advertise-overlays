@@ -9,5 +9,5 @@ const entities = [
 ]
 
 export default function ShowOverlayBarCustomTemplates(props) {
-    return <ShowOverlay display='vertical' entities={entities} />
+    return <ShowOverlay className='templates-bar' display='vertical' entities={entities} />
 }

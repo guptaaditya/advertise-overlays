@@ -54,6 +54,10 @@ export default class Sidebar extends React.Component {
     collapsed: false
   };
 
+  componentDidMount() {
+    this.handleOnMouseout(null, 1500);
+  }
+
   handleContractMenu = e => {
     this.setState({ collapsed: true });
     e && e.preventDefault();
@@ -71,8 +75,8 @@ export default class Sidebar extends React.Component {
     this.handleExpandMenu(e);
   };
 
-  handleOnMouseout = e => {
-    this.outTimer = setTimeout(this.handleContractMenu, 3000, e);
+  handleOnMouseout = (e, timer = 3000) => {
+    this.outTimer = setTimeout(this.handleContractMenu, timer, e);
   };
 
   getLastMenuItem = () => {

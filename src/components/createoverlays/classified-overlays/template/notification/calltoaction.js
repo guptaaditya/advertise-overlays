@@ -12,5 +12,5 @@ const entities = [
 
 export default function ShowOverlayNotificationTemplates(props) {
     const { onSelect } = props;
-    return <ShowOverlay display='vertical' onSelect={onSelect} entities={entities} />
+    return <ShowOverlay className='templates-notification' display='vertical' onSelect={onSelect} entities={entities} />
 }

@@ -9,7 +9,7 @@ import { createHashHistory } from 'history';
 
 import { 
   Login, Signup, ForgotPassword, Verification, Dashboard, ResetPassword ,
-  OverlaysList, LinksList, CreateOverlay, OverlayType
+  OverlaysList, LinksList, CreateOverlay, OverlayType, CustomizeOverlay
 } from 'modules';
 
 import PrivateRoute from './index';
@@ -48,11 +48,14 @@ export default function Routes() {
           <PrivateRoute exact path='/links'>
               <LinksList />
           </PrivateRoute>
+          <PrivateRoute exact path='/overlays/new'>
+              <CreateOverlay redirectTo='/overlays/customize' />
+          </PrivateRoute>
+          <PrivateRoute exact path='/overlays/customize'>
+              <CustomizeOverlay redirectTo='/overlays' />
+          </PrivateRoute>
           <PrivateRoute exact path='/overlays'>
               <OverlaysList newOverlayPath='/overlays/new' />
-          </PrivateRoute>
-          <PrivateRoute exact path='/overlays/new'>
-              <CreateOverlay />
           </PrivateRoute>
           <PrivateRoute exact path='/user-profile'>
               <LinksList />

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes } from 'modules';
 import { Provider } from 'react-redux';
-import initStore from './store.js';
+import getStore from './store.js';
 
-const store = initStore();
+const store = getStore();
 
 function App() {
   return (

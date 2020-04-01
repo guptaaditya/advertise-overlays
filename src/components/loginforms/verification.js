@@ -36,10 +36,10 @@ export default class Verification extends React.Component {
                 <CenterContainerCard cols={6}>
                     <Box className='border-box'>
                         <Form>
-                            <FormField isLine>
+                            <FormField inline>
                                 Please enter the verification code sent to <View className='inline link'>{emailAddress}</View>
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='verificationCode'
                                     type="text" 
@@ -47,7 +47,7 @@ export default class Verification extends React.Component {
                                     iconType='user secret' 
                                 />
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <ButtonGroup>
                                     <Button onClick={onResendVerificationCode}>Resend</Button>
                                     <ButtonOr />
@@ -56,7 +56,7 @@ export default class Verification extends React.Component {
                                     </Button>
                                 </ButtonGroup>
                             </FormField>
-                            <FormField isLine onClick={onSigninClick}>
+                            <FormField inline onClick={onSigninClick}>
                                 Or <View className='inline link'>Sign in.</View>
                             </FormField>
                         </Form>

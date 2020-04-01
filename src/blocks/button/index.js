@@ -2,12 +2,13 @@ import React from 'react';
 import { Button, Checkbox } from 'semantic-ui-react';
 
 export function ButtonBlock(props) {
-    if (props.type === 'checkbox') {
-        return <Checkbox label={props.label} />
+    const { type, children, ...remainingProps } = props;
+    if (type === 'checkbox') {
+        return <Checkbox {...remainingProps} />
     }
     return (
-        <Button {...props}>
-            {props.children}
+        <Button type={type} {...remainingProps}>
+            {children}
         </Button>
     );
 }

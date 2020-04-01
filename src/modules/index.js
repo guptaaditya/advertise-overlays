@@ -5,3 +5,4 @@ export { default as OverlaysList } from './overlays';
 export { default as CreateOverlay } from './overlays/create';
 export { default as LinksList } from './links';
 export { default as OverlayType } from './overlays/overlay-type';
+export { default as CustomizeOverlay } from './overlays/customize';

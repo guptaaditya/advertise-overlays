@@ -57,7 +57,7 @@ export default class Signup extends React.Component {
                 <CenterContainerCard cols={6}>
                     <Box className='border-box'>
                         <Form>
-                            <FormField isLine>
+                            <FormField inline>
                                 Creating an account is quick and easy!
                             </FormField>
                             <FormGroup widths='equal'>
@@ -72,33 +72,33 @@ export default class Signup extends React.Component {
                                     placeholder='Last name' 
                                 />
                             </FormGroup>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='username'
                                     type="text" 
                                     placeholder="Email" 
                                 />
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='password'
                                     type="password" 
                                     placeholder="Password" 
                                 />
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='confirmpassword'
                                     type="password" 
                                     placeholder="Confirm Password" 
                                 />
                             </FormField>
-                            <FormField className='flexible' isLine>
+                            <FormField className='flexible' inline>
                                 <Button className='cell' primary onClick={this.handleSignupClick}>
                                     Register
                                 </Button> 
                             </FormField>
-                            <FormField isLine onClick={onSigninClick}>
+                            <FormField inline onClick={onSigninClick}>
                                 Or <View className='inline link'>Sign in.</View>
                             </FormField>
                         </Form>

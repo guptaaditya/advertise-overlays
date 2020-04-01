@@ -36,10 +36,10 @@ export default class ForgotPassword extends React.Component {
                 <CenterContainerCard cols={6}>
                     <Box className='border-box'>
                         <Form>
-                            <FormField isLine>
+                            <FormField inline>
                                 Please enter your registered email ID
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <Input 
                                     id='useremail'
                                     type="text" 
@@ -47,7 +47,7 @@ export default class ForgotPassword extends React.Component {
                                     iconType='user' 
                                 />
                             </FormField>
-                            <FormField isLine>
+                            <FormField inline>
                                 <ButtonGroup>
                                     <Button onClick={onSigninClick}>To Sign in</Button>
                                     <ButtonOr />

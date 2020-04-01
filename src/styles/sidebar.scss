@@ -18,10 +18,18 @@ div#leftNavigationBar {
   }
 }
 
+div#leftNavigationBar + .app-body {
+  max-width: calc(100vw - 210px);
+}
+
 div#leftNavigationBar.collapsed {
   max-width: 90px;
 
   span {
     display: none;
   }
+}
+
+div#leftNavigationBar.collapsed + .app-body {
+  max-width: calc(100vw - 90px);
 }

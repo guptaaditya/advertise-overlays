@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import Overlays from './overlays';
 import * as actions from './actions';
+import * as selectors from './selectors';
 
 export default connect(
     state => ({
-        data: state.overlays.data,
+        data: selectors.getOverlaysList(state),
     }),
     (dispatch) => ({
-      onFetchOverlays: e => dispatch(actions.onFetchOverlays()),
+      onFetchOverlays: () => dispatch(actions.onFetchOverlays()),
     })
 )(Overlays);

@@ -1,20 +1,22 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Step, View } from 'blocks';
+import { Step, View, Form, FormField, Button } from 'blocks';
 
-import { ShowOverlayType, ShowOverlayCategory, ShowOverlayTemplate } from './classified-overlays';
+import { ShowOverlayType, ShowOverlayCategory, ShowOverlayTemplate, ShowOverlayName } from './classified-overlays';
 
 const keyComponents = {
     overlayType: ShowOverlayType,
     overlayCategory: ShowOverlayCategory,
     overlayTemplate: ShowOverlayTemplate,
+    overlayName: ShowOverlayName,
 }
 
 export default class CreateOverlays extends React.Component {
     render() {
-        const { steps, onSelect, selected } = this.props;
+        const { steps, onSelect, selected, onBack } = this.props;
         const activeStep = _.find(steps, 'active');
+        if (!activeStep) return null;
         const ShowComponent = keyComponents[activeStep.key];
         return (
             <>
@@ -24,6 +26,11 @@ export default class CreateOverlays extends React.Component {
                         onSelect={onSelect} 
                         selected={selected}
                     />
+                    <Form>
+                        <FormField>
+                            <Button onClick={onBack}>Back</Button>
+                        </FormField>
+                    </Form>
                 </View>
             </>
         );
@@ -33,4 +40,5 @@ export default class CreateOverlays extends React.Component {
 CreateOverlays.propTypes = {
     stepsStatus: PropTypes.object,
     steps: PropTypes.array,
+    onBack: PropTypes.func,
 }

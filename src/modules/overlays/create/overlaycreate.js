@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import CreateOverlays from 'components/createoverlays'
+import CreateOverlays from 'components/createoverlays';
 
 const stepsConfig = [{
     key: 'overlayType',
@@ -30,6 +30,9 @@ const stepsConfig = [{
 export default class CreateOverlay extends React.Component {
     constructor() {
         super();
+        this.handleBack = this.handleBack.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
+        this.getActiveStep = this.getActiveStep.bind(this);
         this.state = {
             steps: [...stepsConfig],
         };
@@ -44,12 +47,26 @@ export default class CreateOverlay extends React.Component {
         });
     }
 
-    getActiveStep() {
-        const activeStep = _.find(this.getSteps(), 'active');
+    getActiveStep(steps) {
+        if(!steps) steps = this.getSteps();
+        const activeStep = _.find(steps, 'active');
         return activeStep.key;
     }
 
-    handleSelect = (type) => {
+    handleBack() {
+        const activeStep = this.getActiveStep();
+        if (activeStep === 'overlayName') {
+            return this.props.onBackToTemplate();
+        }
+        else if (activeStep === 'overlayTemplate') {
+            return this.props.onBackToCategory();
+        }
+        else if (activeStep === 'overlayCategory') {
+            return this.props.onBackToType();
+        }
+    }
+
+    handleSelect(type) {
         const activeStep = this.getActiveStep();
         switch(activeStep) {
             case 'overlayType':
@@ -69,11 +86,13 @@ export default class CreateOverlay extends React.Component {
 
     render() {
         const { selected } = this.props;
+
         return (
             <div className='new-overlay'>
                 <CreateOverlays 
                     steps={this.getSteps()} 
                     onSelect={this.handleSelect}
+                    onBack={this.handleBack}
                     selected={selected}
                 />
             </div>
