@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/advertise-overlays/static/css/main.1d7182b1.chunk.css",
-    "main.js": "/advertise-overlays/static/js/main.6ef0b274.chunk.js",
-    "main.js.map": "/advertise-overlays/static/js/main.6ef0b274.chunk.js.map",
+    "main.css": "/advertise-overlays/static/css/main.9efd7ddb.chunk.css",
+    "main.js": "/advertise-overlays/static/js/main.a1888610.chunk.js",
+    "main.js.map": "/advertise-overlays/static/js/main.a1888610.chunk.js.map",
     "runtime-main.js": "/advertise-overlays/static/js/runtime-main.c39972c4.js",
     "runtime-main.js.map": "/advertise-overlays/static/js/runtime-main.c39972c4.js.map",
     "static/css/2.65620810.chunk.css": "/advertise-overlays/static/css/2.65620810.chunk.css",
-    "static/js/2.019f6b90.chunk.js": "/advertise-overlays/static/js/2.019f6b90.chunk.js",
-    "static/js/2.019f6b90.chunk.js.map": "/advertise-overlays/static/js/2.019f6b90.chunk.js.map",
+    "static/js/2.45eb08e5.chunk.js": "/advertise-overlays/static/js/2.45eb08e5.chunk.js",
+    "static/js/2.45eb08e5.chunk.js.map": "/advertise-overlays/static/js/2.45eb08e5.chunk.js.map",
     "index.html": "/advertise-overlays/index.html",
-    "precache-manifest.1c5d4b962e62354625df6d6adacc4ed3.js": "/advertise-overlays/precache-manifest.1c5d4b962e62354625df6d6adacc4ed3.js",
+    "precache-manifest.29be3066337b10b0e530fb3fcd275851.js": "/advertise-overlays/precache-manifest.29be3066337b10b0e530fb3fcd275851.js",
     "service-worker.js": "/advertise-overlays/service-worker.js",
     "static/css/2.65620810.chunk.css.map": "/advertise-overlays/static/css/2.65620810.chunk.css.map",
-    "static/css/main.1d7182b1.chunk.css.map": "/advertise-overlays/static/css/main.1d7182b1.chunk.css.map",
-    "static/js/2.019f6b90.chunk.js.LICENSE": "/advertise-overlays/static/js/2.019f6b90.chunk.js.LICENSE",
+    "static/css/main.9efd7ddb.chunk.css.map": "/advertise-overlays/static/css/main.9efd7ddb.chunk.css.map",
+    "static/js/2.45eb08e5.chunk.js.LICENSE": "/advertise-overlays/static/js/2.45eb08e5.chunk.js.LICENSE",
     "static/media/1.png": "/advertise-overlays/static/media/1.f4cf5c30.png",
     "static/media/2.png": "/advertise-overlays/static/media/2.b6fb7714.png",
     "static/media/bar.png": "/advertise-overlays/static/media/bar.035a2414.png",
@@ -30,8 +30,8 @@
   "entrypoints": [
     "static/js/runtime-main.c39972c4.js",
     "static/css/2.65620810.chunk.css",
-    "static/js/2.019f6b90.chunk.js",
-    "static/css/main.1d7182b1.chunk.css",
-    "static/js/main.6ef0b274.chunk.js"
+    "static/js/2.45eb08e5.chunk.js",
+    "static/css/main.9efd7ddb.chunk.css",
+    "static/js/main.a1888610.chunk.js"
   ]
 }
