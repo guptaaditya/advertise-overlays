@@ -180,5 +180,4 @@ TableComponent.propTypes = {
 }
 TableComponent.defaultProps = {
     noRecordsLabel: 'No Records Found',
-
 }

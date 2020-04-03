@@ -18,20 +18,20 @@ class LinksList extends React.Component {
         )
     }
 
-    render () {
+    render() {
         const { cols, data } = this.props;
         return (
             <>
                 <View className='links'>
-                        <Table 
-                            cols={cols} 
-                            data={data} 
-                            footerActions={this.getFooterActions()}
-                            noRecordsLabel="No Links found" 
-                        />
+                    <Table
+                        cols={cols}
+                        data={data}
+                        footerActions={this.getFooterActions()}
+                        noRecordsLabel="No Links found"
+                    />
                 </View>
             </>
-        );        
+        );
     }
 }
 
