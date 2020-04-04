@@ -20,7 +20,7 @@ class OverlaysList extends React.Component {
                 size='small'
                 onClick={this.handleOnAddOverlays}
             >
-                <Icon name='affiliatetheme' /> Add Overlay
+                <Icon name='object ungroup outline' /> Add Overlay
             </Button>
         )
     }

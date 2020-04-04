@@ -22,7 +22,9 @@ export class MainApp extends React.Component {
             }, {
               label: "Links", icon: "linkify", route: "/links",
             }, {
-              label: "Overlays", icon: "affiliatetheme", route: "/overlays",
+              label: "Overlays", icon: "object ungroup outline", route: "/overlays",
+            }, {
+              bottom: true, label: "Admin", icon: "cogs", route: "/admin",
             }, {
               bottom: true, label: "Profile", icon: "user outline", route: "/user-profile",
             }, {

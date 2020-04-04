@@ -5,7 +5,7 @@ import { redirectTo } from 'modules';
 
 const stepsConfig = [{
     key: 'overlayType',
-    icon: 'affiliatetheme',
+    icon: 'object ungroup outline',
     title: 'Overlay Type',
     description: 'Positioning and size',
 },
