@@ -7,29 +7,29 @@ import { showToast } from 'utils/ui';
 const serverData = [
     { 
         id: 1, 
-        shortUrl: 'http://utv.com/v/sduh44hhuysq', 
+        shortUrl: 'http://utv.com/v/sduh4hq', 
         targetUrl: 'https://google.com', 
-        overlayName: 'Commercials mineral water', 
+        overlayName: 'Ad Mineral water', 
         createdOn: '12/30/2019 09:57 AM' 
     },
     { 
         id: 2, 
-        shortUrl: 'http://utv.com/v/tfiugfuygu54', 
+        shortUrl: 'http://utv.com/v/tfygu54', 
         targetUrl: 'https://google.com', 
         overlayName: 'Commercials chocolates', 
         createdOn: '11/02/2019 09:57 AM' 
     },
     { 
         id: 3, 
-        shortUrl: 'http://utv.com/v/kopo678776fl', 
+        shortUrl: 'http://utv.com/v/kop76fl', 
         targetUrl: 'https://codeacademy.com/learn-to-code-fast', 
-        overlayName: 'Learn coding in 300 minutes', 
+        overlayName: 'Coding in 300 minutes?', 
         createdOn: '8/9/2018 09:57 AM' 
     },
     { 
         id: 4, 
-        shortUrl: 'http://utv.com/v/pkpkpmsd35ds', 
-        targetUrl: 'https://wp.com/bloggingweb/abc/create-to-experience', 
+        shortUrl: 'http://utv.com/v/pksd5ds', 
+        targetUrl: 'https://wp.com/blog/abc/create-to-experience', 
         overlayName: 'Donate for a cause', 
         createdOn: '3/30/2018 09:57 AM' 
     },

@@ -153,8 +153,9 @@ export default class TableComponent extends React.Component {
     }
 
     render() {
+        const { compact } = this.props;
         return (
-            <Table className='scrollable-table' stackable>
+            <Table className='scrollable-table' stackable compact={compact}>
                 {this.getHeader()}
                 {this.getBody()}
                 {this.getFooter()}
@@ -177,8 +178,8 @@ TableComponent.propTypes = {
     data: PropTypes.array,
     footerActions: PropTypes.any,
     noRecordsLabel: PropTypes.string,
+    compact: PropTypes.string,
 }
 TableComponent.defaultProps = {
     noRecordsLabel: 'No Records Found',
-
 }

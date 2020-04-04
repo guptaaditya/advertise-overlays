@@ -25,7 +25,7 @@ export default function Routes() {
     <Router>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/overlays" />
+            <Redirect to="/dashboard" />
           </Route>
           <Route exact path="/login">
             <Login redirectTo='/dashboard' signupPath='/signup' forgotpasswordPath='/forgot-password' />

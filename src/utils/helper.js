@@ -31,3 +31,13 @@ export function loadStateToken() {
 export function saveStateToken(state) {
   storage.setItem(tokenKey, state.auth.token);
 }
+
+export function copyToClipboard(text) {
+    var tempElement = document.createElement("input");
+    document.body.appendChild(tempElement);
+    tempElement.value = text;
+    tempElement.select();
+    document.execCommand("copy");
+    tempElement.parentNode.removeChild(tempElement);
+}
+  

@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import CreateOverlays from 'components/createoverlays';
+import { redirectTo } from 'modules';
 
 const stepsConfig = [{
     key: 'overlayType',
@@ -63,6 +64,9 @@ export default class CreateOverlay extends React.Component {
         }
         else if (activeStep === 'overlayCategory') {
             return this.props.onBackToType();
+        }
+        else if (activeStep === 'overlayType') {
+            return redirectTo('/overlays');
         }
     }
 

@@ -4,10 +4,12 @@ import auth from 'modules/router/reducer';
 import userManagement from 'modules/login/reducer';
 import overlays from 'modules/overlays/reducer';
 import links from 'modules/links/reducer';
+import dashboard from 'modules/dashboard/reducer';
 
 export default combineReducers({
   auth,
   userManagement,
   overlays,
   links,
+  dashboard
 })
