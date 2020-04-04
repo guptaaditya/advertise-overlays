@@ -53,10 +53,10 @@ export default class Login extends React.Component {
                 <CenterContainerCard cols={5}>
                     <Box className='border-box'>
                         <Form onSubmit={this.handleLoginClick}>
-                            <FormField inline>
+                            <FormField>
                                 Welcome back!
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='username'
                                     type="text" 
@@ -64,7 +64,7 @@ export default class Login extends React.Component {
                                     iconType='user' 
                                 />
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='password'
                                     type="password" 
