@@ -57,7 +57,7 @@ export default class Signup extends React.Component {
                 <CenterContainerCard cols={6}>
                     <Box className='border-box'>
                         <Form>
-                            <FormField inline>
+                            <FormField>
                                 Creating an account is quick and easy!
                             </FormField>
                             <FormGroup widths='equal'>
@@ -72,21 +72,21 @@ export default class Signup extends React.Component {
                                     placeholder='Last name' 
                                 />
                             </FormGroup>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='username'
                                     type="text" 
                                     placeholder="Email" 
                                 />
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='password'
                                     type="password" 
                                     placeholder="Password" 
                                 />
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='confirmpassword'
                                     type="password" 

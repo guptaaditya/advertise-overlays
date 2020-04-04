@@ -44,10 +44,10 @@ export default class ResetPassword extends React.Component {
                 <CenterContainerCard cols={5}>
                     <Box className='border-box'>
                         <Form>
-                            <FormField inline>
+                            <FormField>
                                 Please enter the new password
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='password'
                                     type="password" 
@@ -55,7 +55,7 @@ export default class ResetPassword extends React.Component {
                                     iconType='lock' 
                                 />
                             </FormField>
-                            <FormField inline>
+                            <FormField>
                                 <Input 
                                     id='confirmpassword'
                                     type="password" 
