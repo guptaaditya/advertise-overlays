@@ -21,7 +21,7 @@ class UserProfile extends React.Component {
                     <Membership />
                 </GridCol>
               </Grid>
-              <Divider vertical></Divider>
+              <Divider className='fullheight' vertical></Divider>
             </Segment>
         );
     }

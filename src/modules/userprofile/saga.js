@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { takeLatest, put } from 'redux-tale/es/effects';
+import { takeLatest, put, takeEvery } from 'redux-tale/es/effects';
 import * as actionTypes from './actionTypes';
 import * as actions from './actions';
 import { redirectTo } from 'modules';
@@ -13,6 +13,26 @@ const accountDetails = [
     { label: 'Timezone', value: "Asia/Calcutta" },
 ];
 
+const membershipDetails = {
+    planName: 'Free - Basic Usage - Limited',
+    linksLimit: '10',
+    overlaysLimit: '0',
+    shareLinkLimit: '100',
+    type: 'basic',
+    upgradePrice: 50,
+    upgradeCurrency: 'INR',
+    upgradeCurrencySymbol: 'Rs ',
+};
+
+
+const proMembershipDetails = {
+    planName: 'Premium - Unlimited Usage',
+    linksLimit: 'Unlimited',
+    overlaysLimit: 'Unlimited',
+    shareLinkLimit: 'Unlimited',
+    type: 'pro',
+};
+
 function* onGetAccountDetails() {
     try {
         const result = yield Promise.resolve(accountDetails);
@@ -24,7 +44,7 @@ function* onGetAccountDetails() {
 
 function* onSaveAccountDetails({ accountDetails: { name, password, timezone } }) {
     try {
-        yield Promise.resolve(true); // make api call here
+        yield Promise.resolve(true); // make api call here to save and then finally set the data in account details
         showToast('Account details saved successfully', 'success');
         const nameField = _.find(accountDetails, detail => detail.label === 'Name');
         const timezoneField = _.find(accountDetails, detail => detail.label === 'Timezone');
@@ -37,10 +57,28 @@ function* onSaveAccountDetails({ accountDetails: { name, password, timezone } })
     }
 }
 
-const onGetAccountDetailsSaga = takeLatest(actionTypes.GET_ACCOUNT_DETAILS, onGetAccountDetails);
-const onSaveAccountDetailsSaga = takeLatest(actionTypes.SAVE_ACCOUNT_DETAILS, onSaveAccountDetails);
+function* onGetMembershipDetails() {
+    try {
+        const result = yield Promise.resolve(membershipDetails);
+        yield put(actions.getAccountMembershipSuccess(result));
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function* onUpgradeMembership({ payment }) {
+    try {
+        console.log(payment);
+        const result = yield Promise.resolve(payment);
+        yield put(actions.getAccountMembershipSuccess(proMembershipDetails));
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export default [
-    onGetAccountDetailsSaga,
-    onSaveAccountDetailsSaga,
+    takeLatest(actionTypes.GET_ACCOUNT_DETAILS, onGetAccountDetails),
+    takeLatest(actionTypes.SAVE_ACCOUNT_DETAILS, onSaveAccountDetails),
+    takeLatest(actionTypes.GET_MEMBERSHIP, onGetMembershipDetails),
+    takeEvery(actionTypes.UPDATE_MEMBERSHIP_SUCCESS, onUpgradeMembership),
 ];

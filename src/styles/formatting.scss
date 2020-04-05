@@ -77,6 +77,22 @@
     padding-top: 10px;
 }
 
+.m-top-5 {
+    margin-top: 5px;
+}
+
+.m-top-10 {
+    margin-top: 10px;
+}
+
+.m-top-20 {
+    margin-top: 20px;
+}
+
+.m-top-30 {
+    margin-top: 30px;
+}
+
 .font {
     &-size {
         &-10 {
@@ -93,4 +109,12 @@
     &-bold {
         font-weight: bold;
     }
+}
+
+.ui.vertical.divider.fullheight:after, .ui.vertical.divider.fullheight:before {
+    height: 100% !important;
+}
+
+.display-none {
+    display: none;
 }

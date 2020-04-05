@@ -25,3 +25,23 @@ export function toggleEdit() {
         type: types.TOGGLE_EDIT_VISIBILITY,
     }
 }
+
+export function getAccountMembership() {
+    return {
+        type: types.GET_MEMBERSHIP,
+    }
+}
+
+export function getAccountMembershipSuccess(membership) {
+    return {
+        type: types.GET_MEMBERSHIP_SUCCESS,
+        membership
+    }
+}
+
+export function onMembershipUpdateSuccess(payment) {
+    return {
+        type: types.UPDATE_MEMBERSHIP_SUCCESS,
+        payment
+    }
+}

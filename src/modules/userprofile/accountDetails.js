@@ -29,7 +29,7 @@ class AccountDetails extends React.Component {
                         color='black' 
                     />
                 </div>
-                <div className='flex-y'>
+                <div className='flex-y m-top-10'>
                     {_.map(accountDetails, (detail, index) => {
                         let { value } = detail;
                         if(detail.label === 'Timezone') {

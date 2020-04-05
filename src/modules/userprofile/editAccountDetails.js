@@ -97,7 +97,7 @@ class AccountDetails extends React.Component {
         return(
             <>
                 <h3>Account Details</h3>
-                <div className='flex-y'>
+                <div className='flex-y m-top-30'>
                     <Form onSubmit={this.handleSaveAccountDetails}>
                         <FormField>
                             <label>Name</label>

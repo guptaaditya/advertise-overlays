@@ -11,3 +11,8 @@ export const getIsEditVisible = createSelector(
     getProfile,
     profile => profile.isEditVisible,
 );
+
+export const getMembership = createSelector(
+    getProfile,
+    profile => profile.membership,
+);
