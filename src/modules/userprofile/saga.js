@@ -19,9 +19,9 @@ const membershipDetails = {
     overlaysLimit: '0',
     shareLinkLimit: '100',
     type: 'basic',
-    upgradePrice: 50,
-    upgradeCurrency: 'INR',
-    upgradeCurrencySymbol: 'Rs ',
+    upgradePrice: 1,
+    upgradeCurrency: 'USD',
+    upgradeCurrencySymbol: '$',
 };
 
 
