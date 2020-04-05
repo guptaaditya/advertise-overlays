@@ -38,7 +38,7 @@ class TableCell extends React.Component {
                         if (link) {
                             const { hrefField, target = '' } = link;
                             return (
-                                <a href={row[hrefField]} target={target}>{renderedIcon}</a>
+                                <a key={key} href={row[hrefField]} target={target}>{renderedIcon}</a>
                             )
                         }
                         return renderedIcon;

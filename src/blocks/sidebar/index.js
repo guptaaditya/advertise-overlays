@@ -60,14 +60,10 @@ export default class Sidebar extends React.Component {
 
   handleContractMenu = e => {
     this.setState({ collapsed: true });
-    e && e.preventDefault();
-    e && e.stopPropagation();
   };
 
   handleExpandMenu = e => {
     this.setState({ collapsed: false });
-    e && e.preventDefault();
-    e && e.stopPropagation();
   };
 
   handleOnMouseover = e => {

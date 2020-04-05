@@ -14,7 +14,7 @@ class Top5Links extends React.Component {
         super();
         this.cols = [{ 
             align: 'left', 
-            label: 'Links', 
+            label: 'Top 5 Links', 
             width: 3,
             labelField: 'shortUrl', 
             renderer: this.renderLink,

@@ -14,8 +14,8 @@ class QuickStats extends React.Component {
         const { stats } = this.props;
         return(
             <>
-                {_.map(stats, ({ name, value}) => (
-                    <div className='stats-box cell flex-y flexible-hvcentered'>
+                {_.map(stats, ({ name, value}, index) => (
+                    <div key={`stat-${index}`} className='stats-box cell flex-y flexible-hvcentered'>
                         <h5 className='stat-name'>{name}</h5>
                         <span className='stat-value font-size-35'>{value}</span>
                     </div>

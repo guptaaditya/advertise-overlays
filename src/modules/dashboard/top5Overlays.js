@@ -9,7 +9,7 @@ import * as selectors from './selectors';
 class Top5Overlays extends React.Component {
     cols = [{ 
         align: 'left', 
-        label: 'Overlays', 
+        label: 'Top 5 Overlays', 
         width: 3,
         labelField: 'name', 
     }, { 
