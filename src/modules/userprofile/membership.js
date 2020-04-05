@@ -42,6 +42,9 @@ class Membership extends React.Component {
             client.sandbox = process.env.REACT_APP_PAYPAL_sandbox;
         }
 
+        const env = 'sandbox';
+        // const env = process.env.NODE_ENV === 'production' ? 'production': 'sandbox';
+
         return(
             <>
                 <div className='flexible-center-equidistant-cells'>
@@ -81,7 +84,7 @@ class Membership extends React.Component {
                                         onSuccess={this.handlePaypalSuccess}
                                         onError={this.handlePaypalError}
                                         onCancel={this.handlePaypalCancel}
-                                        env={process.env.NODE_ENV === 'production' ? 'production': 'sandbox'}
+                                        env={env}
                                         client={client}
                                     />
                                 </div>
