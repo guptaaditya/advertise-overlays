@@ -13,9 +13,11 @@ export const PlaceholderLine = ComponentWrapper(Semantic.Placeholder.Line);
 export const PlaceholderLinePara = ComponentWrapper(Semantic.Placeholder.Paragraph);
 export const Dropdown = ComponentWrapper(Semantic.Dropdown);
 export const Grid = ComponentWrapper(Semantic.Grid);
+export const GridCol = ComponentWrapper(Semantic.Grid.Column);
 export const Radio = ComponentWrapper(Semantic.Radio);
 export const FormField = ComponentWrapper(Semantic.Form.Field);
 export const FormInput = ComponentWrapper(Semantic.Form.Input);
+export const Select = ComponentWrapper(Semantic.Select);
 
 export { Box } from './box';
 export { default as FluidContainer } from './fluidcontainer';

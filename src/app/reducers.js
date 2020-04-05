@@ -5,11 +5,13 @@ import userManagement from 'modules/login/reducer';
 import overlays from 'modules/overlays/reducer';
 import links from 'modules/links/reducer';
 import dashboard from 'modules/dashboard/reducer';
+import profile from 'modules/userprofile/reducer';
 
 export default combineReducers({
   auth,
   userManagement,
   overlays,
   links,
-  dashboard
+  dashboard,
+  profile
 })
