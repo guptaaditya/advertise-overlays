@@ -76,7 +76,7 @@ class AccountDetails extends React.Component {
     handleSaveAccountDetails = () => {
         const validInput = this.validateUserInput();
         if (validInput) {
-            this.props.saveAccountDetails(this.state.accountDetails);
+            this.props.saveAccountDetails(validInput);
         }
     };
 
@@ -93,6 +93,7 @@ class AccountDetails extends React.Component {
 
     render() {
         const { accountDetails: { name, timezone } = {}, showChangePassword } = this.state;
+        const { onToggleEdit } = this.props; 
         return(
             <>
                 <h3>Account Details</h3>
@@ -144,11 +145,18 @@ class AccountDetails extends React.Component {
                                 </FormField>
                             </>
                         )}
-                        <FormField className='flexible' inline>
-                            <Button type='submit' className='cell no-margin' primary>
-                                Save
-                            </Button> 
-                        </FormField>
+                        <FormGroup>
+                            <FormField className='flexible' inline>
+                                <Button onClick={onToggleEdit} className='cell no-margin'>
+                                    Cancel
+                                </Button> 
+                            </FormField>
+                            <FormField className='flexible' inline>
+                                <Button type='submit' className='cell no-margin' primary>
+                                    Save
+                                </Button> 
+                            </FormField>
+                        </FormGroup>
                     </Form>
                 </div>
             </>
@@ -161,10 +169,12 @@ AccountDetails.propTypes = {
         value: PropTypes.string.isRequired,
     })),
     saveAccountDetails: PropTypes.func.isRequired,
+    onToggleEdit: PropTypes.func.isRequired,
 };
 AccountDetails.defaultProps = {
     accountDetails: [],
     saveAccountDetails: _.noop,
+    onToggleEdit: _.noop,
 };
 
 export default connect(function mapStateToProps(state) {
@@ -174,5 +184,6 @@ export default connect(function mapStateToProps(state) {
 }, function matDispatchToProps(dispatch) {
     return {
         saveAccountDetails: (details) => dispatch(actions.saveAccountDetails(details)),
+        onToggleEdit: () => dispatch(actions.toggleEdit()),
     }
 })(AccountDetails);

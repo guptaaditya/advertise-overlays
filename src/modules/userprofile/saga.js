@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { takeLatest, put } from 'redux-tale/es/effects';
 import * as actionTypes from './actionTypes';
 import * as actions from './actions';
@@ -21,10 +22,14 @@ function* onGetAccountDetails() {
     }
 }
 
-function* onSaveAccountDetails({ accountDetails }) {
+function* onSaveAccountDetails({ accountDetails: { name, password, timezone } }) {
     try {
         yield Promise.resolve(true); // make api call here
         showToast('Account details saved successfully', 'success');
+        const nameField = _.find(accountDetails, detail => detail.label === 'Name');
+        const timezoneField = _.find(accountDetails, detail => detail.label === 'Timezone');
+        nameField.value = name;
+        timezoneField.value = timezone;
         yield put(actions.getAccountDetailsSuccess(accountDetails));
         yield put(actions.toggleEdit());
     } catch (error) {

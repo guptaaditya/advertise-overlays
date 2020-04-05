@@ -34,11 +34,12 @@ class AccountDetails extends React.Component {
                         let { value } = detail;
                         if(detail.label === 'Timezone') {
                             value = _.find(timezones, { value: value}).text;
+                            value = `${detail.value} / ${value}`;
                         }
                         return (
                             <div key={`detail-${index}`} className='detail flexible p-6-3'>
                                 <div className='detail-label cell font-bold'>{detail.label}</div>
-                                <div className='detail-value cell-w4'>{`${detail.value} / ${value}`}</div>
+                                <div className='detail-value cell-w4'>{value}</div>
                             </div>
                         )
                     })}
