@@ -38,7 +38,9 @@ class Membership extends React.Component {
 
         if(process.env.NODE_ENV === 'production') {
             client.production = process.env.REACT_APP_PAYPAL_production;
+            client.sandbox = process.env.REACT_APP_PAYPAL_sandbox;
         } else {
+            client.production = process.env.REACT_APP_PAYPAL_production;
             client.sandbox = process.env.REACT_APP_PAYPAL_sandbox;
         }
 
