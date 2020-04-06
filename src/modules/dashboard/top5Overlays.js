@@ -16,6 +16,10 @@ class Top5Overlays extends React.Component {
         align: 'center', label: 'Visits', labelField: 'visits', width: 5,
     }];
 
+    componentDidMount() {
+        this.props.getOverlays();
+    }
+
     render() {
         const { overlays } = this.props;
         return(

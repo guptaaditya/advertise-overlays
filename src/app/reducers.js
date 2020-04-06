@@ -6,6 +6,7 @@ import overlays from 'modules/overlays/reducer';
 import links from 'modules/links/reducer';
 import dashboard from 'modules/dashboard/reducer';
 import profile from 'modules/userprofile/reducer';
+import admin from 'modules/admin/reducer';
 
 export default combineReducers({
   auth,
@@ -13,5 +14,6 @@ export default combineReducers({
   overlays,
   links,
   dashboard,
-  profile
+  profile,
+  admin
 })

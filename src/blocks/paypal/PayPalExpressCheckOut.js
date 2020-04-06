@@ -43,7 +43,7 @@ class PaypalButton extends React.Component {
   render() {
     const payment = () => window.paypal.rest.payment.create(this.props.env, this.props.client, {
       transactions: [
-                    { amount: { total: this.props.total, currency: this.props.currency } },
+        { amount: { total: this.props.total, currency: this.props.currency } },
       ],
     });
  

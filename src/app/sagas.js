@@ -5,6 +5,7 @@ import overlaysSagas from 'modules/overlays/saga';
 import linksSagas from 'modules/links/saga';
 import dashboardSagas from 'modules/dashboard/saga';
 import profileSagas from 'modules/userprofile/saga';
+import adminSagas from 'modules/admin/saga';
 
 let sagaMiddleware;
 
@@ -14,6 +15,7 @@ const sagas = [
     ...linksSagas,
     ...dashboardSagas,
     ...profileSagas,
+    ...adminSagas,
 ];
 
 export function createSagaMiddleWare() {

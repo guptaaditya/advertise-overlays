@@ -37,6 +37,7 @@ export class MainApp extends React.Component {
           { label: "Overlays", route: "/overlays" },
           { label: "New Overlay", route: "/overlays/new" },
           { label: "Profile", route: "/user-profile" },
+          { label: "Admin", route: "/admin" },
         ];
 
         const loadedRouteComponent = _.find(menuItems, ({ route }) => _.startsWith(match.path, route));

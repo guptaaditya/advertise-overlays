@@ -79,8 +79,8 @@ function* onGetOverlays() {
 }
 
 const onGetStatsSaga = takeLatest(actionTypes.GET_STATS, onGetStats);
-const onGetLinksSaga = takeLatest(actionTypes.GET_STATS, onGetLinks);
-const onGetOverlaysSaga = takeLatest(actionTypes.GET_STATS, onGetOverlays);
+const onGetLinksSaga = takeLatest(actionTypes.GET_LINKS, onGetLinks);
+const onGetOverlaysSaga = takeLatest(actionTypes.GET_OVERLAYS, onGetOverlays);
 
 export default [
     onGetStatsSaga,

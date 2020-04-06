@@ -22,6 +22,10 @@ class Top5Links extends React.Component {
             align: 'center', label: 'Visits', labelField: 'visits', width: 5,
         }];
     }
+    
+    componentDidMount() {
+        this.props.getLinks();
+    }
 
     onCopy(col, rowData) {
         copyToClipboard(rowData.shortUrl);
