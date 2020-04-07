@@ -21,16 +21,16 @@ class AccountDetails extends React.Component {
             showChangePassword: false,
         };
     }
-    
+
     validateUserInput = () => {
-        const { 
-            showChangePassword, 
-            accountDetails: { 
+        const {
+            showChangePassword,
+            accountDetails: {
                 name,
                 password = '',
-                timezone, 
-                confirmpassword = '' 
-            } 
+                timezone,
+                confirmpassword = ''
+            }
         } = this.state;
 
         const saveDetails = {
@@ -93,17 +93,17 @@ class AccountDetails extends React.Component {
 
     render() {
         const { accountDetails: { name, timezone } = {}, showChangePassword } = this.state;
-        const { onToggleEdit } = this.props; 
-        return(
+        const { onToggleEdit } = this.props;
+        return (
             <>
                 <h3>Account Details</h3>
                 <div className='flex-y m-top-30'>
                     <Form onSubmit={this.handleSaveAccountDetails}>
                         <FormField>
                             <label>Name</label>
-                            <Input 
-                                type="text" 
-                                placeholder="Name" 
+                            <Input
+                                type="text"
+                                placeholder="Name"
                                 iconType='user'
                                 value={name}
                                 onChange={e => this.handleFieldChange('name', e.target.value)}
@@ -111,35 +111,35 @@ class AccountDetails extends React.Component {
                         </FormField>
                         <FormField>
                             <label>Timezone</label>
-                            <Select 
+                            <Select
                                 value={timezone}
                                 placeholder='Please select timezone'
-                                options={_.map(timezones, (zone, key) => ({...zone, key }))}
+                                options={_.map(timezones, (zone, key) => ({ ...zone, key }))}
                                 onChange={(e, data) => this.handleFieldChange('timezone', data.value)}
                             />
                         </FormField>
                         <FormField className='flexible pointer' inline>
                             <a href='#' onClick={this.handleChangePassword}>
-                                {showChangePassword ? 'Hide Password': 'Change password?'}
+                                {showChangePassword ? 'Hide Password' : 'Change password?'}
                             </a>
                         </FormField>
                         {showChangePassword && (
                             <>
                                 <FormField>
                                     <label>Password</label>
-                                    <Input 
-                                        type="password" 
-                                        placeholder="Password" 
-                                        iconType='lock' 
+                                    <Input
+                                        type="password"
+                                        placeholder="Password"
+                                        iconType='lock'
                                         onChange={e => this.handleFieldChange('password', e.target.value)}
                                     />
                                 </FormField>
                                 <FormField>
                                     <label>Confirm Password</label>
-                                    <Input 
-                                        type="password" 
-                                        placeholder="Confirm Password" 
-                                        iconType='lock' 
+                                    <Input
+                                        type="password"
+                                        placeholder="Confirm Password"
+                                        iconType='lock'
                                         onChange={e => this.handleFieldChange('confirmpassword', e.target.value)}
                                     />
                                 </FormField>
@@ -149,12 +149,12 @@ class AccountDetails extends React.Component {
                             <FormField className='flexible' inline>
                                 <Button onClick={onToggleEdit} className='cell no-margin'>
                                     Cancel
-                                </Button> 
+                                </Button>
                             </FormField>
                             <FormField className='flexible' inline>
                                 <Button type='submit' className='cell no-margin' primary>
                                     Save
-                                </Button> 
+                                </Button>
                             </FormField>
                         </FormGroup>
                     </Form>

@@ -19,7 +19,7 @@ const membershipDetails = {
     overlaysLimit: '0',
     shareLinkLimit: '100',
     type: 'basic',
-    upgradePrice: 1,
+    upgradePrice: 25,
     upgradeCurrency: 'USD',
     upgradeCurrencySymbol: '$',
 };
