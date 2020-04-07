@@ -2,19 +2,18 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Table } from 'blocks';
+import { Table, Button } from 'blocks';
 import * as actions from './actions';
 import * as selectors from './selectors';
 import 'styles/admin.scss';
-
-const PERCENT_L1 = 10;
-const PERCENT_L2 = 5;
-const MEMERSHIP_COST = 25;
+import { 
+    calculateTotalPayoutAmount, calculatePerResellerPayoutAmount ,
+    PERCENT_L1, PERCENT_L2
+} from './utils';
 
 class Admin extends React.Component {
     constructor() {
         super();
-        this.totalPayout = 0;
         this.cols = [{ 
             align: 'left', label: 'Name', labelField: 'name', 
         }, { 
@@ -23,9 +22,11 @@ class Admin extends React.Component {
             align: 'left', label: 'Affiliate(s) L2', labelField: 'affiliate2',
         }, { 
             align: 'center', label: `Payouts = ${PERCENT_L1}% x L1 + ${PERCENT_L2}% x L2`, renderer: this.renderTotalPayout,
-        }, { 
-            align: 'right', label: 'Send payments', renderer: this.renderPayout,
-        }];
+        }, 
+        // { 
+        //     align: 'right', label: 'Send payments', renderer: this.renderPayout,
+        // }
+        ];
     }
 
     componentDidMount() {
@@ -33,11 +34,7 @@ class Admin extends React.Component {
     }
 
     renderTotalPayout = (cols, rowData) => {
-        const { affiliate1, affiliate2 } = rowData;
-        const totalPayout = (affiliate1 * 0.01 * PERCENT_L1 * MEMERSHIP_COST) + (affiliate2 * 0.01 * PERCENT_L2 * MEMERSHIP_COST);
-        const formattedPayout =  totalPayout.toFixed(2);
-
-        this.totalPayout += Number(formattedPayout);
+        const formattedPayout = calculatePerResellerPayoutAmount(rowData);
         return (
             <div>$ {formattedPayout}</div>
         );
@@ -47,15 +44,24 @@ class Admin extends React.Component {
 
     };
 
+    handlePayoutAll = () => {};
+
     render() {
         const { affiliates } = this.props;
         return(
-            <Table 
-                compact='very'
-                cols={this.cols} 
-                data={affiliates} 
-                noRecordsLabel="No Affiliates found" 
-            />
+            <>
+                <Table 
+                    compact='very'
+                    cols={this.cols} 
+                    data={affiliates} 
+                    noRecordsLabel="No Affiliates found" 
+                />
+                <div className='inline flex-self-align-end'>
+                    <Button primary inline onClick={this.handlePayoutAll} className='cell no-margin'>
+                        Click to pay $ {calculateTotalPayoutAmount(affiliates)}
+                    </Button> 
+                </div>
+            </>
         );
     }
 }
