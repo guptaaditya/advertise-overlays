@@ -17,15 +17,15 @@ export default class Links extends React.Component {
             width: 3,
             renderer: this.renderShortUrl,
         }, { 
-            align: 'left', label: 'Overlay used', valueField: 'id', labelField: 'overlayName', width: 5,
-        }, { 
-            align: 'left', label: 'Created On', valueField: 'id', labelField: 'createdOn'
+            align: 'left', label: 'Overlay', valueField: 'id', labelField: 'overlayName', width: 5,
         }, { 
             align: 'left', 
             label: 'Target URL', 
             valueField: 'id', 
             labelField: 'targetUrl', 
             renderer: this.renderTargetUrl,
+        }, { 
+            align: 'left', label: 'Created On', valueField: 'id', labelField: 'createdOn'
         }, { 
             align: 'right', 
             label: 'Actions', 
