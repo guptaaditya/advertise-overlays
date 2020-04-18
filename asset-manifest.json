@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/advertise-overlays/static/css/main.889c0f9c.chunk.css",
-    "main.js": "/advertise-overlays/static/js/main.b5d55421.chunk.js",
-    "main.js.map": "/advertise-overlays/static/js/main.b5d55421.chunk.js.map",
+    "main.js": "/advertise-overlays/static/js/main.63af149a.chunk.js",
+    "main.js.map": "/advertise-overlays/static/js/main.63af149a.chunk.js.map",
     "runtime-main.js": "/advertise-overlays/static/js/runtime-main.c39972c4.js",
     "runtime-main.js.map": "/advertise-overlays/static/js/runtime-main.c39972c4.js.map",
     "static/css/2.65620810.chunk.css": "/advertise-overlays/static/css/2.65620810.chunk.css",
-    "static/js/2.ce24c1dd.chunk.js": "/advertise-overlays/static/js/2.ce24c1dd.chunk.js",
-    "static/js/2.ce24c1dd.chunk.js.map": "/advertise-overlays/static/js/2.ce24c1dd.chunk.js.map",
+    "static/js/2.169cd72a.chunk.js": "/advertise-overlays/static/js/2.169cd72a.chunk.js",
+    "static/js/2.169cd72a.chunk.js.map": "/advertise-overlays/static/js/2.169cd72a.chunk.js.map",
     "index.html": "/advertise-overlays/index.html",
-    "precache-manifest.715db64dfb4f6a9af8e309006515c2c5.js": "/advertise-overlays/precache-manifest.715db64dfb4f6a9af8e309006515c2c5.js",
+    "precache-manifest.f87a30e12fafaa5576f6384b1601df2c.js": "/advertise-overlays/precache-manifest.f87a30e12fafaa5576f6384b1601df2c.js",
     "service-worker.js": "/advertise-overlays/service-worker.js",
     "static/css/2.65620810.chunk.css.map": "/advertise-overlays/static/css/2.65620810.chunk.css.map",
     "static/css/main.889c0f9c.chunk.css.map": "/advertise-overlays/static/css/main.889c0f9c.chunk.css.map",
-    "static/js/2.ce24c1dd.chunk.js.LICENSE": "/advertise-overlays/static/js/2.ce24c1dd.chunk.js.LICENSE",
+    "static/js/2.169cd72a.chunk.js.LICENSE": "/advertise-overlays/static/js/2.169cd72a.chunk.js.LICENSE",
     "static/media/1.png": "/advertise-overlays/static/media/1.f4cf5c30.png",
     "static/media/2.png": "/advertise-overlays/static/media/2.b6fb7714.png",
     "static/media/bar.png": "/advertise-overlays/static/media/bar.035a2414.png",
@@ -30,8 +30,8 @@
   "entrypoints": [
     "static/js/runtime-main.c39972c4.js",
     "static/css/2.65620810.chunk.css",
-    "static/js/2.ce24c1dd.chunk.js",
+    "static/js/2.169cd72a.chunk.js",
     "static/css/main.889c0f9c.chunk.css",
-    "static/js/main.b5d55421.chunk.js"
+    "static/js/main.63af149a.chunk.js"
   ]
 }
