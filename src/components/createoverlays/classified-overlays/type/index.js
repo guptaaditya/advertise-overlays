@@ -23,8 +23,12 @@ const entitiesUpgraded = [
 export default function ShowOverlayType(props) {
     const { onSelect, isUpgradedMember } = props;
     const overlayProps = {
-        onSelect: isUpgradedMember ? onSelect: _.noop,
-        entities: isUpgradedMember ? entitiesUpgraded : entities,
+        entities,
     }
+    if (isUpgradedMember) {
+        overlayProps.onSelect = onSelect;
+        overlayProps.entities = entitiesUpgraded;
+    }
+
     return <ShowOverlay display='horizontal' {...overlayProps} />
 }
