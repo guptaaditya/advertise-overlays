@@ -8,7 +8,6 @@ class PaypalButton extends React.Component {
     super(props);
     window.React = React;
     window.ReactDOM = ReactDOM;
-    debugger;
     this.state = {
       showButton: false,
       env: props.env, // Or 'production'

@@ -10,8 +10,8 @@ import CustomImg from 'img/overlay/category/bar/custom.png';
 const entities = [
     {type: 'calltoaction', caption: 'Call To Action', img: CallToActionImg},
     {type: 'optin', caption: 'Opt in', img: OptinImg},
-    {type: 'timer', caption: 'Timer', img: TimerImg},
-    {type: 'custom', caption: 'Custom', img: CustomImg},
+    // {type: 'timer', caption: 'Timer', img: TimerImg},
+    // {type: 'custom', caption: 'Custom', img: CustomImg},
 ]
 
 export default function ShowOverlayBarCategory(props) {

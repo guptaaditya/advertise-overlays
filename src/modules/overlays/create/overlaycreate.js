@@ -89,7 +89,7 @@ export default class CreateOverlay extends React.Component {
     }
 
     render() {
-        const { selected } = this.props;
+        const { selected, isUpgradedMember } = this.props;
 
         return (
             <div className='new-overlay'>
@@ -98,6 +98,7 @@ export default class CreateOverlay extends React.Component {
                     onSelect={this.handleSelect}
                     onBack={this.handleBack}
                     selected={selected}
+                    isUpgradedMember={isUpgradedMember}
                 />
             </div>
         );

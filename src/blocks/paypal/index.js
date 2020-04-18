@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 export default class PayPalReact extends React.Component {
     render() {		
         const { amount, currency, onSuccess, onCancel, onError, env, client } = this.props;
-        debugger;
         return (
             <PaypalExpressBtn 
                 currency={currency}

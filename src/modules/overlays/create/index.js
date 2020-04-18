@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import CreateOverlay from './overlaycreate';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
+import { isPaidMember } from 'modules/userprofile/selectors';
 
 export default connect(
     state => {
         return {
+            isUpgradedMember: isPaidMember(state),
             stepsStatus: selectors.getStepsStatus(state),
             selected: selectors.getSelectedOverlay(state)
         };

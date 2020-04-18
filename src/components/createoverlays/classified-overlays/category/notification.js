@@ -11,9 +11,9 @@ import CustomImg from 'img/overlay/category/notification/custom.png';
 const entities = [
     {type: 'calltoaction', caption: 'Call To Action', img: CallToActionImg},
     {type: 'optin', caption: 'Opt in', img: OptinImg},
-    {type: 'timer', caption: 'Timer', img: TimerImg},
-    {type: 'contentsuggestion', caption: 'Content Suggestion', img: ContentSuggestionImg},
-    {type: 'custom', caption: 'Custom', img: CustomImg},
+    // {type: 'timer', caption: 'Timer', img: TimerImg},
+    // {type: 'contentsuggestion', caption: 'Content Suggestion', img: ContentSuggestionImg},
+    // {type: 'custom', caption: 'Custom', img: CustomImg},
 ]
 
 export default function ShowOverlayNotificationCategory(props) {

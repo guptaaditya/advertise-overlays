@@ -16,3 +16,8 @@ export const getMembership = createSelector(
     getProfile,
     profile => profile.membership,
 );
+
+export const isPaidMember = createSelector(
+    getMembership,
+    membership => Boolean(membership.type === 'pro'),
+);

@@ -14,7 +14,7 @@ const keyComponents = {
 
 export default class CreateOverlays extends React.Component {
     render() {
-        const { steps, onSelect, selected, onBack } = this.props;
+        const { steps, onSelect, selected, onBack, isUpgradedMember } = this.props;
         const activeStep = _.find(steps, 'active');
         if (!activeStep) return null;
         const ShowComponent = keyComponents[activeStep.key];
@@ -23,6 +23,7 @@ export default class CreateOverlays extends React.Component {
                 <Step steps={steps} />
                 <View className='overlay-list'>
                     <ShowComponent 
+                        isUpgradedMember={isUpgradedMember}
                         onSelect={onSelect} 
                         selected={selected}
                     />
