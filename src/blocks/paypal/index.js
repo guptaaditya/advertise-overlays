@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default class PayPalReact extends React.Component {
     render() {		
-        const { amount, currency, onSuccess, onCancel, onError, env, client } = this.props;
+        const { amount, currency, onSuccess, onCancel, onError, env, client, description, user } = this.props;
         return (
             <PaypalExpressBtn 
                 currency={currency}
@@ -14,6 +14,8 @@ export default class PayPalReact extends React.Component {
                 onCancel={onCancel}
                 env={env}
                 client={client}
+                description={description}
+                user={user}
             />
         );
     }  
@@ -30,6 +32,8 @@ PayPalReact.propTypes = {
         production: PropTypes.string,
     }).isRequired,
     env: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    user: PropTypes.object,
 };
 
 PayPalReact.defaultProps = {

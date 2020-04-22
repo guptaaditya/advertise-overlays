@@ -40,4 +40,13 @@ export function copyToClipboard(text) {
     document.execCommand("copy");
     tempElement.parentNode.removeChild(tempElement);
 }
-  
+
+export function getTextFromClipboard() {
+    var tempElement = document.createElement("textarea");
+    document.body.appendChild(tempElement);
+    tempElement.focus();
+    document.execCommand("paste");
+    const data = tempElement.textContent;
+    tempElement.parentNode.removeChild(tempElement);
+    return data;
+}

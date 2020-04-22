@@ -29,7 +29,7 @@ class Membership extends React.Component {
     }
 
     render() {
-        const { membership } = this.props;
+        const { membership, accountDetails } = this.props;
 
         const client = {
             production: '',
@@ -88,6 +88,8 @@ class Membership extends React.Component {
                                         onCancel={this.handlePaypalCancel}
                                         env={env}
                                         client={client}
+                                        user={accountDetails}
+                                        description={`Payyment to upgrade UTV Membership`}
                                     />
                                 </div>
                             </div>
@@ -103,6 +105,7 @@ Membership.propTypes = {
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
     }),
+    accountDetails: PropTypes.object,
     getAccountMembership: PropTypes.func.isRequired,
     onMembershipUpdateSuccess: PropTypes.func.isRequired,
 };
@@ -114,6 +117,7 @@ Membership.defaultProps = {
 export default connect(function mapStateToProps(state) {
     return {
         membership: selectors.getMembership(state),
+        accountDetails: selectors.getProfileDetails(state),
     };
 }, function matDispatchToProps(dispatch) {
     return {

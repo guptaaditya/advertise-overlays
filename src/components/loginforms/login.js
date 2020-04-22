@@ -12,10 +12,7 @@ export default class Login extends React.Component {
     };
 
     handleRememberClick = () => {
-        this.setState(prevState => ({ isRememberActive: !prevState.isRememberActive }), () => {
-            const { onRemember } = this.props;
-            onRemember(this.state.isRememberActive);
-        });
+        this.setState({ isRememberActive: !this.state.isRememberActive });
     }
 
     handleLoginClick = () => {
@@ -28,9 +25,11 @@ export default class Login extends React.Component {
     getUserInput() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        const { isRememberActive } = this.state;
         return {
             username,
-            password
+            password,
+            remember: isRememberActive
         };
     }
 
@@ -60,7 +59,7 @@ export default class Login extends React.Component {
                                 <Input 
                                     id='username'
                                     type="text" 
-                                    placeholder="Email" 
+                                    placeholder="Username/Email" 
                                     iconType='user' 
                                 />
                             </FormField>
@@ -73,7 +72,7 @@ export default class Login extends React.Component {
                                 />
                             </FormField>
                             <FormField inline className='text flexible-center-equidistant-cells'>
-                                <Button toggle active={isRememberActive} 
+                                <Button type='button' toggle active={isRememberActive} 
                                     onClick={this.handleRememberClick}>
                                     Remember me
                                 </Button> 
