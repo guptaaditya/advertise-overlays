@@ -44,10 +44,7 @@ class PaypalButton extends React.Component {
       transactions: [
         { 
           amount: { total: this.props.total, currency: this.props.currency },
-          description: this.props.description,
-          custom: {
-            user: this.props.user
-          },
+          custom: this.props.user
         },
       ],
     });
@@ -88,7 +85,7 @@ PaypalButton.propTypes = {
       production: PropTypes.string.isRequired,
   }).isRequired,
   description: PropTypes.string,
-  user: PropTypes.object,
+  user: PropTypes.string.isRequired,
 };
  
 PaypalButton.defaultProps = {
@@ -102,7 +99,6 @@ PaypalButton.defaultProps = {
     console.log('Error loading Paypal script!', err);
   },
   description: 'Payment for upgrading UTV membership',
-  user: {},
 };
  
 export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(PaypalButton);

@@ -33,7 +33,7 @@ PayPalReact.propTypes = {
     }).isRequired,
     env: PropTypes.string.isRequired,
     description: PropTypes.string,
-    user: PropTypes.object,
+    user: PropTypes.string.isRequired,
 };
 
 PayPalReact.defaultProps = {

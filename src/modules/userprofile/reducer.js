@@ -2,6 +2,7 @@ import _ from 'lodash';
 import * as actiontypes from './actionTypes';
 
 const initialState = {
+    user: {},
     accountDetails: [],
     isEditVisible: false,
     membership: {},
