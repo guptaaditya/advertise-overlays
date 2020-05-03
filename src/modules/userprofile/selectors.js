@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { stateHelper } from 'app/selectors';
 
 const getProfile = state => state.profile;
 
@@ -26,3 +27,7 @@ export const getUserName = createSelector(
     getProfile,
     profile => profile.user ? profile.user.username : '',
 );
+
+export const isPaidMemberFromStore = () => {
+    return stateHelper(isPaidMember);
+};

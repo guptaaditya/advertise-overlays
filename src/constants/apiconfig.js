@@ -32,7 +32,22 @@ const API_CONFIG = {
             },
         }
     },
-    USER_GET: `${host}user`,
+    USER_DETAILS: {
+        url: `${host}user`,
+        type: 'get',
+        hasLoader: false,
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        body: null,
+        message: {
+            success: '',
+            error: {
+                500: 'Please refresh the page. We have encountered an error',
+            },
+        }
+    },
     USER_LOGIN: {
         url: `${host}user/login`,
         type: 'post',

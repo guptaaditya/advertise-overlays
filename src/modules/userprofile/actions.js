@@ -26,12 +26,6 @@ export function toggleEdit() {
     }
 }
 
-export function getAccountMembership() {
-    return {
-        type: types.GET_MEMBERSHIP,
-    }
-}
-
 export function getAccountMembershipSuccess(membership) {
     return {
         type: types.GET_MEMBERSHIP_SUCCESS,
@@ -43,5 +37,12 @@ export function onMembershipUpdateSuccess(payment) {
     return {
         type: types.UPDATE_MEMBERSHIP_SUCCESS,
         payment
+    }
+}
+
+export function setFeatureFlags(featureFlags) {
+    return {
+        type: types.UPDATE_FEATURE_FLAGS,
+        featureFlags
     }
 }

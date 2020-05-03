@@ -8,10 +8,6 @@ import { FormField, Button, PayPalReact } from 'blocks';
 import { showToast } from 'utils/ui';
 
 class Membership extends React.Component {
-    componentDidMount() {
-        this.props.getAccountMembership();
-    }
-
     handlePaypalSuccess = (paypal) => {
         showToast('Payment successful, Congratulations you have upgraded your membership', 'success');
         this.props.onMembershipUpdateSuccess(paypal);
@@ -106,11 +102,9 @@ Membership.propTypes = {
         value: PropTypes.string.isRequired,
     }),
     username: PropTypes.string,
-    getAccountMembership: PropTypes.func.isRequired,
     onMembershipUpdateSuccess: PropTypes.func.isRequired,
 };
 Membership.defaultProps = {
-    getAccountDetails: _.noop,
     onToggleEdit: _.noop,
 };
 
@@ -121,7 +115,6 @@ export default connect(function mapStateToProps(state) {
     };
 }, function matDispatchToProps(dispatch) {
     return {
-        getAccountMembership: () => dispatch(actions.getAccountMembership()),
         onMembershipUpdateSuccess: (payment) => dispatch(actions.onMembershipUpdateSuccess(payment)),
     }
 })(Membership);

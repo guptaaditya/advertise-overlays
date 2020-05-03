@@ -6,6 +6,9 @@ const initialState = {
     accountDetails: [],
     isEditVisible: false,
     membership: {},
+    featureFlags: {
+
+    },
 };
 
 export default function profile(state = initialState, action) {
@@ -16,6 +19,8 @@ export default function profile(state = initialState, action) {
             return _.defaults({}, { isEditVisible: !state.isEditVisible }, state);
         case actiontypes.GET_MEMBERSHIP_SUCCESS:
             return _.defaultsDeep({}, { membership: action.membership }, state);
+        case actiontypes.UPDATE_FEATURE_FLAGS:
+            return _.defaultsDeep({}, { featureFlags: action.featureFlags }, state);
         default:
             return state;
     };
