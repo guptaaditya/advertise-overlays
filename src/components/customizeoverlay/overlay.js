@@ -9,6 +9,7 @@ export default class CustomizedOverlay extends React.Component {
             widthClassName = '',
             templateClassName = '',
             fontSizeClassName = '',
+            shouldFadePageBackground,
             showLogo,
             showMessage,
             showInput,

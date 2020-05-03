@@ -1,10 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import QuickStats from './quickStats';
 import Top5Links from './top5Links';
 import Top5Overlays from './top5Overlays';
+import * as actions from './actions';
 import 'styles/dashboard.scss';
 
-export default class Dashboard extends React.Component {
+class Dashboard extends React.Component {
+    componentDidMount() {
+        this.props.getUsage();
+    }
+
     render() {
         return (
             <>
@@ -25,3 +31,10 @@ export default class Dashboard extends React.Component {
         );
     }
 }
+
+export default connect(
+    null,
+    (dispatch) => ({
+        getUsage: () => dispatch(actions.onGetUsage()),
+    })
+)(Dashboard);

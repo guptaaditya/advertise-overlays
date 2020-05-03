@@ -1,6 +1,6 @@
 import React from 'react';
 const storage = window.localStorage;
-const tokenKey = 'utv.auth.hash';
+const tokenKey = 'v--t-u-s-d';
 
 export default function ComponentWrapper(Component, additionalProps = {}) {
     return function(props) {
@@ -22,14 +22,18 @@ export function loadStateToken() {
     if(token) {
         return {
             auth: {
-                isAuthenticated: true
+                isAuthenticated: true,
+                token,
             }
         };
     }
 }
 
 export function saveStateToken(state) {
-  storage.setItem(tokenKey, state.auth.token);
+    if(!state.auth.token) {
+      return storage.removeItem(tokenKey);
+    }
+    return storage.setItem(tokenKey, state.auth.token);
 }
 
 export function copyToClipboard(text) {

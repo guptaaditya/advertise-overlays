@@ -3,12 +3,12 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'blocks';
 import { connect } from 'react-redux';
-import * as actions from './actions';
 import * as selectors from './selectors';
 import { copyToClipboard } from 'utils/helper';
 import { showToast } from 'utils/ui';
-import { Icon } from 'blocks';
+import { Icon, Link } from 'blocks';
 
+console.log(Link);
 class Top5Links extends React.Component {
     constructor() {
         super();
@@ -23,10 +23,6 @@ class Top5Links extends React.Component {
         }];
     }
     
-    componentDidMount() {
-        this.props.getLinks();
-    }
-
     onCopy(col, rowData) {
         copyToClipboard(rowData.shortUrl);
         showToast(`Link copied to clipboard`, 'success');
@@ -36,10 +32,11 @@ class Top5Links extends React.Component {
         return (
             <div className='flexible'>
                 <div className='cell'>
-                    <a href={rowData.shortUrl} target='_blank'>{rowData.shortUrl}</a>
+                    <Link url={rowData.shortUrl} maxLength={32} />
                 </div>
                 <div className='cell flexible-centered'>
                     <Icon 
+                        title='Copy'
                         onClick={() => this.onCopy(col, rowData)} 
                         className='pointer' 
                         name='copy' 
@@ -68,18 +65,13 @@ Top5Links.propTypes = {
         id: PropTypes.number,
         visits: PropTypes.number,
     })),
-    getLinks: PropTypes.func.isRequired,
 };
 Top5Links.defaultProps = {
     links: [],
-    getLinks: _.noop,
 };
 
 export default connect(
     state => ({
         links: selectors.getTop5Links(state),
     }),
-    (dispatch) => ({
-        getLinks: () => dispatch(actions.onGetLinks()),
-    })
 )(Top5Links);

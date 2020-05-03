@@ -9,6 +9,8 @@ const initialState = {
 
 export default function overlay(state = initialState, action) {
     switch(action.type) {
+        case actiontypes.GET_USAGE_SUCCESS:
+            return _.defaults({}, { ...action.usage }, state);
         case actiontypes.GET_STATS_SUCCESS:
             return _.defaults({}, { stats: action.stats }, state);
         case actiontypes.GET_LINKS_SUCCESS:

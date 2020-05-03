@@ -1,5 +1,26 @@
 import * as types from './actionTypes';
 
+
+export function onGetUsage() {
+    return {
+        type: types.GET_USAGE,
+    }
+}
+
+export function onGetUsageSuccess(usage) {
+    return {
+        type: types.GET_USAGE_SUCCESS,
+        usage
+    }
+}
+
+export function onGetUsageFailure(error) {
+    return {
+        type: types.GET_USAGE_FAILURE,
+        error
+    }
+}
+
 export function onGetStats() {
     return {
         type: types.GET_STATS,

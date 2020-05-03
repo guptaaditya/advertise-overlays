@@ -39,3 +39,4 @@ export { default as Modal } from './modal';
 export { default as ImageHolderGround } from './imageholdingground';
 export { default as ColorPicker } from './colorpicker';
 export { default as PayPalReact } from './paypal';
+export { default as Link } from './link';

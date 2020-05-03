@@ -1,4 +1,4 @@
-export { Login, Signup, ForgotPassword, Verification, ResetPassword } from './login';
+export { Login, Signup, ForgotPassword, Verification, ResetPassword, Logout } from './login';
 export { default as Dashboard } from './dashboard';
 export { default as Routes, redirectTo } from './router/routes';
 export { default as OverlaysList } from './overlays';

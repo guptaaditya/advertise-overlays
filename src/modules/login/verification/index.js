@@ -6,7 +6,7 @@ export default connect(
     (state) => ({
       emailAddress: state.userManagement.resetPasswordForUserEmail,
     }),
-    (dispatch) => ({
+    (dispatch, state) => ({
       onResendVerificationCode: (emailAddress) => {
         return dispatch(actions.onResendVerificationCode(emailAddress));
       },

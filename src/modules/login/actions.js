@@ -1,18 +1,13 @@
 import _ from 'lodash';
 import * as actionTypes from './actiontypes';
 
-export function onLogin({ username, password }, redirectUrl) {
+export function onLogin({ username, password, remember }, redirectUrl) {
     return {
         type: actionTypes.ON_LOGIN,
         username,
         password,
+        remember,
         redirectUrl,
-    }
-}
-
-export function onLoginSuccess() {
-    return {
-        type: actionTypes.ON_LOGIN_SUCCESS
     }
 }
 
@@ -45,10 +40,10 @@ export function onForgotPasswordSuccess(useremail) {
     }
 }
 
-export function onVerificatonCodeSubmit(code, redirectUrl) {
+export function onVerificatonCodeSubmit(verificationCode, redirectUrl) {
     return {
         type: actionTypes.ON_VERIFICATION_CODE_SUBMIT,
-        code,
+        verificationCode,
         redirectUrl,
     }
 }

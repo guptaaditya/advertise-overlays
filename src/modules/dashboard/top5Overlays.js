@@ -3,7 +3,6 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'blocks';
 import { connect } from 'react-redux';
-import * as actions from './actions';
 import * as selectors from './selectors';
 
 class Top5Overlays extends React.Component {
@@ -15,10 +14,6 @@ class Top5Overlays extends React.Component {
     }, { 
         align: 'center', label: 'Visits', labelField: 'visits', width: 5,
     }];
-
-    componentDidMount() {
-        this.props.getOverlays();
-    }
 
     render() {
         const { overlays } = this.props;
@@ -39,18 +34,13 @@ Top5Overlays.propTypes = {
         id: PropTypes.number,
         visits: PropTypes.number,
     })),
-    getOverlays: PropTypes.func.isRequired,
 };
 Top5Overlays.defaultProps = {
     overlays: [],
-    getOverlays: _.noop,
 };
 
 export default connect(
     state => ({
         overlays: selectors.getTop5Overlays(state),
     }),
-    (dispatch) => ({
-        getOverlays: () => dispatch(actions.onGetOverlays()),
-    })
 )(Top5Overlays);

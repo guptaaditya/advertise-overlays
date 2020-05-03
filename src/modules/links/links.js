@@ -1,9 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
 import LinksList from 'components/links';
-import { Icon } from 'semantic-ui-react';
 import { copyToClipboard } from 'utils/helper';
 import { showToast } from 'utils/ui';
+import { Link, Icon } from 'blocks';
 
 const dummyLink = {url: 'http://utv.com/gytgt56f6ks'};
 
@@ -67,10 +67,11 @@ export default class Links extends React.Component {
         return (
             <div className='flexible'>
                 <div className='cell'>
-                    <a href={rowData.shortUrl} target='_blank'>{rowData.shortUrl}</a>
+                    <Link url={rowData.shortUrl} maxLength={32} />
                 </div>
                 <div className='cell flexible-centered'>
                     <Icon 
+                        title='Copy'
                         onClick={() => this.onCopy(col, rowData)} 
                         className='pointer' 
                         name='copy' 

@@ -4,31 +4,62 @@ import * as authActions from 'modules/router/actions';
 import * as actionTypes from './actiontypes';
 import * as actions from './actions';
 import { showToast } from 'utils/ui';
+import api from 'utils/client';
+import API_CONFIG from 'constants/apiconfig';
+import { getUserEmailForResetPasswordFromStore } from './selectors';
 
-function* onLogin({ username, password, redirectUrl }) {
+function* onLogin({ username, password, remember, redirectUrl }) {
+    const { message = {}, type } = API_CONFIG.USER_LOGIN;
     try {
-        yield Promise.resolve(true);
-        yield put(authActions.onLoginSuccess());
+        const token = yield api[type]({ 
+            ...API_CONFIG.USER_LOGIN,
+            headers: { "Authorization": `Basic ${btoa(`${username}:${password}`)}` },
+            body: { remember }, 
+        });
+        showToast(message.success, 'success');
+        yield put(authActions.onLoginSuccess(token));
         yield put(redirectActions.redirectTo(redirectUrl));
     } catch (error) {
-        console.log(error);
+        const errorMessage = message.error[error.status];
+        showToast(errorMessage, 'error');
     }
 }
 
 function* onSignup({ redirectUrl, ...userInputs }) {
+    const { message = {}, type } = API_CONFIG.USER_CREATE;
     try {
-        yield Promise.resolve(true);
-        yield onLogin({ ...userInputs, redirectUrl });
+        const user = yield api[type]({ 
+            ...API_CONFIG.USER_CREATE,
+            body: { ...userInputs }, 
+        });
+        if (user) {
+            showToast(message.success, 'success');
+            yield onLogin({ ...userInputs, redirectUrl });
+        }
     } catch (error) {
-        console.log(error);
+        const errorMessage = message.error[error.status];
+        showToast(errorMessage, 'error');
+    }
+}
+
+function* sendVerificationCode({ useremail }) {
+    const { message = {}, type } = API_CONFIG.USER_SEND_VERIFICATION_CODE;
+    try {
+        yield api[type]({ 
+            ...API_CONFIG.USER_SEND_VERIFICATION_CODE,
+            urlParams: { username: useremail }
+        });
+        showToast(message.success, 'success');
+    } catch (error) {
+        const errorMessage = message.error[error.status];
+        showToast(errorMessage, 'error');
     }
 }
 
 function* onForgotPassword({ redirectUrl, useremail }) {
     try {
-        yield Promise.resolve(true);
+        yield sendVerificationCode({ useremail });
         yield put(actions.onForgotPasswordSuccess(useremail));
-        showToast(`A Verification code has been sent to ${useremail}.`, 'success');
         yield put(redirectActions.redirectTo(redirectUrl));
     } catch (error) {
         console.log(error);
@@ -37,30 +68,47 @@ function* onForgotPassword({ redirectUrl, useremail }) {
 
 function* onResendVerificationCode({ useremail }) {
     try {
-        yield Promise.resolve(true);
-        showToast(`Verification code resent to ${useremail}`, 'success');
+        yield sendVerificationCode({ useremail });
     } catch (error) {
         console.log(error);
     }
 }
 
-function* onVerificationCodeSubmit({ code, redirectUrl }) {
+function* onVerificationCodeSubmit({ verificationCode, redirectUrl }) {
+    const { message = {}, type } = API_CONFIG.USER_VERIFY;
     try {
-        yield Promise.resolve(true);
+        const username = getUserEmailForResetPasswordFromStore();
+        const token = yield api[type]({ 
+            ...API_CONFIG.USER_VERIFY,
+            body: { username, verificationCode }, 
+        });
+        yield put(authActions.onLoginSuccess(token));
+        showToast(message.success, 'success');
         yield put(redirectActions.redirectTo(redirectUrl));
     } catch (error) {
-        console.log(error);
+        const errorMessage = message.error[error.status];
+        showToast(errorMessage, 'error');
     }
 }
 
-function* onResetPassword({ redirectUrl, ...userInputs }) {
+function* onResetPassword({ redirectUrl, password }) {
+    const { message = {}, type } = API_CONFIG.USER_UPDATE;
     try {
-        yield Promise.resolve(true);
-        // yield put(authActions.onResetPasswordSuccess());
-        yield put(redirectActions.redirectTo(redirectUrl));
-        showToast(`Your password has been changed successfully.`, 'success');
+        yield api[type]({ 
+            ...API_CONFIG.USER_UPDATE,
+            body: { password }, 
+        });
+        const username = getUserEmailForResetPasswordFromStore();
+        showToast(message.success, 'success');
+        yield onLogin({ 
+            username, 
+            password, 
+            redirectUrl 
+        });
     } catch (error) {
-        console.log(error);
+        const errorMessage = message.error[error.status];
+        showToast(errorMessage, 'error');
+        yield put(redirectActions.redirectTo(redirectUrl));
     }
 }
 

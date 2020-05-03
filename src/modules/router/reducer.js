@@ -11,7 +11,12 @@ export default function auth(state = initialState, action) {
         case actiontypes.ON_AUTHENTICATION_SUCCESS:
             return {
                 isAuthenticated: true,
-                token: 'xyz',
+                token: action.token,
+            };
+        case actiontypes.ON_LOGOUT:
+            return {
+                isAuthenticated: false,
+                token: '',
             };
         default:
             return state;

@@ -8,7 +8,7 @@ import {
 import { createHashHistory } from 'history';
 
 import { 
-  Login, Signup, ForgotPassword, Verification, Dashboard, ResetPassword, UserProfile, 
+  Login, Logout, Signup, ForgotPassword, Verification, Dashboard, ResetPassword, UserProfile, 
   OverlaysList, LinksList, CreateOverlay, OverlayType, CustomizeOverlay, Admin, 
 } from 'modules';
 
@@ -17,7 +17,11 @@ import PrivateRoute from './index';
 const history = createHashHistory();
 
 export function redirectTo(url) {
-  return history.push(url);
+  history.push(url);
+  return {
+    type: 'REDIRECTING_TO',
+    url
+  };
 }
 
 export default function Routes() {
@@ -40,7 +44,7 @@ export default function Routes() {
             <Verification redirectTo='/reset-password' signinPath='/login' />
           </Route>
           <Route exact path="/reset-password">
-            <ResetPassword redirectTo='/login' signinPath='/login' />
+            <ResetPassword redirectTo='/dashboard' signinPath='/login' />
           </Route>
           <PrivateRoute exact path='/dashboard'>
               <Dashboard />
@@ -61,7 +65,7 @@ export default function Routes() {
               <UserProfile />
           </PrivateRoute>
           <PrivateRoute exact path='/logout'>
-              <LinksList />
+              <Logout signinPath='/login' />
           </PrivateRoute>
           <PrivateRoute exact path='/admin'>
               <Admin />
