@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import * as constants from './constants';
-import _default from 'antd/lib/date-picker';
 
 export function getFeatureFlagsPerSelection(selected) {
     const { type, category, template, name } = selected;

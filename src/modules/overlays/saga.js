@@ -2,7 +2,6 @@ import { takeLatest, put } from 'redux-tale/es/effects';
 import * as actionTypes from './actiontypes';
 import * as actions from './actions';
 import { redirectTo } from 'modules';
-import { showToast } from 'utils/ui';
 import { stateHelper } from 'app/selectors';
 import { getSelectedOverlay } from './selectors';
 
@@ -53,7 +52,7 @@ function* onSavedOverlay({ overlay }) {
 }
 
 function* onCustomizeOverlay() {
-    redirectTo('/overlays/customize');
+    yield put(redirectTo('/overlays/customize'));
 }
 
 const onFetchOverlaysSaga = takeLatest(actionTypes.FETCH_OVERLAYS, onFetchOverlays);

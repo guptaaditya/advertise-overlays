@@ -1,8 +1,6 @@
 import { takeLatest, put } from 'redux-tale/es/effects';
 import * as actionTypes from './actiontypes';
 import * as actions from './actions';
-import { showToast } from 'utils/ui';
-
 
 const serverData = [
     { 
@@ -41,7 +39,7 @@ function* onFetchLinks() {
         const result = yield Promise.resolve(serverData);
         yield put(actions.onFetchLinksSuccess(result));
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

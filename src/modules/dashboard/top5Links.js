@@ -8,7 +8,6 @@ import { copyToClipboard } from 'utils/helper';
 import { showToast } from 'utils/ui';
 import { Icon, Link } from 'blocks';
 
-console.log(Link);
 class Top5Links extends React.Component {
     constructor() {
         super();

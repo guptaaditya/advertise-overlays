@@ -85,6 +85,8 @@ export default class CreateOverlay extends React.Component {
             case 'overlayName':
                 this.props.onSelectName(type);
             break;
+            default:
+                return;
         }
     }
 

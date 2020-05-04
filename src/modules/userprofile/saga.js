@@ -6,6 +6,7 @@ import { showToast } from 'utils/ui';
 import api from 'utils/client';
 import API_CONFIG from 'constants/apiconfig';
 import { isPaidMemberFromStore } from './selectors';
+import * as queries from './queries';
 
 function parseAccountDetails(userDetails) {
     return [
@@ -19,12 +20,6 @@ function getMembershipDetails(userDetails) {
     return userDetails.membership;
 }
 
-function prepareFeatureFlags(isPaidMember) {
-    return {
-
-    };
-}
-
 function* onGetAccountDetails() {
     const { message = {}, type } = API_CONFIG.USER_DETAILS;
     try {
@@ -34,7 +29,9 @@ function* onGetAccountDetails() {
         yield put(actions.getAccountDetailsSuccess(parseAccountDetails(userDetails)));
         yield put(actions.getAccountMembershipSuccess(getMembershipDetails(userDetails)));
         const isPaidmember = isPaidMemberFromStore();
-        yield put(actions.setFeatureFlags(prepareFeatureFlags(isPaidmember)));
+        yield put(actions.setFeatureFlags(
+            queries.prepareFeatureFlags(isPaidmember, userDetails)
+        ));
     } catch (error) {
         console.error(error);
         const errorMessage = message.error[error.status];

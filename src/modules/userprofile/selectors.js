@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { stateHelper } from 'app/selectors';
+import * as systemconfig from 'constants/system';
 
 const getProfile = state => state.profile;
 
@@ -20,7 +21,7 @@ export const getMembership = createSelector(
 
 export const isPaidMember = createSelector(
     getMembership,
-    membership => Boolean(membership.type === 'pro'),
+    membership => Boolean(membership.type === systemconfig.MEMBERSHIP_TYPE_PREMIUM),
 );
 
 export const getUserName = createSelector(

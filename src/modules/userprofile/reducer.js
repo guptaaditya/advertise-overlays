@@ -1,14 +1,13 @@
 import _ from 'lodash';
 import * as actiontypes from './actionTypes';
+import featureFlags from 'constants/featureFlags';
 
 const initialState = {
     user: {},
     accountDetails: [],
     isEditVisible: false,
     membership: {},
-    featureFlags: {
-
-    },
+    featureFlags,
 };
 
 export default function profile(state = initialState, action) {

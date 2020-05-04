@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import _ from 'lodash';
 import { redirectTo } from 'modules';
 import { onLogout } from 'modules/router/actions';
 

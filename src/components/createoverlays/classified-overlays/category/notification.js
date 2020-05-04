@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import ShowOverlay from '../';
 
 import CallToActionImg from 'img/overlay/category/notification/calltoaction.png';

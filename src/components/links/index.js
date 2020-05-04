@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 
-import { Table, View, Button, Icon } from 'blocks';
+import { Table, View } from 'blocks';
 import CreateLink from './createLink';
 import 'styles/links.scss';
 

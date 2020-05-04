@@ -2,13 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from './actions';
 import * as selectors from './selectors';
 
 class QuickStats extends React.Component {
     render() {
         const { stats } = this.props;
-        debugger;
         return(
             <>
                 {_.map(stats, ({ name, value }, index) => (

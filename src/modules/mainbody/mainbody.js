@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ import { redirectTo } from 'modules';
 
 const logo = { src: "https://react.semantic-ui.com/logo.png" };
 
-export class MainApp extends React.Component {
+export class MainApp extends React.PureComponent {
     handleMenuClick = item => {
         if (item.route) {
             redirectTo(item.route);
@@ -16,8 +17,8 @@ export class MainApp extends React.Component {
     }
 
     render() {
-        const { match } = this.props;
-        const menuItems = [{
+        const { match, OVERLAY_ENABLED, PAYOUTS_ENABLED } = this.props;
+        let menuItems = [{
               label: "Dashboard", icon: "dashboard", route: "/dashboard",
             }, {
               label: "Links", icon: "linkify", route: "/links",
@@ -31,7 +32,7 @@ export class MainApp extends React.Component {
               bottom: true, label: "Signout", icon: "power off", route: "/logout",
         }];
 
-        const routeLabels = [
+        let routeLabels = [
           { label: "Dashboard", route: "/dashboard" },
           { label: "Links", route: "/links" },
           { label: "Overlays", route: "/overlays" },
@@ -39,6 +40,19 @@ export class MainApp extends React.Component {
           { label: "Profile", route: "/user-profile" },
           { label: "Admin", route: "/admin" },
         ];
+
+        menuItems = _.reject(menuItems, ({ label }) => {
+          if (Boolean(label === 'Overlays' && !OVERLAY_ENABLED)) return true;
+          if (Boolean(label === 'Admin' && !PAYOUTS_ENABLED)) return true;
+          return false;
+        });
+
+        routeLabels = _.reject(routeLabels, ({ label }) => {
+          if (Boolean(label === 'Overlays' && !OVERLAY_ENABLED)) return true;
+          if (Boolean(label === 'New Overlay' && !OVERLAY_ENABLED)) return true;
+          if (Boolean(label === 'Admin' && !PAYOUTS_ENABLED)) return true;
+          return false;
+        });
 
         const loadedRouteComponent = _.find(menuItems, ({ route }) => _.startsWith(match.path, route));
         if (loadedRouteComponent) {
@@ -63,5 +77,15 @@ export class MainApp extends React.Component {
 
     }
 }
+
+MainApp.propTypes = {
+  OVERLAY_ENABLED: PropTypes.bool,
+  PAYOUTS_ENABLED: PropTypes.bool,
+};
+
+MainApp.defaultProps = {
+  OVERLAY_ENABLED: false,
+  PAYOUTS_ENABLED: false,
+};
 
 export default withRouter(MainApp);

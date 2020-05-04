@@ -4,24 +4,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import * as selectors from './selectors';
-import { FormField, Button, PayPalReact } from 'blocks';
+import { FormField, PayPalReact } from 'blocks';
 import { showToast } from 'utils/ui';
 
 class Membership extends React.Component {
     handlePaypalSuccess = (paypal) => {
         showToast('Payment successful, Congratulations you have upgraded your membership', 'success');
         this.props.onMembershipUpdateSuccess(paypal);
-        console.log(paypal);
     }
     
     handlePaypalCancel = (error) => {
         showToast('Payment cancelled, Please try again to upgrade your membership. \nIn case of any issues please contact us at +917503790442', 'warning');
-        console.log(error);
     }
     
     handlePaypalError = (error) => {
         showToast('Hi, we noticed you are facing some issues in transacting at paypal. \nPlease try again, and in case you need help, please contact us at +917503790442', 'error');
-        console.log(error);
     }
 
     render() {

@@ -1,10 +1,6 @@
 import { takeLatest, put } from 'redux-tale/es/effects';
 import * as actionTypes from './actionTypes';
 import * as actions from './actions';
-import { redirectTo } from 'modules';
-import { showToast } from 'utils/ui';
-import { stateHelper } from 'app/selectors';
-import { getSelectedOverlay } from './selectors';
 
 const affiliatesData = [
     { id: 1, name: 'Hayk', affiliate1: 3, affiliate2: 7 },

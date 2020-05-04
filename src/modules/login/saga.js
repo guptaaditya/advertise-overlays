@@ -64,7 +64,7 @@ function* onForgotPassword({ redirectUrl, useremail }) {
         yield put(actions.onForgotPasswordSuccess(useremail));
         yield put(redirectActions.redirectTo(redirectUrl));
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -72,7 +72,7 @@ function* onResendVerificationCode({ useremail }) {
     try {
         yield sendVerificationCode({ useremail });
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

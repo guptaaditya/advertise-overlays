@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Step, View, Input, Form, FormField, Button, ButtonGroup, Radio, FormGroup, ColorPicker } from 'blocks';
+import { Input, Form, FormField, Button, Radio, FormGroup, ColorPicker } from 'blocks';
 
 export default class CustomizeForm extends React.Component {
-
     render() {
         const { featureFlags, onChange, saveState, onSave } = this.props;
-        const displayFeatureFlags = JSON.stringify(featureFlags, null, 2);
         return(
             <>
                 <div className='customization-form'>
