@@ -23,6 +23,7 @@ class LinksList extends React.Component {
             <>
                 <View className='links'>
                     <Table
+                         className="full-height"
                         cols={cols}
                         data={data}
                         footerActions={this.getFooterActions()}

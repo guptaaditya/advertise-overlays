@@ -4,40 +4,24 @@ import _ from 'lodash';
 import { Modal, Icon } from 'blocks';
 import { Input, Form, FormField, Dropdown, Button } from 'blocks';
 
-const friendOptions = [
-    {
-      key: 'Jenny Hess',
-      text: 'Jenny Hess',
-      value: 'Jenny Hess',
-    },
-    {
-      key: 'Elliot Fu',
-      text: 'Elliot Fu',
-      value: 'Elliot Fu',
-    },
-    {
-      key: 'Stevie Feliciano',
-      text: 'Stevie Feliciano',
-      value: 'Stevie Feliciano',
-    },
-];  
-
-class CreateLinkForm extends React.Component {
-    render() {
-        return (
-            <Form>
-                <FormField>
-                    <label>Long URL</label>
-                    <Input id='longURL' type="text" />
-                </FormField>
-                <FormField>
-                    <label>Select overlay</label>
-                    <Dropdown placeholder='' fluid selection options={friendOptions} />
-                </FormField>
-                <br /> <br />
-            </Form>
-        );
-    }
+function CreateLinkForm(overlaysList) {
+    return class LinkForm extends React.Component {
+        render() {
+            return (
+                <Form>
+                    <FormField>
+                        <label>Long URL</label>
+                        <Input id='longURL' type="text" />
+                    </FormField>
+                    <FormField>
+                        <label>Select overlay</label>
+                        <Dropdown placeholder='' fluid selection options={overlaysList} />
+                    </FormField>
+                    <br /> <br />
+                </Form>
+            );
+        }
+    };    
 }
 
 function CreatedLinkForm(props) {
@@ -77,7 +61,7 @@ export default class CreateLink extends React.Component {
     }
     
     render() {
-        const { createdLink } = this.props;
+        const { createdLink, overlaysList } = this.props;
         const { modalOpen } = this.state;
         const triggerLabel = ( <> <Icon name='linkify' /> Add New Link </>);
         const buttonProperties = {
@@ -94,7 +78,7 @@ export default class CreateLink extends React.Component {
             : { content: 'Add new Link', icon: 'plus', className: 'dark-background' };
         const content = isSuccess 
             ? CreatedLinkForm(createdLink)
-            : CreateLinkForm
+            : CreateLinkForm(overlaysList)
         return (
             <>
                 <Modal 
@@ -112,6 +96,7 @@ export default class CreateLink extends React.Component {
 CreateLink.propTypes = {
     onCreate: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
+    overlaysList: PropTypes.array.isRequired,
 };
 CreateLink.defaultProps = {
     onClose: _.noop

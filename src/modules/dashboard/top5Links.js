@@ -50,6 +50,7 @@ class Top5Links extends React.Component {
         const { links } = this.props;
         return(
             <Table 
+                className="full-height"
                 compact='very'
                 cols={this.cols} 
                 data={links} 

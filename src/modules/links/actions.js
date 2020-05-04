@@ -6,9 +6,9 @@ export function onFetchLinks() {
     }
 }
 
-export function onFetchLinksSuccess(data) {
+export function onFetchLinksSuccess(linksList) {
     return {
         type: actionTypes.ON_FETCH_LINKS_SUCCESS,
-        data,
+        linksList,
     }
 }

@@ -19,6 +19,7 @@ class Top5Overlays extends React.Component {
         const { overlays } = this.props;
         return(
             <Table 
+                className="full-height"
                 compact='very'
                 cols={this.cols} 
                 data={overlays} 

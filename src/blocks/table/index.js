@@ -162,9 +162,9 @@ export default class TableComponent extends React.Component {
     }
 
     render() {
-        const { compact } = this.props;
+        const { compact, className = '' } = this.props;
         return (
-            <Table className='scrollable-table' stackable compact={compact}>
+            <Table className={`scrollable-table ${className}`} stackable compact={compact}>
                 {this.getHeader()}
                 {this.getBody()}
                 {this.getFooter()}

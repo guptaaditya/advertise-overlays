@@ -95,13 +95,13 @@ export default class Links extends React.Component {
     }
 
     render() {
-        const { data } = this.props;
+        const { linksList } = this.props;
         const { createdLink } = this.state;
         return (
             <>
                 <LinksList 
                     createdLink={createdLink ? dummyLink: null } 
-                    onCreate={this.handleCreate} cols={this.cols} data={data} 
+                    onCreate={this.handleCreate} cols={this.cols} data={linksList} 
                     onDetailsSeen={this.handleDetailsSeen}
                 /> 
             </>
