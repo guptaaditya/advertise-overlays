@@ -36,6 +36,7 @@ export { default as Table } from './table';
 export { default as Step } from './steps';
 export { default as SitePlaceholder } from './siteplaceholder';
 export { default as Modal } from './modal';
+export { default as Confirm } from './modal/confirm';
 export { default as ImageHolderGround } from './imageholdingground';
 export { default as ColorPicker } from './colorpicker';
 export { default as PayPalReact } from './paypal';

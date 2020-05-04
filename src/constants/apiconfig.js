@@ -183,6 +183,23 @@ const API_CONFIG = {
             },
         }
     },
+    OVERLAYS_DELETE: {
+        url: `${host}overlay/{overlayId}`,
+        type: 'delete',
+        isProtected: true,
+        isJson: false,
+        message: {
+            success: 'Overlay deleted successfully',
+            error: {
+                400: 'Please login again, your token has expired',
+                401: 'You do not have permissions to edit this overlay',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    OVERLAY_PREVIEW: {
+        url: `${host}overlay/preview/`,
+    },
     LINKS_LIST: {
         url: `${host}link`,
         type: 'get',

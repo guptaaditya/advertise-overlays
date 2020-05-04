@@ -11,23 +11,27 @@ class TableCell extends React.Component {
     }
 
     render() {
-        const { column: { 
+        let { column: { 
             width, align, value, icon, icons, label = null, color, renderer, row, 
-            singleLine = false, className = '',
+            singleLine = false, className = '', title, formatter
         } = {} } = this.props;
         const derivedClassName = `${className}${ icon ? ' pointer': ''}`;
         let body = null;
         if(renderer) {
             body = renderer(this.props.column, row);
         } else {
+            if (formatter) {
+                label = formatter(label);
+            }
             body = (
                 <>
                     <div className='text'>{label}</div>
                     &nbsp; 
                     {icon && <Icon className='pointer' name={icon} color={color} />}
-                    {_.map(icons, ({ icon, color, onClick = _.noop, link }, key) => {
+                    {_.map(icons, ({ title, icon, color, onClick = _.noop, link }, key) => {
                         const renderedIcon = (
                             <Icon 
+                                title={title}
                                 onClick={ e => onClick(value, row)} 
                                 className='pointer' 
                                 key={key} 
@@ -52,6 +56,7 @@ class TableCell extends React.Component {
             collapsing: !singleLine,
             className: derivedClassName,
             value,
+            title,
         };
         if (width) tableCellProps.width = width;
         return (
@@ -136,12 +141,14 @@ export default class TableComponent extends React.Component {
     getFormattedData() {
         const { data, cols } = this.props;
         return data.map(dataRow => {
-            return cols.map(({ className, labelField, label, valueField, icon, ...otherFields }) => {
+            return cols.map(({ onClick, title, className, labelField, label, valueField, icon, ...otherFields }) => {
                 const view = {
                     value: dataRow[valueField],
                     row: dataRow,
                     className,
                     ...otherFields,
+                    onClick,
+                    title,
                 };
                 if (icon) {
                     view.icon = icon;

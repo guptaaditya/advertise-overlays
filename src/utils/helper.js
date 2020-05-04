@@ -1,6 +1,9 @@
 import React from 'react';
+import moment from 'moment';
+import * as systemConfig from 'constants/system';
+
 const storage = window.localStorage;
-const tokenKey = 'v--t-u-s-d';
+const tokenKey = systemConfig.TOKEN_IDENTIFIER;
 
 export default function ComponentWrapper(Component, additionalProps = {}) {
     return function(props) {
@@ -53,4 +56,12 @@ export function getTextFromClipboard() {
     const data = tempElement.textContent;
     tempElement.parentNode.removeChild(tempElement);
     return data;
+}
+
+export function formatDate(date, format = systemConfig.DATE_FORMAT) {
+    const momentDate = moment(date);
+    if (momentDate.isValid()) {
+        return momentDate.format(format);
+    }
+    return date;
 }

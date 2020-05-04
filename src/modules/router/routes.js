@@ -54,7 +54,7 @@ export default function Routes() {
               <CustomizeOverlay overlayListPath='/overlays' />
           </PrivateRoute>
           <PrivateRoute exact path='/overlays'>
-              <OverlaysList newOverlayPath='/overlays/new' />
+              <OverlaysList editOverlayPath='/overlays/customize/' newOverlayPath='/overlays/new' />
           </PrivateRoute>
           <PrivateRoute exact path='/user-profile'>
               <UserProfile />

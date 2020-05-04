@@ -11,10 +11,15 @@ class CustomizeOverlay extends React.Component {
         if(!selected.id) {
             if (params.overlayId) {
                 return onGetOverlay(params.overlayId);
+            } else {
+                showToast(`Please select an overlay to customize`, 'error');
+                redirectTo(overlayListPath);
             }
         }
-        showToast(`Please select an overlay to customize`, 'error');
-        redirectTo(overlayListPath);
+    }
+
+    componentWillUnmount() {
+        this.props.onClearSelectedOverlay();
     }
 
     render() {

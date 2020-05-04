@@ -13,5 +13,6 @@ export default connect(
     (dispatch, ownProps) => ({
         onSave: (...params) => dispatch(actions.onSaveCustomizedOverlay(...params, ownProps.overlayListPath)),
         onGetOverlay: (...params) => dispatch(actions.onGetOverlay(...params)),
+        onClearSelectedOverlay: () => dispatch(actions.onClearSelectedOverlay()),
     })
 )(CustomizeOverlay);

@@ -64,6 +64,8 @@ export default function overlay(state = initialState, action) {
             return _.defaultsDeep({}, { customizeOverlay: action.overlay }, state);
         case actiontypes.ON_OVERLAY_DETAILS_SUCCESS:
             return _.defaultsDeep({}, { customizeOverlay: action.overlay }, state);
+        case actiontypes.ON_CLEAR_CUSTOMIZE_OVERLAY:
+            return { ...state, customizeOverlay: {} };
         default:
             return state;
     };

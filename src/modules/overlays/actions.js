@@ -99,3 +99,24 @@ export function onGetOverlaySuccess(overlay) {
         overlay,
     }
 }
+
+export function onClearSelectedOverlay() {
+    return {
+        type: actionTypes.ON_CLEAR_CUSTOMIZE_OVERLAY,
+    }
+}
+
+export function onDuplicateOverlay(overlay, redirectPath) {
+    return {
+        type: actionTypes.CREATE_NEW_OVERLAY,
+        overlay,
+        redirectPath
+    }
+}
+
+export function onDeleteOverlay(overlayId) {
+    return {
+        type: actionTypes.DELETE_OVERLAY,
+        overlayId,
+    }
+}

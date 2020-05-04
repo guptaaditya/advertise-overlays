@@ -20,22 +20,50 @@ function* onFetchOverlays() {
     }
 }
 
-function* onNameSelected({ redirectPath }) {
-    const selectedOverlay = stateHelper(getSelectedOverlay);
-    selectedOverlay.overlayType = selectedOverlay.type;
-    const { message = {}, type } = API_CONFIG.OVERLAY_CREATE;
+function* onDeleteteOverlay({ overlayId }) {
+    const { message = {}, type } = API_CONFIG.OVERLAYS_DELETE;
     try {
-        const overlay = yield api[type]({ 
-            ...API_CONFIG.OVERLAY_CREATE,
-            body: { ...selectedOverlay }, 
+        yield api[type]({ 
+            ...API_CONFIG.OVERLAYS_DELETE,
+            urlParams: { overlayId } 
         });
         showToast(message.success, 'success');
-        overlay.type = overlay.overlayType;
-        yield put(actions.loadCustomizeOverlay(overlay, redirectPath));
-        yield put(actions.onSaveOverlaySuccess());
+        yield onFetchOverlays();
+    } catch (error) {
+        console.error(error);
+        const errorMessage = message.error[error.status];
+        if(errorMessage) showToast(errorMessage);
+    }
+}
+
+function* createOverlay({ overlay, redirectPath }) {
+    const { message = {}, type } = API_CONFIG.OVERLAY_CREATE;
+    try {
+        const createdOverlay = yield api[type]({ 
+            ...API_CONFIG.OVERLAY_CREATE,
+            body: { 
+                ...overlay,
+                overlayType: overlay.overlayType || overlay.type, 
+            }, 
+        });
+        showToast(message.success, 'success');
+        createdOverlay.type = createdOverlay.overlayType;
+        yield put(actions.loadCustomizeOverlay(createdOverlay, redirectPath));
+        yield createdOverlay;
     } catch (error) {
         const errorMessage = message.error[error.status];
         showToast(errorMessage, 'error');
+        throw error;
+    }
+}
+
+function* onNameSelected({ redirectPath }) {
+    const overlay = stateHelper(getSelectedOverlay);
+    try {
+        const createdOverlay = yield createOverlay({ overlay, redirectPath });
+        yield put(actions.onSaveOverlaySuccess());
+    } catch (e) {
+        console.error(e);
     }
 }
 
@@ -80,10 +108,15 @@ const onNameSelectedSaga = takeLatest(actionTypes.NAME_SELECTED, onNameSelected)
 const onCustomizeOverlaySaga = takeLatest(actionTypes.LOAD_CUSTOMIZE_OVERLAY, onCustomizeOverlay);
 const onGetOverlaySaga = takeLatest(actionTypes.GET_OVERLAY, onGetOverlay);
 const onSaveCustomizedOverlaySaga = takeLatest(actionTypes.SAVE_CUSTOMIZED_OVERLAY, onSaveCustomizedOverlay);
+const onCreateOverlaySaga = takeLatest(actionTypes.CREATE_NEW_OVERLAY, createOverlay);
+const onDeleteteOverlaySaga = takeLatest(actionTypes.DELETE_OVERLAY, onDeleteteOverlay);
+
 export default [
     onFetchOverlaysSaga,
     onNameSelectedSaga,
     onCustomizeOverlaySaga,
     onGetOverlaySaga,
     onSaveCustomizedOverlaySaga,
+    onCreateOverlaySaga,
+    onDeleteteOverlaySaga,
 ];
