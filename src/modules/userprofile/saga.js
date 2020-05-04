@@ -35,7 +35,9 @@ function* onGetAccountDetails() {
     } catch (error) {
         console.error(error);
         const errorMessage = message.error[error.status];
-        showToast(errorMessage, 'error');
+        if (errorMessage) {
+            showToast(errorMessage, 'error');
+        }
     }
 }
 

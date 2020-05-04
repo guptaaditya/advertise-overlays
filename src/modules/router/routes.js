@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { createHashHistory } from 'history';
 
 import { 
@@ -13,14 +8,14 @@ import {
 } from 'modules';
 
 import PrivateRoute from './index';
-
+import * as actionTypes from './actiontypes';
 const history = createHashHistory();
 
 export function redirectTo(url) {
   history.push(url);
   return {
-    type: 'REDIRECTING_TO',
-    url
+    type: actionTypes.ON_REIRECT,
+    url,
   };
 }
 

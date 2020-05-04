@@ -16,11 +16,12 @@ function prepareHeaders(userProvidedHeaders, isProtected) {
         'Content-Type': 'application/json',
     }; 
     if (isProtected) {
+        const authHeaders = getAuthHeaders();
+        if (!authHeaders) throw { message: 'User not authenticated' };
         headers = {
             ...headers,
-            ...getAuthHeaders(),
+            ...authHeaders,
         };
-        if (!headers) throw { message: 'User not authenticated' };
     }
     return {
         ...headers,
@@ -40,7 +41,6 @@ function callAPI(
     method, userProvidedHeaders, isProtected, url, urlParams, isJson, body = null, 
     hasLoader = true,
     ) {
-
     const headers = prepareHeaders(userProvidedHeaders, isProtected);
     const parameterizedUrl = parameterizeUrl(url, urlParams);
     const optionalParams = {};

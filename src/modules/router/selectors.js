@@ -21,3 +21,7 @@ export const getuserTokenFromStore = () => {
     }
     return null;
 };
+
+export const getIsUserAuthenticatedFromStore = () => {
+    return stateHelper(getIsUserAuthenticated);
+};

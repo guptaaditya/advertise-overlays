@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import combinedReducers from './reducers';
 import { createSagaMiddleWare, runSagas } from './sagas';
 import { loadStateToken, saveStateToken} from 'utils/helper';
+import { storeInitialized } from 'models/actions';
 
 function logger({ getState }) {
     return next => action => {
@@ -31,6 +32,7 @@ export const getStore = (function () {
         store.subscribe(() => saveStateToken(store.getState()));
         runSagas();
         window.$store = store;
+        store.dispatch(storeInitialized());
     }
     
     return function getStore() {

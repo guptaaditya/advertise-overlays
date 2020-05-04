@@ -61,7 +61,7 @@ class Top5Links extends React.Component {
 Top5Links.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape({
         shortUrl: PropTypes.string.isRequired,
-        id: PropTypes.number,
+        id: PropTypes.string,
         visits: PropTypes.number,
     })),
 };

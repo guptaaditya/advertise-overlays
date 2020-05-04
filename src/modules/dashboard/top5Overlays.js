@@ -31,7 +31,7 @@ class Top5Overlays extends React.Component {
 Top5Overlays.propTypes = {
     overlays: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
-        id: PropTypes.number,
+        id: PropTypes.string,
         visits: PropTypes.number,
     })),
 };
