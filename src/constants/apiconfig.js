@@ -109,6 +109,21 @@ const API_CONFIG = {
                 500: 'Please try again after some time. Engineers are at work!'
             },
         }
+    },
+    PAYOUTS_STATS: {
+        url: `${host}/admin/payouts`,
+        type: 'get',
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        body: null,
+        message: {
+            success: '',
+            error: {
+                500: 'Please try again after some time. Engineers are at work!'
+            },
+        }
     }
 };
 
