@@ -26,6 +26,14 @@ export default class CustomizedOverlay extends React.Component {
         } = this.props;
 
         const { location: { origin, pathname } } = window;
+
+        const backgroundStyle = {};
+        if(background.color) {
+            backgroundStyle.backgroundColor = background.color;
+        } else if (background.image) {
+            backgroundStyle.backgroundImage = `url(${background.image})`;
+        }
+
         const isSocialIconsVisible = showSocialIcons && Boolean(_.find(socialIcons, (url, key) => Boolean(url)));
         const socialIconsClass = `socialIcons ${isSocialIconsVisible ? '' : 'hidden'}`;
 
@@ -37,7 +45,7 @@ export default class CustomizedOverlay extends React.Component {
                 <div className='dummy-page'>
                     <div 
                         className={`${widthClassName} ${fontSizeClassName} ${templateClassName} ${positionClass}`}
-                        style={{ backgroundColor: background.color, backgroundImage: `url(${background.image})` }}
+                        style={backgroundStyle}
                     >
                         <div className={logoClass}>
                             <a target='_blank' href={logo.url || '#'}>

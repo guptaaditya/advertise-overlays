@@ -9,10 +9,10 @@ class Top5Overlays extends React.Component {
     cols = [{ 
         align: 'left', 
         label: 'Top 5 Overlays', 
-        width: 3,
         labelField: 'name', 
     }, { 
-        align: 'center', label: 'Visits', labelField: 'visits', width: 5,
+        align: 'center', label: 'Visits', labelField: 'visits',
+        className: 'wp-10 flex-fit'
     }];
 
     render() {

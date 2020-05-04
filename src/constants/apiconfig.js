@@ -124,6 +124,79 @@ const API_CONFIG = {
                 500: 'Please try again after some time. Engineers are at work!'
             },
         }
+    },
+    OVERLAYS_LIST: {
+        url: `${host}overlay`,
+        type: 'get',
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        body: null,
+        message: {
+            success: '',
+            error: {
+                500: 'Please try again after some time. Engineers are at work!'
+            },
+        }
+    },
+    OVERLAY_CREATE: {
+        url: `${host}overlay`,
+        type: 'post',
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        message: {
+            success: 'Overlay has been created successfully',
+            error: {
+                400: 'You are not authorized to create an Overlay',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    OVERLAY_DETAILS: {
+        url: `${host}overlay/{overlayId}`,
+        type: 'get',
+        isProtected: true,
+        isJson: true,
+        message: {
+            success: '',
+            error: {
+                400: 'Please login again, your token has expired',
+                401: 'You do not have permissions to edit this overlay',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    OVERLAY_UPDATE: {
+        url: `${host}overlay/{overlayId}`,
+        type: 'put',
+        isProtected: true,
+        isJson: true,
+        message: {
+            success: 'Overlay saved successfully',
+            error: {
+                400: 'Please login again, your token has expired',
+                401: 'You do not have permissions to edit this overlay',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    LINKS_LIST: {
+        url: `${host}link`,
+        type: 'get',
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        body: null,
+        message: {
+            success: '',
+            error: {
+                500: 'Please try again after some time. Engineers are at work!'
+            },
+        }
     }
 };
 

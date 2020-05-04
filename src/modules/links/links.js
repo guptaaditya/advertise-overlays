@@ -14,22 +14,26 @@ export default class Links extends React.Component {
             align: 'left', 
             label: 'Short URL', 
             labelField: 'shortUrl',
-            width: 3,
             renderer: this.renderShortUrl,
+            className: 'wp-30 flex-fit'
         }, { 
-            align: 'left', label: 'Overlay', valueField: 'id', labelField: 'overlayName', width: 5,
+            align: 'left', label: 'Overlay', valueField: 'id', labelField: 'overlayName', 
+            className: 'wp-20 flex-fit',
         }, { 
             align: 'left', 
             label: 'Target URL', 
             valueField: 'id', 
             labelField: 'targetUrl', 
             renderer: this.renderTargetUrl,
+            className: 'wp-25 flex-fit'
         }, { 
-            align: 'left', label: 'Created On', valueField: 'id', labelField: 'createdOn'
+            align: 'left', label: 'Created On', valueField: 'id', labelField: 'createdOn',
+            className: 'wp-15 flex-fit'
         }, { 
             align: 'right', 
             label: 'Actions', 
             valueField: 'id',
+            className: 'wp-10 flex-fit',
             icons: [
                 {
                     icon: 'edit', 

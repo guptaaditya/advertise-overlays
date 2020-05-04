@@ -63,7 +63,8 @@ export default class CustomizeOverlay extends React.Component {
             socialIcons: {
                 ...socialIcons,
             },
-            ...featureFlags
+            ...featureFlags,
+            ...selected,
         };
     }
 
@@ -77,6 +78,7 @@ export default class CustomizeOverlay extends React.Component {
 
     handleSubmitAndSave() {
         const html = document.querySelector('.dummy-page').innerHTML;
+        this.props.onSave(this.state);
     }
 
     render() {
@@ -103,4 +105,5 @@ export default class CustomizeOverlay extends React.Component {
 
 CustomizeOverlay.propTypes = {
     selected: PropTypes.object,
+    onSave: PropTypes.func.isRequired,
 }

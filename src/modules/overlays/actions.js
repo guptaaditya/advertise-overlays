@@ -38,10 +38,11 @@ export function selectOverlayTemplate(overlayTemplate) {
     }
 }
 
-export function selectOverlayName(overlayName) {
+export function selectOverlayName(overlayName, redirectPath) {
     return {
         type: actionTypes.NAME_SELECTED,
         overlayName,
+        redirectPath,
     }
 }
 
@@ -63,16 +64,38 @@ export function backToCategory() {
     }
 }
 
-export function loadCustomizeOverlay(overlay) {
+export function onSaveOverlaySuccess() {
     return {
-        type: actionTypes.LOAD_CUSTOMIZE_OVERLAY,
-        overlay
+        type: actionTypes.SAVE_OVERLAY_SUCCESS,
     }
 }
 
-export function onSaveCustomizedOverlay(overlay) {
+export function loadCustomizeOverlay(overlay, redirectPath) {
     return {
-        type: actionTypes.SAVE_CUSTOMIZE_OVERLAY_SUCCESS,
-        overlay
+        type: actionTypes.LOAD_CUSTOMIZE_OVERLAY,
+        overlay,
+        redirectPath
+    }
+}
+
+export function onSaveCustomizedOverlay(overlay, redirectPath) {
+    return {
+        type: actionTypes.SAVE_CUSTOMIZED_OVERLAY,
+        overlay,
+        redirectPath
+    }
+}
+
+export function onGetOverlay(overlayId) {
+    return {
+        type: actionTypes.GET_OVERLAY,
+        overlayId
+    }
+}
+
+export function onGetOverlaySuccess(overlay) {
+    return {
+        type: actionTypes.ON_OVERLAY_DETAILS_SUCCESS,
+        overlay,
     }
 }

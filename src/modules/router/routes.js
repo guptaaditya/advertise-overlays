@@ -48,10 +48,10 @@ export default function Routes() {
               <LinksList />
           </PrivateRoute>
           <PrivateRoute exact path='/overlays/new'>
-              <CreateOverlay redirectTo='/overlays/customize' />
+              <CreateOverlay customizeOverlayPath='/overlays/customize/' overlaysListPath='/overlays' />
           </PrivateRoute>
-          <PrivateRoute exact path='/overlays/customize'>
-              <CustomizeOverlay redirectTo='/overlays' />
+          <PrivateRoute exact path='/overlays/customize/:overlayId'>
+              <CustomizeOverlay overlayListPath='/overlays' />
           </PrivateRoute>
           <PrivateRoute exact path='/overlays'>
               <OverlaysList newOverlayPath='/overlays/new' />

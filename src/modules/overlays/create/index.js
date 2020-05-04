@@ -19,7 +19,7 @@ export default connect(
         onSelectType: (property) => dispatch(actions.selectOverlayType(property)),
         onSelectCategory: (property) => dispatch(actions.selectOverlayCategory(property)),
         onSelectTemplate: (property) => dispatch(actions.selectOverlayTemplate(property)),
-        onSelectName: (property) => dispatch(actions.selectOverlayName(property)),
+        onSelectName: (property, redirectPath) => dispatch(actions.selectOverlayName(property, redirectPath)),
         onSelection: (property, value) => dispatch(actions.selectedPropertyValue(property, value)) 
     })
 )(CreateOverlay);

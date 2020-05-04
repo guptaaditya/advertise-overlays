@@ -21,14 +21,14 @@ const initOverLay = {
     overlayName: {...deactiveStep}
 };
 
-// const selectedOverlay = {};
+const selectedOverlay = {};
 //For development
-const selectedOverlay = {
-    type: 'bar',
-    category: 'optin',
-    template: '1',
-    name: 'development'
-};
+// const selectedOverlay = {
+//     type: 'bar',
+//     category: 'optin',
+//     template: '1',
+//     name: 'development'
+// };
 
 const initialState = {
     data: [],
@@ -58,8 +58,12 @@ export default function overlay(state = initialState, action) {
             return handleBack('overlayCategory', 'overlayTemplate', state);
         case actiontypes.BACK_TO_TYPE:
             return handleBack('overlayType', 'overlayCategory', state);
+        case actiontypes.SAVE_OVERLAY_SUCCESS:
+            return _.defaultsDeep({}, { createOverlay: initOverLay }, state);
         case actiontypes.LOAD_CUSTOMIZE_OVERLAY:
-            return _.defaultsDeep({ customizeOverlay: action.overlay }, state);
+            return _.defaultsDeep({}, { customizeOverlay: action.overlay }, state);
+        case actiontypes.ON_OVERLAY_DETAILS_SUCCESS:
+            return _.defaultsDeep({}, { customizeOverlay: action.overlay }, state);
         default:
             return state;
     };

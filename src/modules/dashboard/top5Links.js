@@ -14,11 +14,11 @@ class Top5Links extends React.Component {
         this.cols = [{ 
             align: 'left', 
             label: 'Top 5 Links', 
-            width: 3,
             labelField: 'shortUrl', 
             renderer: this.renderLink,
         }, { 
-            align: 'center', label: 'Visits', labelField: 'visits', width: 5,
+            align: 'center', label: 'Visits', labelField: 'visits', 
+            className: 'wp-10 flex-fit'
         }];
     }
     

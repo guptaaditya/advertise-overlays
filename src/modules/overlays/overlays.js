@@ -5,17 +5,17 @@ import { redirectTo } from 'modules';
 
 export default class Overlays extends React.Component {
     cols = [{ 
-        align: 'left', label: 'Title', valueField: 'id', labelField: 'name' 
+        align: 'left', label: 'Title', valueField: 'id', labelField: 'name', className: 'wp-35 flex-fit'  
     }, { 
-        align: 'center', label: 'Created on', valueField: 'id', labelField: 'createdOn' 
+        align: 'center', label: 'Created on', valueField: 'id', labelField: 'createdOn', className: 'wp-25 flex-fit' 
     }, { 
-        align: 'right', label: 'Preview', icon: 'eye', valueField: 'id' 
+        align: 'right', label: 'Preview', icon: 'eye', valueField: 'id', className: 'wp-10 flex-fit' 
     }, { 
-        align: 'right', label: 'Edit', icon: 'edit', valueField: 'id', color: 'grey'
+        align: 'right', label: 'Edit', icon: 'edit', valueField: 'id', color: 'grey', className: 'wp-10 flex-fit'
     }, { 
-        align: 'right', label: 'Duplicate', icon: 'copy', valueField: 'id', color: 'blue'
+        align: 'right', label: 'Duplicate', icon: 'copy', valueField: 'id', color: 'blue', className: 'wp-10 flex-fit'
     }, { 
-        align: 'right', label: 'Delete', icon: 'delete', valueField: 'id', color: 'red'
+        align: 'right', label: 'Delete', icon: 'delete', valueField: 'id', color: 'red', className: 'wp-10 flex-fit'
     }];
 
     handleOnAddOverlays = () => {

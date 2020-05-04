@@ -13,9 +13,9 @@ class TableCell extends React.Component {
     render() {
         const { column: { 
             width, align, value, icon, icons, label = null, color, renderer, row, 
-            singleLine = false
+            singleLine = false, className = '',
         } = {} } = this.props;
-        const className = icon ? 'pointer': '';
+        const derivedClassName = `${className}${ icon ? ' pointer': ''}`;
         let body = null;
         if(renderer) {
             body = renderer(this.props.column, row);
@@ -50,7 +50,7 @@ class TableCell extends React.Component {
             textAlign: align,
             singleLine,
             collapsing: !singleLine,
-            className,
+            className: derivedClassName,
             value,
         };
         if (width) tableCellProps.width = width;
@@ -72,10 +72,11 @@ export default class TableComponent extends React.Component {
             <Table.Header>
                 <Table.Row>
                     {_.map(cols, (column, index) => {
-                        const {  width = null, align, label = null, singleLine = false } = column;
+                        const {  className = '', width = null, align, label = null, singleLine = false } = column;
                         const cellProps = {
                             singleLine,
-                            collapsing: !singleLine
+                            collapsing: !singleLine,
+                            className,
                         }
                         if (width) cellProps.width = width;
                         return (
@@ -135,10 +136,11 @@ export default class TableComponent extends React.Component {
     getFormattedData() {
         const { data, cols } = this.props;
         return data.map(dataRow => {
-            return cols.map(({ labelField, label, valueField, icon, ...otherFields }) => {
+            return cols.map(({ className, labelField, label, valueField, icon, ...otherFields }) => {
                 const view = {
                     value: dataRow[valueField],
                     row: dataRow,
+                    className,
                     ...otherFields,
                 };
                 if (icon) {

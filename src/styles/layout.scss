@@ -167,3 +167,7 @@
 .main-content {
     max-height: calc(100vh - 90px);
 }
+
+.flex-fit {
+    flex-grow: 0 !important;
+}

@@ -18,13 +18,34 @@ export default class ColorPicker extends React.Component {
     state = {
         displayColorPicker: false,
     }
-    
+
+    bodyClickHandler = (e) => {
+        const ancestorColorPicker = e.target.closest('#colorPicker');
+        if (ancestorColorPicker === null) {
+            this.handleClose();
+        }
+    }
+
+    addCloseEventListener = () => {
+        document.body.addEventListener('click', this.bodyClickHandler);
+    }
+
+    removeCloseEventListener = () => {
+        document.body.removeEventListener('click', this.bodyClickHandler);
+    }
+
+    componentWillUnmount() {
+        this.removeCloseEventListener();
+    }
+
     handleClick = () => {
         this.setState({ displayColorPicker: !this.state.displayColorPicker });
+        this.addCloseEventListener();
     };
 
     handleClose = (e) => {
         this.setState({ displayColorPicker: false });
+        this.removeCloseEventListener();
     };
 
     handleChange = (color, e) => {
@@ -38,8 +59,7 @@ export default class ColorPicker extends React.Component {
             <>
             <Button color={btnColor} onClick={this.handleClick}>{btnText}</Button>
             {displayColorPicker && (
-                <div style={ popover }>
-                    <div style={ cover } onClick={ this.handleClose }/>
+                <div id='colorPicker' style={ popover }>
                     <ChromePicker onChangeComplete={this.handleChange} color={value} />
                 </div>
             )}

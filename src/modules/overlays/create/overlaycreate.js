@@ -56,6 +56,7 @@ export default class CreateOverlay extends React.Component {
 
     handleBack() {
         const activeStep = this.getActiveStep();
+        const { overlaysListPath } = this.props;
         if (activeStep === 'overlayName') {
             return this.props.onBackToTemplate();
         }
@@ -66,11 +67,12 @@ export default class CreateOverlay extends React.Component {
             return this.props.onBackToType();
         }
         else if (activeStep === 'overlayType') {
-            return redirectTo('/overlays');
+            return redirectTo(overlaysListPath);
         }
     }
 
     handleSelect(type) {
+        const { customizeOverlayPath } = this.props;
         const activeStep = this.getActiveStep();
         switch(activeStep) {
             case 'overlayType':
@@ -83,7 +85,7 @@ export default class CreateOverlay extends React.Component {
                 this.props.onSelectTemplate(type);
             break;
             case 'overlayName':
-                this.props.onSelectName(type);
+                this.props.onSelectName(type, customizeOverlayPath);
             break;
             default:
                 return;
