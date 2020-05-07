@@ -1,103 +1,132 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Modal, Icon } from 'blocks';
-import { Input, Form, FormField, Dropdown, Button } from 'blocks';
+import { Icon, Input, Form, FormField, Dropdown, Button } from 'blocks';
+import { copyToClipboard } from 'utils/helper';
+import { showToast } from 'utils/ui';
 
-function CreateLinkForm(overlaysList) {
-    return class LinkForm extends React.Component {
-        render() {
-            return (
-                <Form>
-                    <FormField>
-                        <label>Long URL</label>
-                        <Input id='longURL' type="text" />
-                    </FormField>
-                    <FormField>
-                        <label>Select overlay</label>
-                        <Dropdown placeholder='' fluid selection options={overlaysList} />
-                    </FormField>
-                    <br /> <br />
-                </Form>
-            );
-        }
-    };    
-}
-
-function CreatedLinkForm(props) {
-    const { url } = props;
-    return class extends React.Component {
-        render() {
-            return (
-                <Form>
-                    <FormField>
-                        <label>Short URL</label>
-                        <Input readOnly id='shortURL' type="text" value={url} />
-                    </FormField>
-                </Form>
-            );
-        }
-    }
-}
-
-export default class CreateLink extends React.Component {
-    state = { modalOpen: false }
-
-    handleClose = () => {
-        this.setState({ modalOpen: false });
-        this.props.onClose();
-    }
-
-    handleOpen = () => this.setState({ modalOpen: true })
-
-    getFooterActions(isDetails) {
-        const { onCreate } = this.props;
-        return (
-            <>
-                {!isDetails && <Button color='blue' onClick={onCreate}>Create Link</Button>}
-                <Button color='red' onClick={this.handleClose}>Close</Button>
-            </>
-        )
+export class LinkForm extends React.PureComponent {
+    constructor() {
+        super();
+        this.state = {
+            targetUrl: '',
+            overlayId: '',
+        };
+        this.handleOverlayChange = this.handleOverlayChange.bind(this);
+        this.handleTargetUrlChange = this.handleTargetUrlChange.bind(this);
     }
     
+    static getDerivedStateFromProps(props, state) {
+        if (!state.targetUrl && props.linkDetails) {
+            return props.linkDetails;
+        }
+        return state;
+    }
+
+    handleTargetUrlChange(e) {
+        this.setState({ targetUrl: e.target.value }, () => this.props.onChange(this.state));
+    }
+
+    handleOverlayChange(e, data) {
+        this.setState({ overlayId: data.value }, () => this.props.onChange(this.state));
+    }
+
     render() {
-        const { createdLink, overlaysList } = this.props;
-        const { modalOpen } = this.state;
-        const triggerLabel = ( <> <Icon name='linkify' /> Add New Link </>);
-        const buttonProperties = {
+        const { targetUrl, overlayId } = this.state;
+        const { overlays } = this.props;
+        return (
+            <Form>
+                <FormField>
+                    <label>Target URL</label>
+                    <Input 
+                        id='longURL' type="text" value={targetUrl} 
+                        onChange={this.handleTargetUrlChange} 
+                    />
+                </FormField>
+                <FormField>
+                    <label>Select overlay</label>
+                    <Dropdown 
+                        value={overlayId} 
+                        placeholder='You may or may not select an overlay' 
+                        fluid 
+                        selection 
+                        onChange={this.handleOverlayChange}
+                        options={overlays} 
+                    />
+                </FormField>
+                <br /> <br />
+            </Form>
+        );
+    }
+};    
+LinkForm.propTypes = {
+    onChange: PropTypes.func.isRequired,
+    overlays: PropTypes.array.isRequired,
+    linkDetails: PropTypes.shape({
+        targetUrl: PropTypes.string,
+        overlayId: PropTypes.string,
+    }),
+};
+
+export class CreatedLinkForm extends React.PureComponent {
+    constructor(){
+        super();
+        this.handleCopy = this.handleCopy.bind(this);
+    }
+
+    handleCopy() {
+        copyToClipboard(this.props.shortUrl);
+        showToast(`Link copied to clipboard`, 'success');
+    }
+
+    render() {
+        const { shortUrl } = this.props;
+        return (
+            <Form>
+                <FormField>
+                    <label>Short URL</label>
+                    <Input 
+                        onClick={this.handleCopy} 
+                        readOnly id='shortURL' type="text" value={shortUrl} 
+                        icon={
+                            <Icon 
+                                title='Copy'
+                                className='pointer' 
+                                name='copy' 
+                                color='blue' 
+                                circular
+                                inverted
+                                link
+                            />    
+                        }
+                    />
+                </FormField>
+            </Form>
+        );
+    }
+}
+
+export class CreateLinkTrigger extends React.PureComponent {
+    constructor() {
+        super();
+        this.buttonProperties = {
             floated: 'right',
             icon: true,
             labelPosition: 'left',
             primary: true,
             size: 'small',
-            onClick: this.handleOpen,
         };
-        const isSuccess = createdLink && createdLink.url;
-        const header = isSuccess 
-            ? { content: 'Link created', className: 'dark-background' }
-            : { content: 'Add new Link', icon: 'plus', className: 'dark-background' };
-        const content = isSuccess 
-            ? CreatedLinkForm(createdLink)
-            : CreateLinkForm(overlaysList)
+    }
+    render() {
         return (
-            <>
-                <Modal 
-                    open={modalOpen}
-                    header={header}  
-                    content={content} 
-                    trigger={{ label: triggerLabel, ...buttonProperties  }} 
-                    actions={this.getFooterActions(isSuccess)}
-                />
-            </>
-        )
+            <Button {...this.buttonProperties} onClick={this.props.onClick}>
+                <Icon name='linkify' /> Add New Link
+            </Button>
+        );
     }
 }
-
-CreateLink.propTypes = {
-    onCreate: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-    overlaysList: PropTypes.array.isRequired,
-};
-CreateLink.defaultProps = {
-    onClose: _.noop
+CreateLinkTrigger.propTypes = {
+    onClick: PropTypes.func.isRequired,
 }
+
+export default CreateLinkTrigger;

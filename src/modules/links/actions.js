@@ -12,3 +12,45 @@ export function onFetchLinksSuccess(linksList) {
         linksList,
     }
 }
+
+export function onCreateLink(link) {
+    return {
+        type: actionTypes.ON_CREATE_LINK,
+        link,
+    }
+}
+
+export function onCreateLinkSuccess(link) {
+    return {
+        type: actionTypes.ON_CREATE_LINK_SUCCESS,
+        link,
+    }
+}
+
+export function onUpdateLink(link) {
+    return {
+        type: actionTypes.ON_UPDATE_LINK,
+        link,
+    }
+}
+
+export function onUpdateLinkSuccess(link) {
+    return {
+        type: actionTypes.ON_UPDATE_LINK_SUCCESS,
+        link,
+    }
+}
+
+export function onClearCreatedLink(link) {
+    return {
+        type: actionTypes.ON_CLEAR_CREATED_LINK,
+        link,
+    }
+}
+
+export function onDeleteLink(linkId) {
+    return {
+        type: actionTypes.ON_DELETE_LINK,
+        linkId,
+    }
+}

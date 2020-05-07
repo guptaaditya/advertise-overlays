@@ -7,3 +7,8 @@ export const getLinksList = createSelector(
     getLinks, 
     links => links.linksList,
 );
+
+export const getNewCreatedLink = createSelector(
+    getLinks,
+    links => links.createdLink,
+)

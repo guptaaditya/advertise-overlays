@@ -3,6 +3,7 @@ import * as actionTypes from './actionTypes';
 import * as actions from './actions';
 import { showToast } from 'utils/ui';
 import * as userProfileActions from 'modules/userprofile/actions';
+import { onFetchOverlays } from 'modules/overlays/actions';
 import { getIsUserAuthenticatedFromStore } from 'modules/router/selectors';
 
 function* onStoreInitialized() {
@@ -12,6 +13,7 @@ function* onStoreInitialized() {
     const isUserAuthenticated = getIsUserAuthenticatedFromStore();
     if(isUserAuthenticated) {
         yield put(userProfileActions.getAccountDetails());
+        yield put(onFetchOverlays());
     }
 }
 

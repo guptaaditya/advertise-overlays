@@ -96,18 +96,18 @@ export default class Overlays extends React.Component {
         return (
             <>
                 <Confirm 
-                    onAccept={this.handleDuplicateConfirmed}
-                    onReject={this.handleDuplicateRejected}
+                    onConfirm={this.handleDuplicateConfirmed}
+                    onCancel={this.handleDuplicateRejected}
                     header={duplicateConfirmHeader}
                     isVisible={showDuplicateConfirmation} 
-                    message={duplicateConfirmMessage}
+                    body={duplicateConfirmMessage}
                 />
                 <Confirm 
-                    onAccept={this.handleDeleteConfirmed}
-                    onReject={this.handleDeleteRejected}
+                    onConfirm={this.handleDeleteConfirmed}
+                    onCancel={this.handleDeleteRejected}
                     header={deleteConfirmHeader}
                     isVisible={showDeleteConfirmation} 
-                    message={deleteConfirmMessage}
+                    body={deleteConfirmMessage}
                 />
                <OverlaysList cols={this.cols} data={data} onAddOverlay={this.handleOnAddOverlays} /> 
             </>

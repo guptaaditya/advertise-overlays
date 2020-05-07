@@ -12,16 +12,26 @@ export default class Confirmation extends React.Component {
     getBodyMessage() {
         return (
             <p>
-                {this.props.message}
+                {this.props.body}
             </p>
         )
     }
 
     getFooterActions() {
+        const { 
+            confirmBtnColor, cancelBtnColor, confirmBtnText, cancelBtnText, onConfirm, 
+            onCancel, showConfirm
+        } = this.props;
         return (
             <>
-                <Button color='Green' onClick={this.props.onAccept}>Yes</Button>
-                <Button color='red' onClick={this.props.onReject}>No</Button>
+                {showConfirm && (
+                    <Button color={confirmBtnColor} onClick={onConfirm}>
+                        {confirmBtnText}
+                    </Button>
+                )}
+                <Button color={cancelBtnColor} onClick={onCancel}>
+                    {cancelBtnText}
+                </Button>
             </>
         )
     }
@@ -39,9 +49,26 @@ export default class Confirmation extends React.Component {
     }
 }
 Confirmation.propTypes = {
-    onAccept: PropTypes.func.isRequired,
-    onReject: PropTypes.func.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
     isVisible: PropTypes.bool.isRequired,
     header: PropTypes.object.isRequired,
-    message: PropTypes.string.isRequired,
+    body: PropTypes.oneOf([
+        PropTypes.string,
+        PropTypes.node,
+    ]),
+    confirmBtnText: PropTypes.string,
+    cancelBtnText: PropTypes.string,
+    confirmBtnColor: PropTypes.string,
+    cancelBtnColor: PropTypes.string,
+    showConfirm: PropTypes.bool.isRequired,
+};
+
+Confirmation.defaultProps = {
+    body: '',
+    confirmBtnText: 'Yes',
+    cancelBtnText: 'No',
+    confirmBtnColor: 'green',
+    cancelBtnColor: 'red',
+    showConfirm: true,
 };

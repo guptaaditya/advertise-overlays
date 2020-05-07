@@ -13,7 +13,7 @@ class TableCell extends React.Component {
     render() {
         let { column: { 
             width, align, value, icon, icons, label = null, color, renderer, row, 
-            singleLine = false, className = '', title, formatter
+            singleLine = false, className = '', title, formatter, defaultValue,
         } = {} } = this.props;
         const derivedClassName = `${className}${ icon ? ' pointer': ''}`;
         let body = null;
@@ -22,6 +22,9 @@ class TableCell extends React.Component {
         } else {
             if (formatter) {
                 label = formatter(label);
+            }
+            if (!label) {
+                label = defaultValue;
             }
             body = (
                 <>

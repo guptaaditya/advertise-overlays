@@ -192,7 +192,7 @@ const API_CONFIG = {
             success: 'Overlay deleted successfully',
             error: {
                 400: 'Please login again, your token has expired',
-                401: 'You do not have permissions to edit this overlay',
+                401: 'You do not have permissions to delete this overlay',
                 500: 'Please try again after some time. Engineers are at work!',
             },
         }
@@ -214,7 +214,50 @@ const API_CONFIG = {
                 500: 'Please try again after some time. Engineers are at work!'
             },
         }
-    }
+    },
+    LINK_CREATE: {
+        url: `${host}link`,
+        type: 'post',
+        headers: null,
+        isProtected: true,
+        isJson: true,
+        urlParams: null,
+        message: {
+            success: 'Link created successfully',
+            error: {
+                400: 'You are not authorized to create a Link',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    LINK_UPDATE: {
+        url: `${host}link/{linkId}`,
+        type: 'put',
+        isProtected: true,
+        isJson: true,
+        message: {
+            success: 'Link saved successfully',
+            error: {
+                400: 'Please login again, your token has expired',
+                401: 'You do not have permissions to edit this link',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
+    LINK_DELETE: {
+        url: `${host}link/{linkId}`,
+        type: 'delete',
+        isProtected: true,
+        isJson: false,
+        message: {
+            success: 'Link deleted successfully',
+            error: {
+                400: 'Please login again, your token has expired',
+                401: 'You do not have permissions to delete this link',
+                500: 'Please try again after some time. Engineers are at work!',
+            },
+        }
+    },
 };
 
 export default API_CONFIG;
