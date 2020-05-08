@@ -25,6 +25,7 @@ export default class Loader extends React.PureComponent {
         this.unsubscriber = client.subscribe({
             onStart: this.showLoader,
             onComplete: this.hideLoader,
+            onError: this.hideLoader,
         });
     }
 

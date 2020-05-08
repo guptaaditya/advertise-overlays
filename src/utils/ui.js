@@ -29,6 +29,9 @@ export function showToast(view, type = '', settings = {}) {
         When view is a string, its a message without title,
         When view is a object with title and message property use it as it is.
     */
+    if(settings.exclusive) {
+        iziToast.destroy();
+    }
     const sanitizedType = type.toLowerCase();
     const typeMethod = allowedTypes.indexOf(sanitizedType) > -1 ? sanitizedType : 'show';
     const toastInfo = {
