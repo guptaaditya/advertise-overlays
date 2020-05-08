@@ -51,6 +51,7 @@ class Admin extends React.Component {
         return(
             <>
                 <Table 
+                    className='full-height flex-y cell'
                     compact='very'
                     cols={this.cols} 
                     data={affiliates} 

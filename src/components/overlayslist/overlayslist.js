@@ -29,7 +29,7 @@ class OverlaysList extends React.Component {
         return (
             <>
                 <View className='overlays'>
-                    <Table className="full-height" cols={cols} data={data} footerActions={this.getFooterActions()} />
+                    <Table className="full-height flex-y cell" cols={cols} data={data} footerActions={this.getFooterActions()} />
                 </View>
             </>
         );        

@@ -90,6 +90,7 @@ export class CreatedLinkForm extends React.PureComponent {
                         readOnly id='shortURL' type="text" value={shortUrl} 
                         icon={
                             <Icon 
+                                onClick={this.handleCopy} 
                                 title='Copy'
                                 className='pointer' 
                                 name='copy' 

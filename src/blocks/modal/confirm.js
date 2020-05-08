@@ -37,9 +37,11 @@ export default class Confirmation extends React.Component {
     }
 
     render() {
-        const { isVisible, header } = this.props;
+        const { isVisible, header, size, onCancel } = this.props;
         return (
             <Modal 
+                onClose={onCancel}
+                modalSize={size}
                 open={isVisible}
                 header={header}  
                 content={this.getBodyMessage} 
@@ -62,9 +64,11 @@ Confirmation.propTypes = {
     confirmBtnColor: PropTypes.string,
     cancelBtnColor: PropTypes.string,
     showConfirm: PropTypes.bool.isRequired,
+    size: PropTypes.string,
 };
 
 Confirmation.defaultProps = {
+    size: undefined,
     body: '',
     confirmBtnText: 'Yes',
     cancelBtnText: 'No',

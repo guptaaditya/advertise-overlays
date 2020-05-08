@@ -75,14 +75,19 @@ class LinksList extends React.Component {
         const body = createdLinkDetails ? this.getCreatedLink() : this.getLinkForm();
         let header = linkDetails ? editLinkHeader : createLinkHeader;
         let showConfirm = true;
+        let cancelBtnText = 'Cancel';
+        let size;
         if (createdLinkDetails) {
             showConfirm = false;
             header = createdLinkHeader;
+            cancelBtnText = 'Close';
+            size = 'mini';
         }
         return (
             <>
                 {showLinkForm && (
                     <Popup 
+                        size={size}
                         showConfirm={showConfirm}
                         onConfirm={this.handleConfirmLink}
                         onCancel={onHideForm}
@@ -90,13 +95,13 @@ class LinksList extends React.Component {
                         header={header}
                         body={body}
                         confirmBtnText='Save'
-                        cancelBtnText='Cancel'
+                        cancelBtnText={cancelBtnText}
                         confirmBtnColor='primary'
                     />
                 )}
                 <View className='links'>
                     <Table
-                        className="full-height"
+                        className="full-height flex-y cell"
                         cols={cols}
                         data={data}
                         footerActions={this.getFooterActions()}

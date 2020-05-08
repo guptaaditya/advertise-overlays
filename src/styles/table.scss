@@ -1,14 +1,30 @@
 .scrollable-table {
+    thead {
+        flex-shrink: 1;
+        flex-grow: 0;
+    }
     tbody {
-        display: block;
-        max-height: 300px;
+        display: flex;
+        flex-direction: column;
         min-height: 100px;
         overflow-y: scroll;
+        flex: 1;
+    }
+    tfoot {
+        display: flex;
+        flex: 0 1;
+        tr {
+            display: flex;
+            flex: 1;
+            th {
+                flex: 1;
+            }
+        }
     }
       
     thead, tbody tr {
         display: flex;
-        flex: 1;
+        flex: 0 1;
         
         td {
             flex: 1;
